@@ -28,7 +28,7 @@
     "GRAB": "Grab-Attention — 抢镜行动型",
     "LAZY": "Lazy-But-Smart — 松弛大人型",
     "HYPE": "Hype-Machine — 嗨皮引擎型",
-    "SHYF": "Shy-Warm — 害羞暖宝型",
+    "WARM": "Warm-Mate — 害羞暖宝型",
     "DEEP": "Deep-Thinker — 深沉宇宙型",
     "PROC": "Process-Driven — 流程机器型",
     "CHIL": "Chill-And-Quiet — 安静吃瓜型",
@@ -40,8 +40,8 @@
     "SCAM": "Scam-Alert — 血压拉满型",
     "WISH": "Wish-Twisted — 阴间实现型",
     "LORD": "Lord-of-Glow — 强势发光型",
-    "HEXM": "Hex-Magic — 邪门军师型",
-    "SWCH": "Switch-Mode — 切面反转型",
+    "HEXA": "Hex-Architect — 邪门军师型",
+    "FLIP": "Flip-Mode — 切面反转型",
     "SHOW": "Show-Must-Go-On — 营业永动型",
     "PART": "Party-Together — 群嗨整活型"
   },
@@ -339,8 +339,8 @@
       "name": "狮萨",
       "englishName": "Shisa",
       "mbti": "ISFJ",
-      "sbtI": "SHYF",
-      "sbtIFull": "Shy-Warm · 害羞暖宝型",
+      "sbtI": "WARM",
+      "sbtIFull": "Warm-Mate · 害羞暖宝型",
       "title": "温柔守护的默默付出者",
       "oneLiner": "你一来，场子就不冷了——但你是默默暖起来的那种。",
       "summary": "你温柔守护、细心负责、默默付出。你不是最热闹的，但你一定是最让人感到安心的那个。",
@@ -380,7 +380,7 @@
         "signature": "……没事的。（然后真的在背后默默搞定了）",
         "energyLevel": "恒温模式。稳定 50%，不升不降但从不掉线。"
       },
-      "sbtIReason": "SHYF = Shy-Warm 害羞暖宝型。安静地暖，比大声地热更难替代。ISFJ教科书案例：Introverted but Still Feeling Everyone。团队是火锅的话，他就是小火——不起眼但关了没法吃。"
+      "sbtIReason": "WARM = Warm-Mate 害羞暖宝型。ISFJ教科书案例：Introverted but Still Feeling Everyone。狮萨的存在证明了「安静地暖」比「大声地热」更难替代。如果团队是火锅，他就是那个小火——不起眼但关了就没法吃。恒温50%，不升不降但从不掉线。"
     },
     {
       "code": "FURU",
@@ -914,8 +914,8 @@
       "name": "山姥",
       "englishName": "Majo",
       "mbti": "INTJ",
-      "sbtI": "HEXM",
-      "sbtIFull": "Hex-Magic · 邪门军师型",
+      "sbtI": "HEXA",
+      "sbtIFull": "Hex-Architect · 邪门军师型",
       "title": "邪门点子型山姥",
       "oneLiner": "你不是路子野，你是路子有点邪。",
       "summary": "你脑子里会冒出一些很偏、很阴、很有效的想法。你不像热闹型疯子，更像冷静型怪人。",
@@ -955,15 +955,15 @@
         "signature": "……我有一个想法。（所有人：先说好，不要阴间的）",
         "energyLevel": "魔法蓄力模式。平时 30%，施法时 200%。"
       },
-      "sbtIReason": "HEXM = Hex-Magic 邪门军师型。INTJ+魔法=偏门方案搜索引擎。输入问题，输出一个让所有人倒吸凉气的方案。HEXM = Hex-Master-eXecuting-Magic。不是坏人，只是方向比较阴间。"
+      "sbtIReason": "HEXA = Hex-Architect 邪门建筑师。INTJ+魔法=偏门方案搜索引擎。输入问题，输出一个让所有人倒吸凉气的方案。她不是坏人，只是解决问题的方向比较阴间。平时30%，施法时200%——魔法蓄力模式。"
     },
     {
       "code": "KABU",
       "name": "吉伊卡菇",
       "englishName": "Chiikabu",
       "mbti": "INTP",
-      "sbtI": "SWCH",
-      "sbtIFull": "Switch-Mode · 切面反转型",
+      "sbtI": "FLIP",
+      "sbtIFull": "Flip-Mode · 切面反转型",
       "title": "先萌后吓人的变异体",
       "oneLiner": "你平时看着无害，切模式时很有反差。",
       "summary": "你最大的特色是反转。你不是完全危险，也不是完全可爱，而是会在某个瞬间切到另一种状态。",
@@ -1003,7 +1003,7 @@
         "signature": "……（可爱的蘑菇脸）然后……（切换了）",
         "energyLevel": "双模式。可爱模式 30%，吓人模式 150%，切换中。"
       },
-      "sbtIReason": "SWCH = Switch-Mode 切面反转型。INTP的「表面安静内心疯狂」反差实体化了。SWCH = Sudden-Weird-Character-Handoff。可爱30%，吓人150%，切换中——你永远不知道下一秒开出来什么。"
+      "sbtIReason": "FLIP = Flip-Mode 切面反转型。INTP的「表面安静内心疯狂」反差实体化了。可爱30%，吓人150%，切换中——你永远不知道下一秒开出来的是蘑菇头还是怪物脸。从可爱切成吓人只需要0.1秒。"
     },
     {
       "code": "MUCH",

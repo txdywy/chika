@@ -687,6 +687,39 @@ a { color: inherit; }
   align-self: stretch;
   flex-shrink: 0;
 }
+
+/* trait card */
+.trait-card .info-body {
+  font-size: 14px;
+  line-height: 1.6;
+}
+.trait-grid {
+  display: grid;
+  gap: 10px;
+}
+.trait-item {
+  display: grid;
+  gap: 4px;
+}
+.trait-label {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 600;
+}
+.trait-value {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--text);
+}
+.trait-quote {
+  font-style: italic;
+  color: var(--accent-dark);
+}
+.trait-divider {
+  height: 1px;
+  background: var(--line);
+}
 .evidence-list {
   padding-left: 18px;
   display: grid;

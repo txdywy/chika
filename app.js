@@ -23,7 +23,7 @@ const IMAGE_MAP = {
   GOBL: "images/04-Miscellaneous/哥布林_gobl.png",
   BLAC: "images/04-Miscellaneous/黑星_blac.jpg",
   SHOO: "images/04-Miscellaneous/流星_shoo.jpg",
-  MAJO: "images/04-Miscellaneous/山姥_majo.png",
+  MAJO: "images/04-Miscellaneous/山姥_majo.webp",
   KABU: "images/04-Miscellaneous/吉伊卡菇_kabu.jpeg",
   MUCH: "images/04-Miscellaneous/营业超人_much.png",
   PAJA: "images/04-Miscellaneous/睡衣派对组_paja.png"
@@ -85,6 +85,9 @@ const bestMatch      = $("#bestMatch");
 const worstMatch     = $("#worstMatch");
 const bestMatchReason = $("#bestMatchReason");
 const worstMatchReason = $("#worstMatchReason");
+const traitSignature  = $("#traitSignature");
+const traitEnergy     = $("#traitEnergy");
+const traitStress     = $("#traitStress");
 const deputyCard     = $("#deputyCard");
 const shareCopy      = $("#shareCopy");
 const copyButton     = $("#copyButton");
@@ -319,6 +322,12 @@ function computeAndShow() {
     worstMatch.textContent = primary.worstMatch;
     bestMatchReason.textContent = primary.bestMatchReason || "";
     worstMatchReason.textContent = primary.worstMatchReason || "";
+
+    /* character traits */
+    const d = primary.detail || {};
+    traitSignature.textContent = d.signature || "";
+    traitEnergy.textContent = d.energyLevel || "";
+    traitStress.textContent = d.stressBehavior || "";
 
     /* deputy */
     renderDeputy(secondary);
