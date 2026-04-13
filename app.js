@@ -59,8 +59,11 @@ const state = {
 const $ = (sel) => document.querySelector(sel);
 const screenHome  = $("#screenHome");
 const screenQuiz  = $("#screenQuiz");
+const screenDetail = $("#screenDetail");
 const screenResult = $("#screenResult");
 const rosterGrid  = $("#rosterGrid");
+const detailBack  = $("#detailBack");
+const detailStartQuiz = $("#detailStartQuiz");
 const restartTop  = $("#restartTop");
 const startButton = $("#startButton");
 const heroResume  = $("#heroResume");
@@ -100,6 +103,7 @@ async function init() {
     questions = qData.questions;
     characters = cData.characters.map(c => ({
       ...c,
+      typeCode: c.sbtI,
       image: IMAGE_MAP[c.code] || ""
     }));
   } catch (e) {
@@ -111,6 +115,8 @@ async function init() {
   if (isWeChat) wechatTip.hidden = false;
   restoreState();
 
+  detailBack.addEventListener("click", () => showScreen(screenHome));
+  detailStartQuiz.addEventListener("click", () => showScreen(screenHome));
   startButton.addEventListener("click", onStart);
   restartTop.addEventListener("click", resetAll);
   restartButton.addEventListener("click", resetAll);
@@ -121,18 +127,26 @@ async function init() {
 /* ===== roster ===== */
 function renderRoster() {
   rosterGrid.innerHTML = characters.map(c => `
-    <div class="roster-item">
+    <div class="roster-item" data-code="${c.code}">
       <div class="roster-avatar">
         ${imgEl(c, 52)}
       </div>
       <span class="roster-name">${c.name}</span>
     </div>
   `).join("");
+
+  rosterGrid.querySelectorAll(".roster-item").forEach(el => {
+    el.addEventListener("click", () => {
+      const code = el.dataset.code;
+      const char = characters.find(c => c.code === code);
+      if (char) renderDetail(char);
+    });
+  });
 }
 
 /* ===== screens ===== */
 function showScreen(target) {
-  [screenHome, screenQuiz, screenResult].forEach(s =>
+  [screenHome, screenQuiz, screenDetail, screenResult].forEach(s =>
     s.classList.toggle("active", s === target)
   );
   window.scrollTo({ top: 0, behavior: "instant" });
@@ -330,6 +344,44 @@ function renderDeputy(c) {
       <div class="deputy-one">${c.oneLiner}</div>
     </div>
   `;
+}
+
+/* ===== detail page ===== */
+function renderDetail(c) {
+  const d = c.detail || {};
+  const color = c.color || "#FFD0A0";
+
+  $("#detailHero").style.background =
+    `linear-gradient(145deg, ${color}, #FFF2DB)`;
+  $("#detailHero").innerHTML = `
+    <div class="detail-hero-img">${imgEl(c, 100)}</div>
+    <div class="detail-hero-content">
+      <div class="detail-hero-badges">
+        <span class="detail-hero-badge">${c.typeCode}</span>
+        <span class="detail-hero-badge">${c.mbti}</span>
+        <span class="detail-hero-badge">${c.sbtI} · ${c.sbtIFull}</span>
+      </div>
+      <h2 class="detail-hero-name">${c.name}</h2>
+      <p class="detail-hero-title">${c.title}</p>
+      <p class="detail-hero-oneliner">"${c.oneLiner}"</p>
+    </div>
+  `;
+
+  $("#detailPersonality").textContent = d.personality || "";
+
+  $("#detailAchievements").innerHTML = (d.achievements || [])
+    .map(a => `<li>${a}</li>`).join("");
+
+  $("#detailFunny").textContent = d.funnyAnalysis || "";
+  $("#detailLikes").textContent = d.likes || "";
+  $("#detailDislikes").textContent = d.dislikes || "";
+  $("#detailStress").textContent = d.stressBehavior || "";
+  $("#detailEnergy").textContent = d.energyLevel || "";
+  $("#detailSignature").textContent = d.signature || "";
+  $("#detailBest").textContent = c.bestMatch || "";
+  $("#detailWorst").textContent = c.worstMatch || "";
+
+  showScreen(screenDetail);
 }
 
 /* ===== image helper ===== */

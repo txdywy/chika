@@ -1,7 +1,7 @@
 {
   "meta": {
-    "version": "2.0",
-    "description": "22个Chiikawa角色的trait画像和MBTI数据，用于quiz-questions.json的评分匹配"
+    "version": "3.0",
+    "description": "22个Chiikawa角色的完整数据：MBTI、SBTI搞笑编码、trait画像、角色详情页内容"
   },
   "traits_legend": {
     "gentle": "温柔敏感",
@@ -21,12 +21,38 @@
     "huge": "体量感与强度感",
     "magic": "邪门点子与魔性"
   },
+  "sbt_legend": {
+    "CRYF": "Cry-Freak — 开哭型人格",
+    "HUGS": "Hug-Seeking — 求抱抱型人格",
+    "WILD": "Wild-Imagination — 脑洞野生型",
+    "GRAB": "Grab-Attention — 抢镜行动型",
+    "LAZY": "Lazy-But-Smart — 松弛大人型",
+    "HYPE": "Hype-Machine — 嗨皮引擎型",
+    "SHYF": "Shy-Warm — 害羞暖宝型",
+    "DEEP": "Deep-Thinker — 深沉宇宙型",
+    "PROC": "Process-Driven — 流程机器型",
+    "CHIL": "Chill-And-Quiet — 安静吃瓜型",
+    "BOSS": "Boss-Energy — 店长掌控型",
+    "CASH": "Cash-and-Chaos — 烟火整活型",
+    "FAKE": "Fake-Cute-Bite — 软萌翻车型",
+    "GIGA": "Giga-Chad-Brain — 巨脑强者型",
+    "WACK": "Wacky-Big-Brain — 大块脑洞型",
+    "SCAM": "Scam-Alert — 血压拉满型",
+    "WISH": "Wish-Twisted — 阴间实现型",
+    "LORD": "Lord-of-Glow — 强势发光型",
+    "HEXM": "Hex-Magic — 邪门军师型",
+    "SWCH": "Switch-Mode — 切面反转型",
+    "SHOW": "Show-Must-Go-On — 营业永动型",
+    "PART": "Party-Together — 群嗨整活型"
+  },
   "characters": [
     {
       "code": "CHII",
       "name": "吉伊卡哇",
       "englishName": "Chiikawa",
       "mbti": "INFP",
+      "sbtI": "CRYF",
+      "sbtIFull": "Cry-Freak · 开哭型人格",
       "title": "内向温柔小治愈",
       "oneLiner": "柔软是真的，敏感也是真的。",
       "summary": "你内向又敏感，对世界充满温柔的感知力。容易被感动，也容易为别人多想，但你的善良本身就是一种力量。",
@@ -40,13 +66,30 @@
       "bestMatch": "小八",
       "worstMatch": "哥布林",
       "traits": { "gentle": 4, "quiet": 2, "wish": 2, "support": 1 },
-      "focusTraits": ["gentle", "wish"]
+      "focusTraits": ["gentle", "wish"],
+      "detail": {
+        "personality": "敏感、胆小、善良、努力。明明很害怕但还是在往前走，是 Chiikawa 宇宙里最让人心疼的角色。虽然不会说话（用咿呀呀代替），但感情非常丰富。",
+        "achievements": [
+          "考取了除草检定3级证书，是认真备考的努力型选手",
+          "和讨伐队一起执行过危险任务，虽然害怕但没有逃跑",
+          "用自己的方式关心和保护着小八",
+          "虽然经常哭但还是会勇敢面对困难"
+        ],
+        "funnyAnalysis": "吉伊卡哇的日常大概就是：先哭、再哭、然后还是哭、哭完之后带着眼泪把活干了。这种「含泪打工」的精神让人又心疼又想笑。如果MBTI有第五个维度，那一定是CRY——Crying is the new Thinking。",
+        "likes": "和小八在一起的时光、好吃的食物、安静的环境、被摸摸头",
+        "dislikes": "怪物、恐怖的事情、一个人待着、突然被吓到",
+        "stressBehavior": "先哭为敬。哭了再说。哭完再想办法。",
+        "signature": "咿呀呀……（带着哭腔但还在努力）",
+        "energyLevel": "低电量模式。日常电量 20%，但关键时刻能冲到 100%。"
+      }
     },
     {
       "code": "HACH",
       "name": "小八",
       "englishName": "Hachiware",
       "mbti": "ESFJ",
+      "sbtI": "HUGS",
+      "sbtIFull": "Hug-Seeking · 求抱抱型人格",
       "title": "体贴细心的社交担当",
       "oneLiner": "别人还没开口，你已经准备接住了。",
       "summary": "你体贴细心，社交能力强，很会照顾他人。你是群体里那个让每个人都觉得被在乎的人。",
@@ -60,13 +103,30 @@
       "bestMatch": "吉伊卡哇",
       "worstMatch": "山姥",
       "traits": { "support": 4, "sunny": 2, "service": 2, "gentle": 1 },
-      "focusTraits": ["support", "service"]
+      "focusTraits": ["support", "service"],
+      "detail": {
+        "personality": "外向、热心、善于表达、共情能力超强。是 Chiikawa 世界里最会说人话（字面意思）的角色，也是唯一一个能流利说话的主角。天生就是团队的粘合剂。",
+        "achievements": [
+          "会说话——在 Chiikawa 宇宙里这已经是超能力了",
+          "经常帮吉伊卡哇翻译和解释情况，堪称官方翻译官",
+          "照顾朋友无微不至，是所有人默认的「那个会兜底的人」",
+          "经济条件一般但依然乐观积极，住山洞也能乐呵呵"
+        ],
+        "funnyAnalysis": "小八的存在证明了「会说话」在某些情况下确实是最强的超能力。如果团队是手机，小八就是那个 10000mAh 的充电宝——你以为不需要，但没他真的会关机。ESFJ 的极致代表：Extroverted Support Feeling Juggler。",
+        "likes": "交朋友、聊天、帮助大家、弹吉他、唱歌",
+        "dislikes": "朋友难过、冷场、看到别人受苦",
+        "stressBehavior": "先安慰别人再处理自己的情绪。自己的难受总是排最后。",
+        "signature": "没关系！有我在呢！（然后真的在）",
+        "energyLevel": "充电宝体质。给别人充电 80%，自己还剩 20%。"
+      }
     },
     {
       "code": "USAG",
       "name": "兔兔",
       "englishName": "Usagi",
       "mbti": "ENTP",
+      "sbtI": "WILD",
+      "sbtIFull": "Wild-Imagination · 脑洞野生型",
       "title": "脑洞大开搞怪王",
       "oneLiner": "计划可以没有，但脑洞必须先有。",
       "summary": "你脑洞大、自由奔放、跳脱搞怪。别人还在犹豫时，你已经想出了三个完全不按套路出牌的方案。",
@@ -80,13 +140,30 @@
       "bestMatch": "狮萨",
       "worstMatch": "劳动铠甲人",
       "traits": { "odd": 4, "chaos": 2, "magic": 2, "sunny": 1 },
-      "focusTraits": ["odd", "magic"]
+      "focusTraits": ["odd", "magic"],
+      "detail": {
+        "personality": "疯狂、自由、不按套路出牌。说话永远是「呀哈！」级别，脑回路是所有人里最跳脱的。看似疯癫但偶尔展现出惊人的能力。是 Chiikawa 世界的混沌引擎。",
+        "achievements": [
+          "拥有超常的身体能力——能飞、能跳、能做出违背物理学的操作",
+          "经常以完全不可预测的方式出现和消失",
+          "虽然行为疯狂但关键时刻意外地靠谱",
+          "是狮萨最好的朋友，两个疯子的化学反应绝了"
+        ],
+        "funnyAnalysis": "如果 ENTP 是「辩论家」，那兔兔就是「用行动辩论」的类型——不需要说话，一个「呀哈！」就已经驳倒了你全部论点。他的存在本身就证明了「混乱也是一种秩序，只是你理解不了」。",
+        "likes": "自由、搞事、飞、吓唬人、说「呀哈！」",
+        "dislikes": "被限制、无聊的规则、等别人慢慢来",
+        "stressBehavior": "更疯了。压力越大行为越离谱。",
+        "signature": "呀哈！！！（伴随着违背物理学的飞行）",
+        "energyLevel": "永动机。电量显示永远是 ∞%。"
+      }
     },
     {
       "code": "MOMO",
       "name": "飞鼠",
       "englishName": "Momonga",
       "mbti": "ESTP",
+      "sbtI": "GRAB",
+      "sbtIFull": "Grab-Attention · 抢镜行动型",
       "title": "行动力满分的冒险家",
       "oneLiner": "你不是作，你是在认真经营存在感。",
       "summary": "你行动力强、直接现实、爱冒险。你不太纠结，也不太等待，想到了就会去做。",
@@ -100,13 +177,30 @@
       "bestMatch": "营业超人",
       "worstMatch": "栗子馒头",
       "traits": { "chaos": 3, "sunny": 2, "perform": 2, "huge": 1 },
-      "focusTraits": ["chaos", "perform"]
+      "focusTraits": ["chaos", "perform"],
+      "detail": {
+        "personality": "自恋、爱出风头、行动派、有点小任性但本质不坏。非常在意别人怎么看自己，所以会做出各种夸张行为。虽然表面上很自信但其实内心也有脆弱的一面。",
+        "achievements": [
+          "凭借飞鼠能力可以在空中滑翔，移动方式本身就很有戏剧性",
+          "经常制造出令人印象深刻的场面（不管好的还是尴尬的）",
+          "被大家记住很大程度上是因为他实在太高调了",
+          "在危机时刻也有勇敢的一面"
+        ],
+        "funnyAnalysis": "飞鼠的社交账号一定是那种一天发十条动态、每条都要最佳角度、没人点赞会删除重发的人。ESFP 在他身上不是性格是一种运营策略。 ESTP？更像是 ES-Please-Look-At-Me。",
+        "likes": "被关注、飞、摆造型、当主角、别人夸他可爱",
+        "dislikes": "被忽视、当背景板、无聊的场面",
+        "stressBehavior": "更加戏剧化。越崩溃越要崩出氛围感。",
+        "signature": "快看我！！！（然后做出一个华丽的滑翔动作）",
+        "energyLevel": "舞台灯模式。有人看就满电，没人看就关机。"
+      }
     },
     {
       "code": "KURI",
       "name": "栗子馒头",
       "englishName": "Kuri-Manju",
       "mbti": "ISTP",
+      "sbtI": "LAZY",
+      "sbtIFull": "Lazy-But-Smart · 松弛大人型",
       "title": "松弛型大人",
       "oneLiner": "世界很吵，但你先吃一口再说。",
       "summary": "你不是不懂压力，你只是比较懂得什么值得耗命、什么不值得。你的人生里，松弛是硬实力。",
@@ -120,13 +214,30 @@
       "bestMatch": "古本",
       "worstMatch": "飞鼠",
       "traits": { "chill": 4, "quiet": 2, "huge": 1, "support": 1 },
-      "focusTraits": ["chill", "quiet"]
+      "focusTraits": ["chill", "quiet"],
+      "detail": {
+        "personality": "佛系、松弛、有分寸的大人。看起来在摆但其实在观察。是 Chiikawa 世界里最接近「活明白了」的角色。喝酒、悠闲、不争不抢，但心里跟明镜一样。",
+        "achievements": [
+          "是少数能在 Chiikawa 宇宙中保持内心平静的成年人角色",
+          "经常喝酒但从来没误过事",
+          "用自己的方式照顾着年轻的小伙伴们",
+          "证明了「松弛」不等于「没用」——有时候不慌不忙反而最稳"
+        ],
+        "funnyAnalysis": "栗子馒头的人生哲学可以概括为：能坐就不站，能躺就不坐，能喝一口就绝不多动。但他不是真的懒——他是把能量用在了刀刃上。ISTP 的终极形态：I Stay Totally Peaceful。",
+        "likes": "喝酒、发呆、美食、安静的时光、看年轻人瞎折腾",
+        "dislikes": "被催促、没意义的忙碌、飞鼠的戏剧化表演",
+        "stressBehavior": "喝一口。再喝一口。然后该干嘛干嘛。",
+        "signature": "……嗯。（然后喝了一口）",
+        "energyLevel": "节能模式。日常 15%，但关键时刻精准爆发到 60%。"
+      }
     },
     {
       "code": "RAKK",
       "name": "海獭",
       "englishName": "Rakko",
       "mbti": "ENFP",
+      "sbtI": "HYPE",
+      "sbtIFull": "Hype-Machine · 嗨皮引擎型",
       "title": "活泼热情的氛围担当",
       "oneLiner": "现场越乱，你越来劲。",
       "summary": "你活泼热情、表达欲强、情绪感染力强。你不一定想管，但大家会被你的能量带动起来。",
@@ -140,13 +251,30 @@
       "bestMatch": "吉伊卡哇",
       "worstMatch": "哥布林",
       "traits": { "sunny": 4, "drama": 2, "perform": 2, "support": 1 },
-      "focusTraits": ["sunny", "drama"]
+      "focusTraits": ["sunny", "drama"],
+      "detail": {
+        "personality": "活泼、自信、社交恐怖分子。在 Chiikawa 宇宙里属于那种一出现就能把整个场子热起来的角色。不怕生、不怕事、不怕尴尬，是所有人默认的气氛担当。",
+        "achievements": [
+          "是讨伐队的成员，战斗力在线",
+          "和吉伊卡哇的关系很好，经常照顾他",
+          "用开朗的性格感染着身边的每一个人",
+          "证明了「开心」也是一种战斗力"
+        ],
+        "funnyAnalysis": "如果气氛有温度，海獭出现后室温至少升高 5°C。ENFP 在他身上不是人格是一种气象现象。HYPE = High-energy Youth Producing Excitement，但说实话他光是存在就已经 HYPE 了。",
+        "likes": "热闹、交朋友、搞事情、讨伐任务、把大家聚在一起",
+        "dislikes": "冷场、一个人待着太久、哥布林制造的麻烦",
+        "stressBehavior": "越乱越嗨。混乱是他的兴奋剂。",
+        "signature": "来啦来啦！大家一起！（已经开始带动气氛了）",
+        "energyLevel": "核动力。日常 120%，混乱时 200%。"
+      }
     },
     {
       "code": "SHIS",
       "name": "狮萨",
       "englishName": "Shisa",
       "mbti": "ISFJ",
+      "sbtI": "SHYF",
+      "sbtIFull": "Shy-Warm · 害羞暖宝型",
       "title": "温柔守护的默默付出者",
       "oneLiner": "你一来，场子就不冷了——但你是默默暖起来的那种。",
       "summary": "你温柔守护、细心负责、默默付出。你不是最热闹的，但你一定是最让人感到安心的那个。",
@@ -160,13 +288,30 @@
       "bestMatch": "兔兔",
       "worstMatch": "古本",
       "traits": { "gentle": 3, "support": 3, "quiet": 2, "service": 1 },
-      "focusTraits": ["gentle", "support"]
+      "focusTraits": ["gentle", "support"],
+      "detail": {
+        "personality": "温柔、细心、默默付出型。是 Chiikawa 世界里那种不声不响但大家都离不开的存在。和兔兔是完全相反的类型，但两个人的化学反应意外地好。",
+        "achievements": [
+          "和兔兔成为了好朋友——证明了世界上真的存在性格互补的友谊",
+          "总是默默关心着大家但不邀功",
+          "用自己的方式维持着团队的温度",
+          "冲绳狮萨原型的本地角色，有着独特的地域魅力"
+        ],
+        "funnyAnalysis": "ISFJ 的教科书案例：Introverted but Still Feeling Everyone。狮萨的存在证明了「安静地暖」比「大声地热」更难替代。如果团队是火锅，他就是那个小火——不起眼但关了就没法吃。",
+        "likes": "安静的陪伴、和兔兔一起疯、照顾别人、冲绳文化",
+        "dislikes": "冲突、被推到聚光灯下、古本那种深沉到接不上的气场",
+        "stressBehavior": "更安静了。但会默默地多做一点什么。",
+        "signature": "……没事的。（然后真的在背后默默搞定了）",
+        "energyLevel": "恒温模式。稳定 50%，不升不降但从不掉线。"
+      }
     },
     {
       "code": "FURU",
       "name": "古本",
       "englishName": "Furuhonya",
       "mbti": "INFJ",
+      "sbtI": "DEEP",
+      "sbtIFull": "Deep-Thinker · 深沉宇宙型",
       "title": "安静深沉的理想主义者",
       "oneLiner": "你话不多，但很容易被人默默依赖。",
       "summary": "你安静深沉、理想主义、有点神秘。你不吵也不抢镜，但你内心的深度和洞察力很难被替代。",
@@ -180,13 +325,30 @@
       "bestMatch": "栗子馒头",
       "worstMatch": "哥布林",
       "traits": { "quiet": 4, "wish": 2, "magic": 2, "gentle": 1 },
-      "focusTraits": ["quiet", "magic"]
+      "focusTraits": ["quiet", "magic"],
+      "detail": {
+        "personality": "安静、深沉、理想主义、神秘。在 Chiikawa 世界里属于那种话不多但每句话都有分量的角色。内心有一个完整的宇宙，只是不太想跟所有人分享。",
+        "achievements": [
+          "是少数能在喧闹的 Chiikawa 宇宙中保持深度思考的角色",
+          "和栗子馒头的友谊证明了「安静的两个人在一起可以很放松」",
+          "用沉默的方式影响着周围的人",
+          "代表了 Chiikawa 世界里难得的「留白美学」"
+        ],
+        "funnyAnalysis": "INFJ 在 Chiikawa 宇宙的终极表达是：不说话、不表态、但所有人都在猜你在想什么。古本的沉默不是空白是信息密度太高。DEEP = Doesn't Explain Everything Personally。",
+        "likes": "安静、书、深度对话、和栗子馒头一起发呆",
+        "dislikes": "噪音、哥布林、被迫社交、飞鼠的戏剧化",
+        "stressBehavior": "消失。找一个安静的角落待着，等世界安静下来再回来。",
+        "signature": "……（沉默，但所有人都觉得他说过了）",
+        "energyLevel": "深海模式。表面平静 10%，水下深度 90%。"
+      }
     },
     {
       "code": "LABO",
       "name": "劳动铠甲人",
       "englishName": "Labor Yoroi-San",
       "mbti": "ISTJ",
+      "sbtI": "PROC",
+      "sbtIFull": "Process-Driven · 流程机器型",
       "title": "规则型打工前辈",
       "oneLiner": "你不是没情绪，你只是先把流程走完。",
       "summary": "你有很强的职业秩序感。你不一定最热情，但很可能最知道怎样把事情做对、做稳、做完整。",
@@ -200,13 +362,30 @@
       "bestMatch": "口袋铠甲人",
       "worstMatch": "兔兔",
       "traits": { "orderly": 4, "leader": 2, "service": 1, "quiet": 1 },
-      "focusTraits": ["orderly", "leader"]
+      "focusTraits": ["orderly", "leader"],
+      "detail": {
+        "personality": "严谨、务实、守规矩、执行力强。铠甲人世界的打工人代表。不是最有趣的那个，但绝对是出了问题第一个被想到的。ISTJ 的极致代表。",
+        "achievements": [
+          "穿着铠甲认真打工，是铠甲人世界里的可靠前辈",
+          "对工作流程和规矩有着近乎执念的坚持",
+          "和口袋铠甲人的搭档关系是职场标杆",
+          "最烦兔兔这种完全不按流程来的角色"
+        ],
+        "funnyAnalysis": "ISTJ 在铠甲人世界的化身。如果工作群里有一个人永远第一个回复「收到」，那他就是劳动铠甲人。PROC = Process-Rules-Order-Checklist，四个词完美概括他的一生。",
+        "likes": "流程、规矩、按计划执行、口袋铠甲人的配合",
+        "dislikes": "兔兔、不按规矩来的人、计划外的变数、口头指令不写工单",
+        "stressBehavior": "更严格地遵守流程。越是混乱越要按规矩来。",
+        "signature": "按流程走。（然后真的会走一遍流程）",
+        "energyLevel": "打卡模式。上班 100%，下班 0%。中间没有过渡。"
+      }
     },
     {
       "code": "POCH",
       "name": "口袋铠甲人",
       "englishName": "Pochette Yoroi-san",
       "mbti": "ISFP",
+      "sbtI": "CHIL",
+      "sbtIFull": "Chill-And-Quiet · 安静吃瓜型",
       "title": "安静随性的审美派",
       "oneLiner": "嘴上不吵，手上已经帮你准备好了——而且准备得很好看。",
       "summary": "你安静随性、有审美、坚持自我。你不一定站在最前面，但你的品味和风格让人很难忽视。",
@@ -220,13 +399,30 @@
       "bestMatch": "古本",
       "worstMatch": "飞鼠",
       "traits": { "quiet": 3, "gentle": 2, "chill": 2, "odd": 1 },
-      "focusTraits": ["quiet", "gentle"]
+      "focusTraits": ["quiet", "gentle"],
+      "detail": {
+        "personality": "安静、随性、有品味。口袋铠甲人是铠甲人世界里最有生活美学的角色。做事不紧不慢但总能完成，有一种「慢工出细活」的气质。",
+        "achievements": [
+          "随身带着口袋——随时随地能掏出需要的东西",
+          "和劳动铠甲人的搭档关系完美互补",
+          "用安静的方式表达关心，往往比别人更有效",
+          "在铠甲人群体中代表了「生活不只工作」的态度"
+        ],
+        "funnyAnalysis": "如果劳动铠甲人是 Excel，口袋铠甲人就是 Notion——同样在做事，但他做了还有设计感。CHIL = Calm-Handy-It's-Lovely。他的口袋里装的不只是东西，是一种生活态度。",
+        "likes": "整理东西、审美相关的事、和古本安静地待着",
+        "dislikes": "飞鼠的吵闹、被打断节奏、东西放得乱七八糟",
+        "stressBehavior": "默默整理东西。整理就是一种冥想。",
+        "signature": "……我有带。（然后从口袋里掏出了解决方案）",
+        "energyLevel": "涓流充电。稳定 40%，需要时慢慢涨到 70%。"
+      }
     },
     {
       "code": "RAMN",
       "name": "拉面铠甲人",
       "englishName": "Ramen Yoroi-san",
       "mbti": "ESTJ",
+      "sbtI": "BOSS",
+      "sbtIFull": "Boss-Energy · 店长掌控型",
       "title": "管理型的规则店长",
       "oneLiner": "热情是服务态度，规矩是管理手段。",
       "summary": "你管理型、讲规则、组织能力强。你既会招呼人，也会维持秩序，是很会撑住现场的职业前辈。",
@@ -240,13 +436,30 @@
       "bestMatch": "狮萨",
       "worstMatch": "哥布林",
       "traits": { "orderly": 4, "leader": 3, "service": 2 },
-      "focusTraits": ["orderly", "service"]
+      "focusTraits": ["orderly", "service"],
+      "detail": {
+        "personality": "管理型、讲规则、热情但有底线。是铠甲人世界里开店的那一位，既会招呼客人也会维持秩序。ESTJ 的极致体现。",
+        "achievements": [
+          "经营着自己的拉面店——在 Chiikawa 宇宙开店需要勇气",
+          "既是热情的店长也是严格的规矩守护者",
+          "和狮萨的化学反应：两个服务型人格的管理学碰撞",
+          "证明了热情和纪律可以共存"
+        ],
+        "funnyAnalysis": "ESTJ 开拉面店 = 每碗面的份量和流程都是标准化的，但欢迎光临的笑容是真的。BOSS = Business-Oriented System-Supervisor。他的热情是 KPI 驱动的，但 KPI 本身也是他真诚的一部分。",
+        "likes": "开店、招呼客人、维持秩序、和狮萨交流管理经验",
+        "dislikes": "哥布林（会在店里搞事）、不排队的人、浪费食物",
+        "stressBehavior": "制定更多规矩。越乱越要标准化。",
+        "signature": "欢迎光临！请这边坐！（同时已经在心里排好了等位顺序）",
+        "energyLevel": "营业模式。开店 100%，打烊后迅速掉到 20%。"
+      }
     },
     {
       "code": "YATA",
       "name": "摊贩铠甲人",
       "englishName": "Yatai no Yoroi-san",
       "mbti": "ESFP",
+      "sbtI": "CASH",
+      "sbtIFull": "Cash-and-Chaos · 烟火整活型",
       "title": "路边摊社交高手",
       "oneLiner": "你有一种边忙边热闹、边热闹边看摊的本事。",
       "summary": "你很接地气，也很会把场子经营出人情味。你不只是服务别人，你还会把一个小空间变成热热闹闹的小宇宙。",
@@ -260,13 +473,30 @@
       "bestMatch": "狮萨",
       "worstMatch": "劳动铠甲人",
       "traits": { "service": 3, "sunny": 3, "chaos": 1, "perform": 1 },
-      "focusTraits": ["service", "perform"]
+      "focusTraits": ["service", "perform"],
+      "detail": {
+        "personality": "接地气、社交能力强、烟火气十足。是铠甲人世界里最有路边摊气质的那一位。边忙边聊、边聊边做，人情味拉满。",
+        "achievements": [
+          "经营着路边摊——Chiikawa 宇宙最有人情味的职业之一",
+          "能把任何冷清的摊位变成热闹的小宇宙",
+          "和狮萨一起能把气氛炒到最高",
+          "最烦劳动铠甲人来检查他的「不规范操作」"
+        ],
+        "funnyAnalysis": "ESFP 在路边摊的完美表达：不需要菜单、不需要 SOP、来一个人聊一段天、走的时候多买一串。CASH = Charismatic-And-Socially-Hustling。他的人生哲学就是「来都来了」四个字。",
+        "likes": "路边摊、烟火气、人情味、和客人聊天、热闹",
+        "dislikes": "劳动铠甲人、太安静的摊位、没人来的日子",
+        "stressBehavior": "更热闹了。压力大的时候反而更会招呼人。",
+        "signature": "来都来了！坐坐坐！（已经帮你把串烤上了）",
+        "energyLevel": "炭火模式。有人来就旺，没人来就闷着但也灭不了。"
+      }
     },
     {
       "code": "ANOK",
       "name": "那个孩子",
       "englishName": "Anoko",
       "mbti": "ESFP",
+      "sbtI": "FAKE",
+      "sbtIFull": "Fake-Cute-Bite · 软萌翻车型",
       "title": "外向爱玩的气氛担当",
       "oneLiner": "看起来软，实际上可能会咬人。",
       "summary": "你外向爱玩、享受当下、气氛担当。别人以为你是软萌路线，结果发现你其实很会整活搞气氛。",
@@ -280,13 +510,30 @@
       "bestMatch": "飞鼠",
       "worstMatch": "吉伊卡哇",
       "traits": { "drama": 3, "chaos": 3, "perform": 2, "sunny": 1 },
-      "focusTraits": ["drama", "chaos"]
+      "focusTraits": ["drama", "chaos"],
+      "detail": {
+        "personality": "外表可爱但行为不可预测。是 Chiikawa 世界里「看起来无害但实际上可能翻车」的代表。名字就叫「那个孩子」——连正式称呼都懒得给的神秘感。",
+        "achievements": [
+          "名字就是「那个孩子」——全宇宙最低调的命名方式",
+          "可爱外表下藏着让人意想不到的行为模式",
+          "和飞鼠的化学反应：两个戏剧化角色的巅峰对决",
+          "经常让吉伊卡哇吓得说不出话（虽然吉伊卡哇本来也不太会说话）"
+        ],
+        "funnyAnalysis": "ESFP 的暗黑版：Extroverted Surprise Frightening People。你以为你在跟一个软萌小可爱互动，下一秒发现它在你的头顶上。FAKE = Friendly-And-Kind-Externally（but don't trust it）。",
+        "likes": "整活、吓唬人、被关注、和飞鼠比赛谁更戏剧化",
+        "dislikes": "吉伊卡哇的哭声（太影响气氛了）、无聊",
+        "stressBehavior": "更疯了。压力下的反转效果翻倍。",
+        "signature": "……（可爱的外表）然后突然做了件谁都意想不到的事",
+        "energyLevel": "盲盒模式。你永远不知道今天开出来的是可爱还是混乱。"
+      }
     },
     {
       "code": "DEKA",
       "name": "大强",
       "englishName": "Dekatsuyo",
       "mbti": "INTJ",
+      "sbtI": "GIGA",
+      "sbtIFull": "Giga-Chad-Brain · 巨脑强者型",
       "title": "冷静策略的规划者",
       "oneLiner": "看着很能打，心里其实早有规划。",
       "summary": "你冷静策略、规划能力强、理性压制情绪。你给人的第一感受是体量和强度，但细看会发现你每一步都是算好的。",
@@ -300,13 +547,30 @@
       "bestMatch": "海獭",
       "worstMatch": "飞鼠",
       "traits": { "leader": 3, "magic": 2, "menace": 2, "orderly": 1 },
-      "focusTraits": ["leader", "magic"]
+      "focusTraits": ["leader", "magic"],
+      "detail": {
+        "personality": "体型巨大、实力强劲、但内心并非单纯的暴力角色。有策略、有想法，是 Chiikawa 世界里「大个子但大智慧」的代表。",
+        "achievements": [
+          "体型和实力在 Chiikawa 宇宙里都是顶级存在",
+          "虽然看起来是纯暴力角色但意外地有策略思维",
+          "和海獭的互动展现了力量与活力的有趣碰撞",
+          "经常被误解为纯反派但实际有更多层次"
+        ],
+        "funnyAnalysis": "INTJ 的巨大化版本。如果 INTJ 是「幕后策划者」，那大强就是「体型大到没法藏幕后的幕后策划者」。GIGA = Gargantuan-Intelligence-Generating-Analysis。他的名字 Dekatsuyo 字面意思就是「又大有强」。",
+        "likes": "策略规划、证明自己不只是大块头、和海獭过招",
+        "dislikes": "被当成纯反派、飞鼠把他当道具、别人只注意到他的体型",
+        "stressBehavior": "更冷静了。越大的压力越需要更大的计算量来处理。",
+        "signature": "……（巨大的沉默，但你能感觉到他在算下一步）",
+        "energyLevel": "坦克模式。启动慢但一旦动起来就停不下来。"
+      }
     },
     {
       "code": "ODEE",
       "name": "欧德",
       "englishName": "Ode",
       "mbti": "ENTP",
+      "sbtI": "WACK",
+      "sbtIFull": "Wacky-Big-Brain · 大块脑洞型",
       "title": "脑洞大开的直球怪人",
       "oneLiner": "体积很大，脑回路也不走寻常路。",
       "summary": "你脑洞大、自由奔放，同时大体积直来直往。你常给人一种想法先到、逻辑后补的感觉，但你的创意往往很独特。",
@@ -320,13 +584,30 @@
       "bestMatch": "兔兔",
       "worstMatch": "劳动铠甲人",
       "traits": { "odd": 3, "chaos": 2, "huge": 2, "magic": 1 },
-      "focusTraits": ["odd", "chaos"]
+      "focusTraits": ["odd", "chaos"],
+      "detail": {
+        "personality": "大块头 + 怪脑回路 = 欧德。是 Chiikawa 世界里那种「体积和脑回路成正比」的角色。想法很多、逻辑随缘、但创意拉满。",
+        "achievements": [
+          "用独特的方式给 Chiikawa 宇宙增加了很多不确定因素",
+          "和兔兔的化学反应：两个 ENTP 的脑洞对决",
+          "经常让劳动铠甲人崩溃因为完全不按流程",
+          "体积大但行为有时候比体型更引人注目"
+        ],
+        "funnyAnalysis": "ENTP 的巨大化 + 直球版本。如果说兔兔是「灵活疯」，那欧德就是「重型疯」。WACK = Wildly-Absurd-Creative-Kinetic。他的人生信条大概是「想不出为什么就先做了再说」。",
+        "likes": "搞事、和兔兔比谁更疯、不按常理出牌",
+        "dislikes": "劳动铠甲人、规矩、被别人说是笨蛋（虽然看起来像）",
+        "stressBehavior": "更直球了。想不通就直接上。",
+        "signature": "……（巨大的身影 + 巨大的脑洞 = 巨大的不确定性）",
+        "energyLevel": "随机模式。有时候 200%，有时候看起来在待机。"
+      }
     },
     {
       "code": "GOBL",
       "name": "哥布林",
       "englishName": "Goblins",
       "mbti": "ENTP",
+      "sbtI": "SCAM",
+      "sbtIFull": "Scam-Alert · 血压拉满型",
       "title": "经典麻烦制造者",
       "oneLiner": "你不是恶，只是很会把场面搞难看。",
       "summary": "你像那种一出场就意味着麻烦浓度上升的存在。不是每次都坏，但很容易把别人逼进高压状态。",
@@ -340,13 +621,30 @@
       "bestMatch": "山姥",
       "worstMatch": "古本",
       "traits": { "menace": 4, "chaos": 2, "odd": 1, "perform": 1 },
-      "focusTraits": ["menace", "chaos"]
+      "focusTraits": ["menace", "chaos"],
+      "detail": {
+        "personality": "烦人、捣蛋、制造混乱。哥布林在 Chiikawa 世界里就是标准的麻烦制造机。不是大奸大恶，就是那种会让你血压升高 20 的存在。",
+        "achievements": [
+          "成功让吉伊卡哇害怕了好几次",
+          "是古本最不想遇到的角色——连最安静的人都烦他",
+          "和山姥的组合堪称 Chiikawa 宇宙最强麻烦搭档",
+          "几乎是所有正面角色的「最怕遇到」名单常客"
+        ],
+        "funnyAnalysis": "ENTP 的反派版本：Extremely Nuisance Producing Trouble. Literally. SCAM = Strategically-Causing-Anger-Maximally。哥布林的存在证明了「不是所有 ENTP 都是可爱的辩论家，有些就是纯粹的烦人精」。",
+        "likes": "制造麻烦、让别人血压升高、和山姥一起搞事",
+        "dislikes": "古本（因为古本根本不理他）、和平的场面",
+        "stressBehavior": "更烦人了。压力就是他存在的意义。",
+        "signature": "嘿嘿嘿……（所有人：又来了）",
+        "energyLevel": "永动机级别的烦人。不需要充电，他自己就是电源。"
+      }
     },
     {
       "code": "BLAC",
       "name": "黑星",
       "englishName": "Black Star",
       "mbti": "INTP",
+      "sbtI": "WISH",
+      "sbtIFull": "Wish-Twisted · 阴间实现型",
       "title": "黑色许愿反噬体",
       "oneLiner": "你理解需求，但不保证按善意执行。",
       "summary": "你不是常规意义的坏，而是会把事情往黑色幽默方向实现。你身上有种很冷的荒诞感。",
@@ -360,13 +658,30 @@
       "bestMatch": "山姥",
       "worstMatch": "流星",
       "traits": { "wish": 5, "odd": 2, "menace": 1, "magic": 4 },
-      "focusTraits": ["wish", "magic"]
+      "focusTraits": ["wish", "magic"],
+      "detail": {
+        "personality": "冷、荒诞、黑色幽默大师。黑星是 Chiikawa 世界里那种「你说什么他都懂但偏要往另一个方向实现」的存在。INTP 的黑暗面完全体。",
+        "achievements": [
+          "是 Chiikawa 宇宙最接近「许愿机」但永远不按你预期实现的存在",
+          "和山姥的组合是 Chiikawa 宇宙最阴间智囊团",
+          "把黑色幽默提升到了艺术层面",
+          "流星的克星——两个「星」系角色的正面对决"
+        ],
+        "funnyAnalysis": "INTP + 许愿 = 你把愿望给他，他用三天的时间研究了一个完美的实现方案，然后发现方案本身比原来更糟。WISH = Will-Ironically-Screw-Humans。他不是故意的，他只是觉得这样更有意思。",
+        "likes": "黑色幽默、扭曲愿望的实现方式、和山姥讨论阴间方案",
+        "dislikes": "流星（太正面了）、直来直去的愿望、无聊的好人剧本",
+        "stressBehavior": "更冷了。更荒诞了。更黑色幽默了。",
+        "signature": "……你说的我都理解了。（然后以一种谁都意想不到的方式实现了）",
+        "energyLevel": "黑洞模式。吸入愿望，输出荒诞。"
+      }
     },
     {
       "code": "SHOO",
       "name": "流星",
       "englishName": "Shooting Star",
       "mbti": "ENTJ",
+      "sbtI": "LORD",
+      "sbtIFull": "Lord-of-Glow · 强势发光型",
       "title": "强势掌控的许愿星",
       "oneLiner": "平时很稀有，一出现就要掌控全局。",
       "summary": "你强势掌控、目标导向、压迫感强。你会发光，但不是脆弱型发光，而是带着目的和力量的那种。",
@@ -380,13 +695,30 @@
       "bestMatch": "小八",
       "worstMatch": "黑星",
       "traits": { "leader": 4, "huge": 2, "wish": 2, "orderly": 1 },
-      "focusTraits": ["leader", "huge"]
+      "focusTraits": ["leader", "huge"],
+      "detail": {
+        "personality": "稀有、发光、强势、目标导向。流星在 Chiikawa 世界里是那种「平时看不到，一出现就自带 BGM」的存在。ENTJ 的宇宙级表达。",
+        "achievements": [
+          "本身就是一颗流星——出场自带稀有度和压迫感",
+          "和小八的互动展现了强势与温柔的有趣碰撞",
+          "是黑星的正面对手——同一个「星」系但完全不同的方向",
+          "出现就能改变整个场面的走向"
+        ],
+        "funnyAnalysis": "ENTJ 的星空版本。如果 ENTJ 是「指挥官」，流星就是「天体级别的指挥官」——他不发号施令，他直接从天上划过让你不得不抬头。LORD = Luminous-Orbit-Radiating-Dominance。",
+        "likes": "发光、掌控节奏、和小八的温暖互动",
+        "dislikes": "黑星（太阴间了）、被忽视、不按预期发展",
+        "stressBehavior": "更强势了。更亮了。更不可忽视了。",
+        "signature": "……（划过天际，所有人都不得不看）",
+        "energyLevel": "流星模式。平时不可见，出场即巅峰。"
+      }
     },
     {
       "code": "MAJO",
       "name": "山姥",
       "englishName": "Majo",
       "mbti": "INTJ",
+      "sbtI": "HEXM",
+      "sbtIFull": "Hex-Magic · 邪门军师型",
       "title": "邪门点子型山姥",
       "oneLiner": "你不是路子野，你是路子有点邪。",
       "summary": "你脑子里会冒出一些很偏、很阴、很有效的想法。你不像热闹型疯子，更像冷静型怪人。",
@@ -400,13 +732,30 @@
       "bestMatch": "黑星",
       "worstMatch": "小八",
       "traits": { "magic": 5, "menace": 2, "odd": 2, "leader": 1 },
-      "focusTraits": ["magic", "odd"]
+      "focusTraits": ["magic", "odd"],
+      "detail": {
+        "personality": "邪门、冷静、偏门方案大师。山姥是 Chiikawa 世界里那种「你想不到的她都想到了，而且方向都很阴」的角色。INTJ 的魔法版本。",
+        "achievements": [
+          "拥有魔法能力——在 Chiikawa 宇宙里这已经是高端配置了",
+          "和黑星的组合是 Chiikawa 宇宙最强阴间智囊团",
+          "想的办法虽然邪门但往往有效",
+          "是小八最怕遇到的角色——因为连最温暖的人都兜不住她"
+        ],
+        "funnyAnalysis": "INTJ + 魔法 = 邪门军师。山姥的大脑就是一个偏门方案搜索引擎，输入问题，输出一个让所有人倒吸一口凉气的方案。HEXM = Hex-Master-eXecuting-Magic。她不是坏人，她只是解决问题的方向比较阴间。",
+        "likes": "偏门方案、和黑星讨论、用魔法解决问题",
+        "dislikes": "小八（太正能量了，接不住她的阴间方案）、常规思路",
+        "stressBehavior": "更邪门了。方案更阴了。但更有效了。",
+        "signature": "……我有一个想法。（所有人：先说好，不要阴间的）",
+        "energyLevel": "魔法蓄力模式。平时 30%，施法时 200%。"
+      }
     },
     {
       "code": "KABU",
       "name": "吉伊卡菇",
       "englishName": "Chiikabu",
       "mbti": "INTP",
+      "sbtI": "SWCH",
+      "sbtIFull": "Switch-Mode · 切面反转型",
       "title": "先萌后吓人的变异体",
       "oneLiner": "你平时看着无害，切模式时很有反差。",
       "summary": "你最大的特色是反转。你不是完全危险，也不是完全可爱，而是会在某个瞬间切到另一种状态。",
@@ -420,13 +769,30 @@
       "bestMatch": "那个孩子",
       "worstMatch": "劳动铠甲人",
       "traits": { "odd": 3, "magic": 2, "menace": 1, "gentle": 1 },
-      "focusTraits": ["odd", "magic"]
+      "focusTraits": ["odd", "magic"],
+      "detail": {
+        "personality": "吉伊卡哇 + 蘑菇 = 吉伊卡菇。先萌后吓人，是 Chiikawa 宇宙里的变异体代表。平时看着无害，切到另一种状态时反差极大。",
+        "achievements": [
+          "是吉伊卡哇的蘑菇变异版本——跨物种融合在 Chiikawa 宇宙都是稀有的",
+          "可爱外表下藏着让人意想不到的反转",
+          "和那个孩子的组合是 Chiikawa 宇宙最反差搭档",
+          "证明了「可爱」和「吓人」可以存在于同一个身体"
+        ],
+        "funnyAnalysis": "INTP 的变异版本。INTP 本身就有「表面安静内心疯狂」的反差，吉伊卡菇把这个反差实体化了。SWCH = Sudden-Weird-Character-Handoff。你永远不知道下一秒他是可爱模式还是吓人模式。",
+        "likes": "在可爱和吓人之间切换、和那个孩子一起反转、出其不意",
+        "dislikes": "劳动铠甲人（因为他的流程不允许模式切换）、被预判",
+        "stressBehavior": "切模式。从可爱切成吓人，或反过来。",
+        "signature": "……（可爱的蘑菇脸）然后……（切换了）",
+        "energyLevel": "双模式。可爱模式 30%，吓人模式 150%，切换中。"
+      }
     },
     {
       "code": "MUCH",
       "name": "营业超人",
       "englishName": "Muchauman",
       "mbti": "ENFJ",
+      "sbtI": "SHOW",
+      "sbtIFull": "Show-Must-Go-On · 营业永动型",
       "title": "营业型吉祥物人格",
       "oneLiner": "你的人前状态管理，已经是一套专业系统。",
       "summary": "你很懂表情、动作、姿态和对外呈现。你不是假的，你只是很会开营业人格。",
@@ -440,13 +806,30 @@
       "bestMatch": "飞鼠",
       "worstMatch": "栗子馒头",
       "traits": { "perform": 4, "sunny": 2, "service": 1, "drama": 1 },
-      "focusTraits": ["perform", "service"]
+      "focusTraits": ["perform", "service"],
+      "detail": {
+        "personality": "专业的营业人格。营业超人是 Chiikawa 世界里那个「永远在状态」的角色。表情管理满分、姿态满分、对外呈现满分。ENFJ 的舞台版本。",
+        "achievements": [
+          "是 Chiikawa 宇宙里的「官方吉祥物」级别存在",
+          "专业的表情管理和对外呈现能力",
+          "和飞鼠的化学反应：两个戏剧化角色的专业级合作",
+          "证明了「营业」也是一种天赋——不是每个人都能随时随地保持状态的"
+        ],
+        "funnyAnalysis": "ENFJ 的终极商业版本。Extroverted Networker Facilitating Optimal Yield. 营业超人不是「假」——他是把真诚包装成了专业。SHOW = Stage-Handy-Optimized-Wrapper。他的微笑不是假的，是专业级的真。",
+        "likes": "营业、舞台、和飞鼠一起表演、专业的表情管理",
+        "dislikes": "栗子馒头（因为他的松弛感完全不需要营业）、冷场",
+        "stressBehavior": "更专业了。越有压力笑得越标准。",
+        "signature": "（标准营业微笑）大家好呀～（内心也在笑，但那是另一种笑）",
+        "energyLevel": "营业模式。只要有人在，就永远满电。"
+      }
     },
     {
       "code": "PAJA",
       "name": "睡衣派对组",
       "englishName": "Pajama Parties",
       "mbti": "ENFP",
+      "sbtI": "PART",
+      "sbtIFull": "Party-Together · 群嗨整活型",
       "title": "团体营业型睡衣组合",
       "oneLiner": "你不是一个人发光，你是拉着大家一起整活。",
       "summary": "你很适合团体感、氛围感和一起营业的场景。你不是单兵作战型，你是一起唱、一起笑、一起热闹的那种。",
@@ -460,7 +843,22 @@
       "bestMatch": "狮萨",
       "worstMatch": "古本",
       "traits": { "perform": 3, "sunny": 2, "support": 2, "drama": 1 },
-      "focusTraits": ["perform", "support"]
+      "focusTraits": ["perform", "support"],
+      "detail": {
+        "personality": "团体型角色。睡衣派对组证明了在 Chiikawa 宇宙里「一个人不行，一群人很行」也是一种人格类型。ENFP 的团体版本。",
+        "achievements": [
+          "作为一个组合出现在 Chiikawa 宇宙——团魂满满",
+          "穿着睡衣营业——Chiikawa 宇宙最 casual 的表演风格",
+          "和狮萨的化学反应：团体热情与个人热情的碰撞",
+          "证明了「一起」本身就是一种力量"
+        ],
+        "funnyAnalysis": "ENFP 的多人版本。Extroverted Network of Friends Partying. 睡衣派对组的存在证明了 ENFP 的终极形态不是一个人嗨是一群人嗨。PART = People-Always-Rejoicing-Together。一个人也能活，但一群人就是来劲。",
+        "likes": "团体表演、睡衣、和狮萨一起热场、一起整活",
+        "dislikes": "一个人待着、古本那种安静到接不上的气场",
+        "stressBehavior": "叫更多人一起。人越多越有安全感。",
+        "signature": "（和队友们一起）一二三，开始！（然后一起整活）",
+        "energyLevel": "派对模式。一个人 60%，每多一个人 +20%，上不封顶。"
+      }
     }
   ]
 }
