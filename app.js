@@ -77,10 +77,14 @@ const answersEl      = $("#answers");
 const resultCard     = $("#resultCard");
 const posterEl       = $("#poster");
 const evidenceList   = $("#evidenceList");
+const sbtIHeading    = $("#sbtIHeading");
+const sbtIReasonEl   = $("#sbtIReason");
 const groupRole      = $("#groupRole");
 const todayRemark    = $("#todayRemark");
 const bestMatch      = $("#bestMatch");
 const worstMatch     = $("#worstMatch");
+const bestMatchReason = $("#bestMatchReason");
+const worstMatchReason = $("#worstMatchReason");
 const deputyCard     = $("#deputyCard");
 const shareCopy      = $("#shareCopy");
 const copyButton     = $("#copyButton");
@@ -301,10 +305,20 @@ function computeAndShow() {
 
     /* evidence */
     evidenceList.innerHTML = primary.evidence.map(e => `<li>${e}</li>`).join("");
+
+    /* sbti reason */
+    sbtIHeading.textContent = `${primary.sbtI} · ${primary.sbtIFull}`;
+    sbtIReasonEl.textContent = primary.sbtIReason || "";
+
+    /* group + today */
     groupRole.textContent = primary.groupRole;
     todayRemark.textContent = primary.todayRemark;
+
+    /* best / worst match */
     bestMatch.textContent = primary.bestMatch;
     worstMatch.textContent = primary.worstMatch;
+    bestMatchReason.textContent = primary.bestMatchReason || "";
+    worstMatchReason.textContent = primary.worstMatchReason || "";
 
     /* deputy */
     renderDeputy(secondary);
@@ -314,6 +328,7 @@ function computeAndShow() {
       `测出来了，我这次抽到的是 ${primary.name}。\n` +
       `${primary.typeCode} / ${primary.mbti}\n` +
       `${primary.oneLiner}\n` +
+      `${primary.sbtIReason}\n` +
       `副卡是 ${secondary.name}。\n` +
       `CHTI 说我：${primary.summary}\n` +
       `你也去测测，看你会抽到谁。`;
@@ -367,6 +382,8 @@ function renderDetail(c) {
     </div>
   `;
 
+  $("#detailSbtITitle").textContent = `${c.sbtI} · ${c.sbtIFull}`;
+  $("#detailSbtIReason").textContent = c.sbtIReason || "";
   $("#detailPersonality").textContent = d.personality || "";
 
   $("#detailAchievements").innerHTML = (d.achievements || [])

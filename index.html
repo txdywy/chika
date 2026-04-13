@@ -96,6 +96,11 @@
 
         <div class="detail-hero" id="detailHero"></div>
 
+        <div class="info-card detail-sbti-card">
+          <h3 class="info-title" id="detailSbtITitle"></h3>
+          <p class="info-body" id="detailSbtIReason"></p>
+        </div>
+
         <div class="info-card">
           <h3 class="info-title">性格</h3>
           <p class="info-body" id="detailPersonality"></p>
@@ -168,6 +173,12 @@
           <ul class="evidence-list" id="evidenceList"></ul>
         </div>
 
+        <!-- SBTI personality reason -->
+        <div class="info-card sbti-card">
+          <h3 class="info-title" id="sbtIHeading"></h3>
+          <p class="info-body" id="sbtIReason"></p>
+        </div>
+
         <!-- Group role + today remark -->
         <div class="info-dual">
           <div class="info-card">
@@ -181,14 +192,20 @@
         </div>
 
         <!-- Best / Worst match -->
-        <div class="info-dual">
-          <div class="info-card">
-            <h3 class="info-title">最搭</h3>
-            <p class="info-body" id="bestMatch"></p>
-          </div>
-          <div class="info-card">
-            <h3 class="info-title">最怕遇到</h3>
-            <p class="info-body" id="worstMatch"></p>
+        <div class="info-card match-card" id="matchCard">
+          <h3 class="info-title">角色关系</h3>
+          <div class="match-pair">
+            <div class="match-item">
+              <span class="match-label">最搭</span>
+              <span class="match-name" id="bestMatch"></span>
+              <p class="match-reason" id="bestMatchReason"></p>
+            </div>
+            <div class="match-divider"></div>
+            <div class="match-item">
+              <span class="match-label">最怕遇到</span>
+              <span class="match-name" id="worstMatch"></span>
+              <p class="match-reason" id="worstMatchReason"></p>
+            </div>
           </div>
         </div>
 
