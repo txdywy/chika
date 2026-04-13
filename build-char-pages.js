@@ -10,6 +10,7 @@ const path = require('path');
 
 const SITE_URL = 'https://chika.hackx64.eu.org';
 const CHAR_DIR = path.join(__dirname, 'characters');
+const BUILD_DATE = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
 
 // --- read data ---
 const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'quiz-characters.json'), 'utf-8'));
@@ -66,50 +67,65 @@ const baiduScript = `
 function charPage(c) {
   const d = c.detail || {};
   const img = imgPath(c.code);
-  // URL: https://chika.hackx64.eu.org/characters/CHII/
   const charUrl = `${SITE_URL}/characters/${c.code}/`;
   const coverUrl = `${SITE_URL}/og-cover.png`;
-  const keywords = `${c.name}, ${c.mbti}, ${c.sbtI}, Chiikawa, 吉伊卡哇, 角色分析`;
-  const description = `${c.name}角色卡 — ${c.sbtIFull}（${c.sbtI}）。${d.personality || ''} ${c.summary || ''}`.slice(0, 160);
+  const keywords = `${c.name} MBTI, ${c.name} 性格分析, ${c.name} 是什么角色, ${c.mbti}, ${c.sbtI}, Chiikawa, 吉伊卡哇`;
   const typeCode = c.typeCode || c.sbtI;
+  const description = `${c.name}（${c.nameJp || c.name}）角色性格分析 — ${c.sbtIFull}（${c.sbtI}）。${d.personality || ''} ${c.summary || ''}`.slice(0, 160);
 
   const achievements = (d.achievements || []).map(a => `<li>${esc(a)}</li>`).join('\n        ');
   const evidence = (c.evidence || []).map(e => `<li>${esc(e)}</li>`).join('\n        ');
+
+  // BreadcrumbList JSON-LD
+  const breadcrumbJson = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "CHTI", "item": SITE_URL },
+      { "@type": "ListItem", "position": 2, "name": "角色列表", "item": `${SITE_URL}/characters/` },
+      { "@type": "ListItem", "position": 3, "name": c.name, "item": charUrl }
+    ]
+  });
 
   return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>${esc(c.name)}角色卡 | ${esc(typeCode)} ${c.mbti} | CHTI Chiikawa 测试</title>
+  <title>${esc(c.name)} MBTI 是什么 | ${esc(c.name)}性格分析 | ${esc(typeCode)} ${c.mbti} | CHTI</title>
   <meta name="description" content="${esc(description)}">
   <meta name="keywords" content="${esc(keywords)}">
-  <meta property="og:title" content="${esc(c.name)}角色卡 | ${esc(typeCode)} ${c.mbti}">
+  <meta property="og:title" content="${esc(c.name)} MBTI 是什么 | ${esc(c.name)}性格分析">
   <meta property="og:description" content="${esc(description)}">
   <meta property="og:type" content="website">
   <meta property="og:image" content="${coverUrl}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:url" content="${charUrl}">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${esc(c.name)} MBTI 是什么 | ${esc(c.name)}性格分析">
+  <meta name="twitter:description" content="${esc(description)}">
+  <meta name="twitter:image" content="${coverUrl}">
   <link rel="canonical" href="${charUrl}">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐹</text></svg>">
   <link rel="stylesheet" href="/styles.css">
   <meta name="robots" content="index, follow">
 
-  <script type="application/ld+json">
-  {
+  <script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "${esc(c.name)}角色卡",
-    "description": "${esc(description)}",
-    "url": "${charUrl}",
+    "name": `${c.name} MBTI 是什么 | ${c.name}性格分析`,
+    "description": description,
+    "url": charUrl,
+    "image": coverUrl,
     "mainEntity": {
       "@type": "Thing",
-      "name": "${esc(c.name)}",
-      "description": "${esc(d.personality || '')}",
-      "sameAs": "${SITE_URL}"
+      "name": c.name,
+      "description": d.personality || ''
     }
-  }
-  </script>
+  })}</script>
+
+  <script type="application/ld+json">${breadcrumbJson}</script>
   ${baiduScript}
 </head>
 <body>
@@ -256,31 +272,31 @@ function indexPage() {
   <meta property="og:title" content="Chiikawa 角色大全 | 22个角色分析">
   <meta property="og:description" content="收录吉伊卡哇全部 22 个角色的性格分析和 MBTI 匹配。">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="${SITE_URL}/og-cover.png">
   <meta property="og:url" content="${SITE_URL}/characters/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Chiikawa 角色大全 | 22个角色分析">
+  <meta name="twitter:description" content="收录吉伊卡哇全部 22 个角色的性格分析和 MBTI 匹配。">
+  <meta name="twitter:image" content="${SITE_URL}/og-cover.png">
   <link rel="canonical" href="${SITE_URL}/characters/">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐹</text></svg>">
   <link rel="stylesheet" href="/styles.css">
   ${baiduScript}
 
-  <script type="application/ld+json">
-  {
+  <script type="application/ld+json">${JSON.stringify({
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Chiikawa 角色大全",
     "description": "22个Chiikawa角色的性格分析和MBTI匹配",
-    "url": "${SITE_URL}/characters/",
-    "numberOfItems": ${characters.length},
-    "itemListElement": [
-      ${characters.map((c, i) => `
-      {
-        "@type": "ListItem",
-        "position": ${i + 1},
-        "name": "${esc(c.name)}",
-        "url": "${SITE_URL}/characters/${c.code}/"
-      }`).join(',\n      ')}
-    ]
-  }
-  </script>
+    "url": `${SITE_URL}/characters/`,
+    "numberOfItems": characters.length,
+    "itemListElement": characters.map((c, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "name": c.name,
+      "url": `${SITE_URL}/characters/${c.code}/`
+    }))
+  })}</script>
 </head>
 <body>
   <nav class="topbar">
@@ -333,21 +349,21 @@ for (const c of characters) {
 fs.writeFileSync(path.join(CHAR_DIR, 'index.html'), indexPage(), 'utf-8');
 console.log('  ✓ index — 角色列表页');
 
-// update sitemap
+// update sitemap with dynamic lastmod
 const sitemapChars = characters.map(c =>
-  `  <url>\n    <loc>${SITE_URL}/characters/${c.code}/</loc>\n    <lastmod>2026-04-13</lastmod>\n    <priority>0.8</priority>\n  </url>`
+  `  <url>\n    <loc>${SITE_URL}/characters/${c.code}/</loc>\n    <lastmod>${BUILD_DATE}</lastmod>\n    <priority>0.8</priority>\n  </url>`
 ).join('\n');
 
 const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>${SITE_URL}/</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>${BUILD_DATE}</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>${SITE_URL}/characters/</loc>
-    <lastmod>2026-04-13</lastmod>
+    <lastmod>${BUILD_DATE}</lastmod>
     <priority>0.9</priority>
   </url>
 ${sitemapChars}
@@ -355,7 +371,7 @@ ${sitemapChars}
 `;
 
 fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), sitemapContent, 'utf-8');
-console.log('  ✓ sitemap.xml 已更新');
+console.log('  ✓ sitemap.xml 已更新（构建日期: ' + BUILD_DATE + '）');
 
 console.log(`\n✅ 已生成 22 个角色页 + 1 个列表页，共 23 个文件`);
 console.log(`   输出目录: ${CHAR_DIR}`);
