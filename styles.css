@@ -987,6 +987,12 @@ a { color: inherit; }
   margin-bottom: 4px;
 }
 
+/* breadcrumb links */
+nav[aria-label="breadcrumb"] a {
+  color: var(--accent-dark);
+  text-decoration: none;
+}
+
 /* wechat tip */
 .wechat-tip {
   background: #FFF8E0;

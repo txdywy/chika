@@ -73,7 +73,7 @@ const gaScript = `
     gtag('config', 'G-DY71VXW75G');
   </script>`;
 
-function charPage(c) {
+function charPage(c, idx) {
   const d = c.detail || {};
   const img = imgPath(c.code);
   const charUrl = `${SITE_URL}/characters/${c.code}/`;
@@ -81,11 +81,32 @@ function charPage(c) {
   const keywords = `${c.name} MBTI, ${c.name} 性格分析, ${c.name} 是什么角色, ${c.mbti}, ${c.sbtI}, Chiikawa, 吉伊卡哇`;
   const typeCode = c.typeCode || c.sbtI;
 
-  // SEO description: concise, no duplication, complete sentence, ~70-80 chars
-  const rawDesc = `${c.name}：${c.sbtIFull}（${c.sbtI}）。${d.personality || ''}${c.summary ? '。' + c.summary : ''}`;
-  const description = rawDesc.length <= 80
-    ? rawDesc
-    : (rawDesc.slice(0, 80).match(/^(.*[。！？])/)?.[1] || rawDesc.slice(0, 75)) + '…';
+  // SEO description: hand-crafted short summary, complete sentence, no truncation
+  const shortDescriptions = {
+    CHII: '吉伊卡哇（INFP / CRYF）：敏感胆小但善良努力，是最让人心疼的 Chiikawa 角色。查看完整性格分析、名场面和角色搭配。',
+    HACH: '小八（ESFJ / HUGS）：外向热心善于表达，是 Chiikawa 世界里最会说人话的角色。查看完整性格分析、名场面和角色搭配。',
+    USAG: '兔兔（ENTP / WILD）：疯狂自由不按套路出牌，是 Chiikawa 世界的混沌引擎。查看完整性格分析、名场面和角色搭配。',
+    MOMO: '飞鼠（ESTP / GRAB）：自恋爱出风头但本质不坏的行动派。查看完整性格分析、名场面和角色搭配。',
+    KURI: '栗子馒头（ISTP / LAZY）：佛系松弛有分寸的大人，最接近「活明白了」的角色。查看完整性格分析、名场面和角色搭配。',
+    RAKK: '海獭（ENFJ / HYPE）：活泼自信的社交恐怖分子，一出现就能热场的气氛担当。查看完整性格分析、名场面和角色搭配。',
+    SHIS: '狮萨（ENTJ / WARM）：温柔细心默默付出，是不声不响但谁都离不开的存在。查看完整性格分析、名场面和角色搭配。',
+    FURU: '古本（INTJ / DEEP）：安静深沉理想主义，内心有一个完整宇宙的神秘角色。查看完整性格分析、名场面和角色搭配。',
+    LABO: '劳动铠甲人（ISTJ / PROC）：严谨务实守规矩的执行力担当，出了问题第一个被想到。查看完整性格分析、名场面和角色搭配。',
+    POCH: '口袋铠甲人（ISFP / CHIL）：安静随性有品味，铠甲人世界里最有生活美学的角色。查看完整性格分析、名场面和角色搭配。',
+    RAMN: '拉面铠甲人（ESTJ / BOSS）：管理型讲规则有底线，是铠甲人世界里开店的那一位。查看完整性格分析、名场面和角色搭配。',
+    YATA: '摊贩铠甲人（ESFP / CASH）：接地气社交能力强，边忙边聊人情味拉满的烟火角色。查看完整性格分析、名场面和角色搭配。',
+    ANOK: '那个孩子（ESFP / FAKE）：外表可爱但行为不可预测，看起来无害但实际很会整活。查看完整性格分析、名场面和角色搭配。',
+    DEKA: '大强（INTJ / GIGA）：体型巨大实力强劲且有策略有想法的巨脑强者。查看完整性格分析、名场面和角色搭配。',
+    ODEE: '欧德（ENFP / WACK）：大块头配怪脑回路，创意拉满逻辑随缘的搞笑角色。查看完整性格分析、名场面和角色搭配。',
+    GOBL: '哥布林（ESTP / SCAM）：烦人捣蛋制造混乱，是会让血压升高的标准麻烦角色。查看完整性格分析、名场面和角色搭配。',
+    BLAC: '黑星（INTP / WISH）：冷幽默荒诞大师，偏要往另一个方向实现的阴间角色。查看完整性格分析、名场面和角色搭配。',
+    SHOO: '流星（ENTJ / LORD）：稀有发光体强势登场，平时看不到一出现就自带 BGM。查看完整性格分析、名场面和角色搭配。',
+    MAJO: '山姥（INTJ / HEXA）：邪门冷静的偏门方案大师，你想不到的她都想到了。查看完整性格分析、名场面和角色搭配。',
+    KABU: '吉伊卡菇（ISFP / FLIP）：吉伊卡哇加蘑菇的变异体，先萌后吓切面反转。查看完整性格分析、名场面和角色搭配。',
+    MUCH: '营业超人（ENFJ / SHOW）：专业营业人格，表情管理和对外呈现永远满分。查看完整性格分析、名场面和角色搭配。',
+    PAJA: '睡衣派对组（ENFP / PART）：团体型角色，一个人不行一群人很行的群嗨整活派。查看完整性格分析、名场面和角色搭配。'
+  };
+  const description = shortDescriptions[c.code] || `${c.name}：${c.sbtIFull}（${c.sbtI}）。${d.personality || ''}`;
 
   // Build name-to-code lookup for internal match links
   const nameToCode = {};
@@ -262,6 +283,16 @@ function charPage(c) {
             开始测试，看看你像哪个角色
           </a>
         </div>
+
+        <nav aria-label="角色导航" style="display:flex;justify-content:space-between;margin-top:16px;padding:12px 0;font-size:14px">
+          ${idx > 0
+            ? `<a href="/characters/${characters[idx - 1].code}/" style="color:var(--accent-dark);text-decoration:none">&larr; ${esc(characters[idx - 1].name)}</a>`
+            : '<span style="color:var(--muted)"></span>'}
+          <a href="/characters/" style="color:var(--muted);text-decoration:none">角色列表</a>
+          ${idx < characters.length - 1
+            ? `<a href="/characters/${characters[idx + 1].code}/" style="color:var(--accent-dark);text-decoration:none">${esc(characters[idx + 1].name)} &rarr;</a>`
+            : '<span style="color:var(--muted)"></span>'}
+        </nav>
       </div>
     </section>
 
@@ -368,7 +399,7 @@ fs.mkdirSync(CHAR_DIR, { recursive: true });
 for (const c of characters) {
   const dir = path.join(CHAR_DIR, c.code);
   fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, 'index.html'), charPage(c), 'utf-8');
+  fs.writeFileSync(path.join(dir, 'index.html'), charPage(c, characters.indexOf(c)), 'utf-8');
   console.log(`  ✓ ${c.code} — ${c.name}`);
 }
 
