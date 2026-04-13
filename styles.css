@@ -866,10 +866,12 @@ a { color: inherit; }
   width: 64px;
   height: 64px;
   border-radius: var(--r-md);
-  background: transparent;
+  background: radial-gradient(circle at 50% 30%, rgba(255,255,255,0.95), rgba(255,255,255,0.5));
+  padding: 6px;
   display: grid;
   place-items: center;
   overflow: hidden;
+  box-shadow: var(--shadow-sm);
 }
 .deputy-avatar img {
   width: 100%;
