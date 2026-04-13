@@ -159,16 +159,18 @@ async function loadData() {
 /* ===== roster ===== */
 function renderRoster() {
   rosterGrid.innerHTML = characters.map(c => `
-    <button class="roster-item" data-code="${c.code}" aria-label="查看${esc(c.name)}详情">
+    <a class="roster-item" href="/characters/${c.code}/" data-code="${c.code}" aria-label="查看${esc(c.name)}详情">
       <div class="roster-avatar">
         ${imgEl(c, 52)}
       </div>
       <span class="roster-name">${esc(c.name)}</span>
-    </button>
+    </a>
   `).join("");
 
+  // SPA navigation: intercept clicks, use JS detail view for SPA feel
   rosterGrid.querySelectorAll(".roster-item").forEach(el => {
-    el.addEventListener("click", () => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
       const code = el.dataset.code;
       const char = characters.find(c => c.code === code);
       if (char) renderDetail(char);
@@ -427,7 +429,7 @@ function computeAndShow() {
 /* ===== dynamic meta tags ===== */
 function updateMetaTags(primary) {
   const origin = location.origin;
-  const coverUrl = origin + location.pathname.replace(/\/$/, '') + '/og-cover.png';
+  const coverUrl = origin + '/og-cover.png';
   setOrCreateMeta('property', 'og:title', `我是 ${primary.name} | CHTI`);
   setOrCreateMeta('property', 'og:description', `测出来了，我这次抽到的是 ${primary.name}。${primary.sbtIFull}。`);
   setOrCreateMeta('property', 'og:image', coverUrl);

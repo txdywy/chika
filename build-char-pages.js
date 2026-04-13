@@ -1,0 +1,361 @@
+#!/usr/bin/env node
+/**
+ * Generate 22 static character detail pages for SEO.
+ * Each page is a self-contained HTML file with all character data
+ * visible in the HTML (not JS-rendered) so search engines can index it.
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+const SITE_URL = 'https://chika.hackx64.eu.org';
+const CHAR_DIR = path.join(__dirname, 'characters');
+
+// --- read data ---
+const data = JSON.parse(fs.readFileSync(path.join(__dirname, 'quiz-characters.json'), 'utf-8'));
+const characters = data.characters;
+
+// --- helpers ---
+function esc(s) {
+  return String(s || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function imgPath(code) {
+  const map = {
+    CHII: 'images/01-Chiikawas/吉伊卡哇_chii.png',
+    HACH: 'images/01-Chiikawas/小八_hachi.png',
+    USAG: 'images/01-Chiikawas/兔兔_usagi.png',
+    MOMO: 'images/01-Chiikawas/飞鼠_momo.png',
+    KURI: 'images/01-Chiikawas/栗子馒头_kuri.png',
+    RAKK: 'images/01-Chiikawas/海獭_rakko.png',
+    SHIS: 'images/01-Chiikawas/狮萨_shisa.png',
+    FURU: 'images/01-Chiikawas/古本_furu.png',
+    LABO: 'images/02-Yoroi铠甲人/劳动铠甲人_labo.png',
+    POCH: 'images/02-Yoroi铠甲人/口袋铠甲人_poch.png',
+    RAMN: 'images/02-Yoroi铠甲人/拉面铠甲人_ramn.png',
+    YATA: 'images/02-Yoroi铠甲人/摊贩铠甲人_yata.png',
+    ANOK: 'images/03-Chimera/那个孩子_anok.png',
+    DEKA: 'images/03-Chimera/大强_deka.webp',
+    ODEE: 'images/04-Miscellaneous/欧德_odee.jpg',
+    GOBL: 'images/04-Miscellaneous/哥布林_gobl.png',
+    BLAC: 'images/04-Miscellaneous/黑星_blac.jpg',
+    SHOO: 'images/04-Miscellaneous/流星_shoo.jpg',
+    MAJO: 'images/04-Miscellaneous/山姥_majo.webp',
+    KABU: 'images/04-Miscellaneous/吉伊卡菇_kabu.jpeg',
+    MUCH: 'images/04-Miscellaneous/营业超人_much.png',
+    PAJA: 'images/04-Miscellaneous/睡衣派对组_paja.png'
+  };
+  return map[code] || '';
+}
+
+const baiduScript = `
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e4927ea587a9254102d99bda8c375608";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>`;
+
+function charPage(c) {
+  const d = c.detail || {};
+  const img = imgPath(c.code);
+  // URL: https://chika.hackx64.eu.org/characters/CHII/
+  const charUrl = `${SITE_URL}/characters/${c.code}/`;
+  const coverUrl = `${SITE_URL}/og-cover.png`;
+  const keywords = `${c.name}, ${c.mbti}, ${c.sbtI}, Chiikawa, 吉伊卡哇, 角色分析`;
+  const description = `${c.name}角色卡 — ${c.sbtIFull}（${c.sbtI}）。${d.personality || ''} ${c.summary || ''}`.slice(0, 160);
+  const typeCode = c.typeCode || c.sbtI;
+
+  const achievements = (d.achievements || []).map(a => `<li>${esc(a)}</li>`).join('\n        ');
+  const evidence = (c.evidence || []).map(e => `<li>${esc(e)}</li>`).join('\n        ');
+
+  return `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>${esc(c.name)}角色卡 | ${esc(typeCode)} ${c.mbti} | CHTI Chiikawa 测试</title>
+  <meta name="description" content="${esc(description)}">
+  <meta name="keywords" content="${esc(keywords)}">
+  <meta property="og:title" content="${esc(c.name)}角色卡 | ${esc(typeCode)} ${c.mbti}">
+  <meta property="og:description" content="${esc(description)}">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="${coverUrl}">
+  <meta property="og:url" content="${charUrl}">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="${charUrl}">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐹</text></svg>">
+  <link rel="stylesheet" href="/styles.css">
+  <meta name="robots" content="index, follow">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "${esc(c.name)}角色卡",
+    "description": "${esc(description)}",
+    "url": "${charUrl}",
+    "mainEntity": {
+      "@type": "Thing",
+      "name": "${esc(c.name)}",
+      "description": "${esc(d.personality || '')}",
+      "sameAs": "${SITE_URL}"
+    }
+  }
+  </script>
+  ${baiduScript}
+</head>
+<body>
+  <nav class="topbar">
+    <span class="brand">CHTI</span>
+    <a class="ghost-btn" href="/">首页</a>
+  </nav>
+
+  <div class="app-shell">
+    <section class="screen active" style="display:grid">
+      <div class="detail-shell">
+        <a class="detail-back" href="/">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          返回首页
+        </a>
+
+        <div class="detail-hero" style="background:linear-gradient(145deg, ${c.color || '#FFD0A0'}, #FFF2DB)">
+          <div class="detail-hero-img">
+            <img src="/${img}" alt="${esc(c.name)}" loading="eager"
+              style="width:100%;height:100%;object-fit:contain"
+              onerror="this.outerHTML='<span style=\\'font-size:36px;font-weight:800;color:#fff\\'>${esc(c.name.slice(0,2))}</span>'">
+          </div>
+          <div class="detail-hero-content">
+            <div class="detail-hero-badges">
+              <span class="detail-hero-badge">${esc(typeCode)}</span>
+              <span class="detail-hero-badge">${esc(c.mbti)}</span>
+              <span class="detail-hero-badge">${esc(c.sbtI)} · ${esc(c.sbtIFull)}</span>
+            </div>
+            <h1 class="detail-hero-name">${esc(c.name)}</h1>
+            <p class="detail-hero-title">${esc(c.title)}</p>
+            <p class="detail-hero-oneliner">"${esc(c.oneLiner)}"</p>
+          </div>
+        </div>
+
+        <article>
+          <div class="info-card detail-sbti-card">
+            <h3 class="info-title">${esc(c.sbtI)} · ${esc(c.sbtIFull)}</h3>
+            <p class="info-body">${esc(c.sbtIReason || '')}</p>
+          </div>
+
+          <div class="info-card">
+            <h3 class="info-title">性格</h3>
+            <p class="info-body">${esc(d.personality || '')}</p>
+          </div>
+
+          <div class="info-card">
+            <h3 class="info-title">名场面</h3>
+            <ol class="evidence-list">${achievements || '<li>暂无</li>'}
+            </ol>
+          </div>
+
+          <div class="info-card detail-funny">
+            <h3 class="info-title">搞笑分析</h3>
+            <p class="info-body">${esc(d.funnyAnalysis || '')}</p>
+          </div>
+
+          <div class="info-dual">
+            <div class="info-card">
+              <h3 class="info-title">喜欢</h3>
+              <p class="info-body">${esc(d.likes || '')}</p>
+            </div>
+            <div class="info-card">
+              <h3 class="info-title">讨厌</h3>
+              <p class="info-body">${esc(d.dislikes || '')}</p>
+            </div>
+          </div>
+
+          <div class="info-dual">
+            <div class="info-card">
+              <h3 class="info-title">压力反应</h3>
+              <p class="info-body">${esc(d.stressBehavior || '')}</p>
+            </div>
+            <div class="info-card">
+              <h3 class="info-title">电量</h3>
+              <p class="info-body">${esc(d.energyLevel || '')}</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3 class="info-title">口头禅</h3>
+            <p class="info-body detail-signature">${esc(d.signature || '')}</p>
+          </div>
+
+          <div class="info-dual">
+            <div class="info-card">
+              <h3 class="info-title">最搭</h3>
+              <p class="info-body">${esc(c.bestMatch || '')}</p>
+            </div>
+            <div class="info-card">
+              <h3 class="info-title">最怕遇到</h3>
+              <p class="info-body">${esc(c.worstMatch || '')}</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3 class="info-title">为什么像</h3>
+            <ol class="evidence-list">${evidence || '<li>暂无</li>'}
+            </ol>
+          </div>
+
+          <div class="info-card">
+            <h3 class="info-title">角色总结</h3>
+            <p class="info-body">${esc(c.summary || '')}</p>
+          </div>
+        </article>
+
+        <div style="margin-top:20px;text-align:center">
+          <a class="btn-primary" href="/" style="display:block;text-decoration:none;text-align:center;max-width:400px;margin:0 auto">
+            开始测试，看看你像哪个角色
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <nav aria-label="breadcrumb" style="font-size:13px;color:var(--muted);text-align:center;padding:16px 0 0">
+      <a href="/">CHTI</a> ›
+      <a href="/characters/">角色列表</a> ›
+      <span>${esc(c.name)}</span>
+    </nav>
+  </div>
+</body>
+</html>`;
+}
+
+function indexPage() {
+  const gridItems = characters.map(c => `
+    <a class="roster-item" href="/characters/${c.code}/" style="text-decoration:none;color:inherit">
+      <div class="roster-avatar">
+        <img src="/${imgPath(c.code)}" alt="${esc(c.name)}" loading="lazy"
+          style="width:100%;height:100%;object-fit:contain"
+          onerror="this.outerHTML='<span style=\\'font-size:14px;font-weight:800;color:#8B6D4E\\'>${esc(c.name.slice(0,2))}</span>'">
+      </div>
+      <span class="roster-name">${esc(c.name)}</span>
+      <span style="font-size:10px;color:var(--muted)">${esc(c.mbti)}</span>
+    </a>`).join('\n');
+
+  return `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Chiikawa 角色大全 | 22个角色分析与MBTI | CHTI</title>
+  <meta name="description" content="CHTI 收录 22 个 Chiikawa（吉伊卡哇）角色：${characters.map(c => c.name).join('、')}。查看每个角色的性格分析、MBTI、名场面和搭配建议。">
+  <meta property="og:title" content="Chiikawa 角色大全 | 22个角色分析">
+  <meta property="og:description" content="收录吉伊卡哇全部 22 个角色的性格分析和 MBTI 匹配。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="${SITE_URL}/characters/">
+  <link rel="canonical" href="${SITE_URL}/characters/">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐹</text></svg>">
+  <link rel="stylesheet" href="/styles.css">
+  ${baiduScript}
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Chiikawa 角色大全",
+    "description": "22个Chiikawa角色的性格分析和MBTI匹配",
+    "url": "${SITE_URL}/characters/",
+    "numberOfItems": ${characters.length},
+    "itemListElement": [
+      ${characters.map((c, i) => `
+      {
+        "@type": "ListItem",
+        "position": ${i + 1},
+        "name": "${esc(c.name)}",
+        "url": "${SITE_URL}/characters/${c.code}/"
+      }`).join(',\n      ')}
+    ]
+  }
+  </script>
+</head>
+<body>
+  <nav class="topbar">
+    <span class="brand">CHTI</span>
+    <a class="ghost-btn" href="/">首页</a>
+  </nav>
+
+  <div class="app-shell">
+    <div class="hero" style="margin-bottom:16px">
+      <h1 class="section-title" style="font-size:22px">Chiikawa 角色大全</h1>
+      <p class="hero-desc">收录 ${characters.length} 个 Chiikawa（吉伊卡哇）角色，点击角色查看完整的性格分析、MBTI 类型、名场面和搭配建议。</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">
+        <a class="btn-primary" href="/" style="display:inline-block;text-decoration:none;text-align:center;padding:12px 24px;min-height:auto;width:auto;font-size:15px">
+          开始性格测试
+        </a>
+      </div>
+    </div>
+
+    <div class="roster" style="margin-bottom:16px">
+      <h2 class="section-title">全部角色 (${characters.length})</h2>
+      <div class="roster-grid" style="grid-template-columns:repeat(4,1fr);gap:10px">
+        ${gridItems}
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h3 class="info-title">Chiikawa 角色简介</h3>
+      <p class="info-body" style="font-size:14px;line-height:1.7;color:var(--muted)">
+        Chiikawa（ちいかわ，吉伊卡哇）是日本漫画家ナガノ创作的漫画作品及其衍生动画的角色系列。CHTI 收录了包括主角团吉伊卡哇、小八、兔兔、飞鼠等在内的 ${characters.length} 个主要角色，每个角色都有独特的性格特征和 MBTI 类型。通过 CHTI 性格测试，你可以发现自己在 15 道趣味选择题后最像哪个角色。
+      </p>
+    </div>
+  </div>
+</body>
+</html>`;
+}
+
+// --- generate ---
+if (fs.existsSync(CHAR_DIR)) {
+  fs.rmSync(CHAR_DIR, { recursive: true });
+}
+fs.mkdirSync(CHAR_DIR, { recursive: true });
+
+for (const c of characters) {
+  const dir = path.join(CHAR_DIR, c.code);
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(path.join(dir, 'index.html'), charPage(c), 'utf-8');
+  console.log(`  ✓ ${c.code} — ${c.name}`);
+}
+
+fs.writeFileSync(path.join(CHAR_DIR, 'index.html'), indexPage(), 'utf-8');
+console.log('  ✓ index — 角色列表页');
+
+// update sitemap
+const sitemapChars = characters.map(c =>
+  `  <url>\n    <loc>${SITE_URL}/characters/${c.code}/</loc>\n    <lastmod>2026-04-13</lastmod>\n    <priority>0.8</priority>\n  </url>`
+).join('\n');
+
+const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>${SITE_URL}/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>${SITE_URL}/characters/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <priority>0.9</priority>
+  </url>
+${sitemapChars}
+</urlset>
+`;
+
+fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), sitemapContent, 'utf-8');
+console.log('  ✓ sitemap.xml 已更新');
+
+console.log(`\n✅ 已生成 22 个角色页 + 1 个列表页，共 23 个文件`);
+console.log(`   输出目录: ${CHAR_DIR}`);

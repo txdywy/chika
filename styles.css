@@ -266,6 +266,8 @@ a { color: inherit; }
   transition: transform 0.15s ease;
   cursor: pointer;
   font-family: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 .roster-item:active { transform: scale(0.93); }
 .roster-item:focus-visible {
@@ -953,6 +955,36 @@ a { color: inherit; }
   font-size: 14px;
   color: var(--muted);
   line-height: 1.6;
+}
+
+/* ===== SEO sections ===== */
+.seo-sections {
+  display: grid;
+  gap: 12px;
+  padding-top: 4px;
+}
+.seo-body {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--muted);
+  font-weight: 400;
+}
+.faq-list {
+  display: grid;
+  gap: 10px;
+}
+.faq-list dt {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 4px;
+}
+.faq-list dd {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+  margin-left: 0;
+  margin-bottom: 4px;
 }
 
 /* wechat tip */
