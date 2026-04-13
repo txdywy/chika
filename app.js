@@ -61,6 +61,8 @@ const screenHome  = $("#screenHome");
 const screenQuiz  = $("#screenQuiz");
 const screenDetail = $("#screenDetail");
 const screenResult = $("#screenResult");
+const screenError  = $("#screenError");
+const errorRetry   = $("#errorRetry");
 const rosterGrid  = $("#rosterGrid");
 const detailBack  = $("#detailBack");
 const detailStartQuiz = $("#detailStartQuiz");
@@ -68,6 +70,8 @@ const restartTop  = $("#restartTop");
 const startButton = $("#startButton");
 const heroResume  = $("#heroResume");
 const resumeCount = $("#resumeCount");
+const resumeContinueBtn = $("#resumeContinue");
+const resumeRestartBtn  = $("#resumeRestart");
 const progressCount  = $("#progressCount");
 const progressTip    = $("#progressTip");
 const progressFill   = $("#progressFill");
@@ -101,11 +105,39 @@ const isWeChat = /MicroMessenger/i.test(navigator.userAgent);
 
 /* ===== init ===== */
 async function init() {
+  await loadData();
+
+  renderRoster();
+  if (isWeChat) wechatTip.hidden = false;
+  restoreState();
+
+  detailBack.addEventListener("click", () => showScreen(screenHome));
+  detailStartQuiz.addEventListener("click", () => {
+    if (state.answers.length >= TOTAL_QUESTIONS) {
+      computeAndShow();
+      showScreen(screenResult);
+    } else {
+      onStart();
+    }
+  });
+  resumeContinueBtn.addEventListener("click", onStart);
+  resumeRestartBtn.addEventListener("click", resetAll);
+  backBtn.addEventListener("click", goBack);
+  startButton.addEventListener("click", onStart);
+  restartTop.addEventListener("click", resetAll);
+  restartButton.addEventListener("click", resetAll);
+  copyButton.addEventListener("click", copyResult);
+  downloadButton.addEventListener("click", exportPoster);
+  errorRetry.addEventListener("click", () => location.reload());
+}
+
+async function loadData() {
   try {
     const [qRes, cRes] = await Promise.all([
       fetch("quiz-questions.json"),
       fetch("quiz-characters.json")
     ]);
+    if (!qRes.ok || !cRes.ok) throw new Error(`HTTP ${qRes.status}/${cRes.status}`);
     const qData = await qRes.json();
     const cData = await cRes.json();
     questions = qData.questions;
@@ -116,32 +148,23 @@ async function init() {
     }));
   } catch (e) {
     console.error("Failed to load quiz data", e);
-    return;
+    [screenHome, screenQuiz, screenDetail, screenResult].forEach(s =>
+      s.classList.remove("active")
+    );
+    screenError.classList.add("active");
+    throw e;
   }
-
-  renderRoster();
-  if (isWeChat) wechatTip.hidden = false;
-  restoreState();
-
-  detailBack.addEventListener("click", () => showScreen(screenHome));
-  detailStartQuiz.addEventListener("click", () => showScreen(screenHome));
-  backBtn.addEventListener("click", goBack);
-  startButton.addEventListener("click", onStart);
-  restartTop.addEventListener("click", resetAll);
-  restartButton.addEventListener("click", resetAll);
-  copyButton.addEventListener("click", copyResult);
-  downloadButton.addEventListener("click", exportPoster);
 }
 
 /* ===== roster ===== */
 function renderRoster() {
   rosterGrid.innerHTML = characters.map(c => `
-    <div class="roster-item" data-code="${c.code}">
+    <button class="roster-item" data-code="${c.code}" aria-label="查看${esc(c.name)}详情">
       <div class="roster-avatar">
         ${imgEl(c, 52)}
       </div>
-      <span class="roster-name">${c.name}</span>
-    </div>
+      <span class="roster-name">${esc(c.name)}</span>
+    </button>
   `).join("");
 
   rosterGrid.querySelectorAll(".roster-item").forEach(el => {
@@ -155,10 +178,10 @@ function renderRoster() {
 
 /* ===== screens ===== */
 function showScreen(target) {
-  [screenHome, screenQuiz, screenDetail, screenResult].forEach(s =>
+  [screenHome, screenQuiz, screenDetail, screenResult, screenError].forEach(s =>
     s.classList.toggle("active", s === target)
   );
-  window.scrollTo({ top: 0, behavior: "instant" });
+  window.scrollTo({ top: 0, behavior: "auto" });
 }
 
 /* ===== start ===== */
@@ -202,6 +225,20 @@ function renderQuestion() {
 function pickAnswer(i) {
   const q = questions[state.currentQuestion];
   const chosen = q.answers[i];
+  const btns = answersEl.querySelectorAll(".answer-btn");
+
+  /* visual feedback: highlight tapped answer */
+  btns.forEach((btn, idx) => {
+    if (idx === i) {
+      btn.style.background = "var(--accent)";
+      btn.style.color = "#fff";
+      btn.style.borderColor = "var(--accent)";
+      btn.style.fontWeight = "700";
+    } else {
+      btn.style.opacity = "0.4";
+    }
+    btn.style.pointerEvents = "none";
+  });
 
   state.answers.push(i);
   for (const [trait, val] of Object.entries(chosen.traits)) {
@@ -211,21 +248,25 @@ function pickAnswer(i) {
   saveState();
 
   if (state.currentQuestion >= TOTAL_QUESTIONS) {
-    computeAndShow();
-    showScreen(screenResult);
+    setTimeout(() => {
+      computeAndShow();
+      showScreen(screenResult);
+    }, 250);
     return;
   }
 
-  /* subtle animation */
-  answersEl.style.opacity = "0";
-  answersEl.style.transform = "translateY(8px)";
+  /* subtle animation after feedback */
   setTimeout(() => {
-    renderQuestion();
-    answersEl.style.transition = "opacity 0.2s ease, transform 0.2s ease";
-    answersEl.style.opacity = "1";
-    answersEl.style.transform = "translateY(0)";
-    setTimeout(() => { answersEl.style.transition = ""; }, 250);
-  }, 120);
+    answersEl.style.opacity = "0";
+    answersEl.style.transform = "translateY(8px)";
+    setTimeout(() => {
+      renderQuestion();
+      answersEl.style.transition = "opacity 0.2s ease, transform 0.2s ease";
+      answersEl.style.opacity = "1";
+      answersEl.style.transform = "translateY(0)";
+      setTimeout(() => { answersEl.style.transition = ""; }, 250);
+    }, 100);
+  }, 250);
 }
 
 /* ===== go back ===== */
@@ -298,11 +339,11 @@ function computeAndShow() {
 
     latestResult = { primary, secondary, matchRate };
     document.title = `我是 ${primary.name} | CHTI`;
+    updateMetaTags(primary);
 
     /* result card */
-    resultCard.style.background =
-      `linear-gradient(145deg, ${primary.color || "#FFD0A0"}, #FFF2DB)`;
     resultCard.innerHTML = `
+      <div class="result-accent-bar" style="background:linear-gradient(90deg, ${primary.color || "#FFB731"}, ${primary.color || "#FFB731"}88)"></div>
       <div class="result-badges">
         <span class="badge">${primary.typeCode}</span>
         <span class="badge">${primary.mbti}</span>
@@ -383,6 +424,40 @@ function computeAndShow() {
   }
 }
 
+/* ===== dynamic meta tags ===== */
+function updateMetaTags(primary) {
+  const origin = location.origin;
+  const coverUrl = origin + location.pathname.replace(/\/$/, '') + '/og-cover.png';
+  setOrCreateMeta('property', 'og:title', `我是 ${primary.name} | CHTI`);
+  setOrCreateMeta('property', 'og:description', `测出来了，我这次抽到的是 ${primary.name}。${primary.sbtIFull}。`);
+  setOrCreateMeta('property', 'og:image', coverUrl);
+  setOrCreateMeta('name', 'twitter:title', `我是 ${primary.name} | CHTI`);
+  setOrCreateMeta('name', 'twitter:description', `测出来了，我这次抽到的是 ${primary.name}。`);
+  setOrCreateMeta('name', 'twitter:image', coverUrl);
+}
+
+function setOrCreateMeta(attrName, attrValue, content) {
+  let el = document.querySelector(`meta[${attrName}="${attrValue}"]`);
+  if (!el) {
+    el = document.createElement('meta');
+    el.setAttribute(attrName, attrValue);
+    document.head.appendChild(el);
+  }
+  el.setAttribute('content', content);
+}
+
+/* ===== image helper (HTML-escaped) ===== */
+function esc(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function imgEl(c, size) {
+  if (!c.image) return `<span style="font-size:${size * 0.3}px;font-weight:800;color:#8B6D4E">${esc(c.name.slice(0, 2))}</span>`;
+  return `<img src="${esc(c.image)}" alt="${esc(c.name)}" loading="lazy" referrerpolicy="no-referrer"
+    style="width:100%;height:100%;object-fit:contain"
+    onerror="this.outerHTML='<span style=&quot;font-size:${size*0.3}px;font-weight:800;color:#8B6D4E&quot;>${esc(c.name.slice(0,2))}</span>'">`;
+}
+
 function fallbackResult() {
   const c = characters[0];
   latestResult = { primary: c, secondary: characters[1], matchRate: 66 };
@@ -392,6 +467,7 @@ function fallbackResult() {
 
 /* ===== deputy ===== */
 function renderDeputy(c) {
+  deputyCard.className = "info-card deputy-card";
   deputyCard.innerHTML = `
     <span class="deputy-label">副结果卡</span>
     <div class="deputy-avatar">${imgEl(c, 64)}</div>
@@ -401,6 +477,12 @@ function renderDeputy(c) {
       <div class="deputy-one">${c.oneLiner}</div>
     </div>
   `;
+}
+
+/* ===== detail page button ===== */
+function updateDetailCTA() {
+  const done = state.answers.length >= TOTAL_QUESTIONS;
+  detailStartQuiz.textContent = done ? "查看我的结果" : "开始测试";
 }
 
 /* ===== detail page ===== */
@@ -440,15 +522,8 @@ function renderDetail(c) {
   $("#detailBest").textContent = c.bestMatch || "";
   $("#detailWorst").textContent = c.worstMatch || "";
 
+  updateDetailCTA();
   showScreen(screenDetail);
-}
-
-/* ===== image helper ===== */
-function imgEl(c, size) {
-  if (!c.image) return `<span style="font-size:${size * 0.3}px;font-weight:800;color:#8B6D4E">${c.name.slice(0, 2)}</span>`;
-  return `<img src="${c.image}" alt="${c.name}" loading="lazy" referrerpolicy="no-referrer"
-    style="width:100%;height:100%;object-fit:contain"
-    onerror="this.outerHTML='<span style=\\'font-size:${size*0.3}px;font-weight:800;color:#8B6D4E\\'>${c.name.slice(0,2)}</span>'">`;
 }
 
 /* ===== copy ===== */
@@ -679,6 +754,7 @@ function resetAll() {
   copyFeedback.textContent = "";
   document.title = "CHTI · 测你像哪个 Chiikawa 角色";
   restartTop.hidden = true;
+  updateDetailCTA();
   showScreen(screenHome);
 }
 

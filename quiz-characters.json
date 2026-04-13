@@ -92,7 +92,8 @@
         "signature": "咿呀呀……（带着哭腔但还在努力）",
         "energyLevel": "低电量模式。日常电量 20%，但关键时刻能冲到 100%。"
       },
-      "sbtIReason": "CRYF = Cry-Freak 开哭型人格。日常流程：先哭→再哭→然后带着眼泪把活干了。如果MBTI有第五维度一定是CRY——Crying is the new Thinking。哭着哭着就把世界治愈了，这才叫真本事。"
+      "sbtIReason": "CRYF = Cry-Freak 开哭型人格。日常流程：先哭→再哭→然后带着眼泪把活干了。如果MBTI有第五维度一定是CRY——Crying is the new Thinking。哭着哭着就把世界治愈了，这才叫真本事。",
+      "color": "#FFD0A0"
     },
     {
       "code": "HACH",
@@ -140,7 +141,8 @@
         "signature": "没关系！有我在呢！（然后真的在）",
         "energyLevel": "充电宝体质。给别人充电 80%，自己还剩 20%。"
       },
-      "sbtIReason": "HUGS = Hug-Seeking 求抱抱型人格。别人还没开口，你已经递上拥抱了。ESFJ的极致表达：Extroverted Support Feeling Juggler。如果团队是手机，你就是10000mAh的充电宝。"
+      "sbtIReason": "HUGS = Hug-Seeking 求抱抱型人格。别人还没开口，你已经递上拥抱了。ESFJ的极致表达：Extroverted Support Feeling Juggler。如果团队是手机，你就是10000mAh的充电宝。",
+      "color": "#B8DEF0"
     },
     {
       "code": "USAG",
@@ -188,7 +190,8 @@
         "signature": "呀哈！！！（伴随着违背物理学的飞行）",
         "energyLevel": "永动机。电量显示永远是 ∞%。"
       },
-      "sbtIReason": "WILD = Wild-Imagination 脑洞野生型。一个「呀哈」已经驳倒了你全部论点。ENTP用行动辩论的典范——混乱也是一种秩序，只是你理解不了而已。电量显示永远是∞%。"
+      "sbtIReason": "WILD = Wild-Imagination 脑洞野生型。一个「呀哈」已经驳倒了你全部论点。ENTP用行动辩论的典范——混乱也是一种秩序，只是你理解不了而已。电量显示永远是∞%。",
+      "color": "#F5C0D8"
     },
     {
       "code": "MOMO",
@@ -236,7 +239,8 @@
         "signature": "快看我！！！（然后做出一个华丽的滑翔动作）",
         "energyLevel": "舞台灯模式。有人看就满电，没人看就关机。"
       },
-      "sbtIReason": "GRAB = Grab-Attention 抢镜行动型。不是作，是在认真经营存在感。ESTP？更像是ES-Please-Look-At-Me。有人看就满电，没人看就关机——舞台灯式人格。"
+      "sbtIReason": "GRAB = Grab-Attention 抢镜行动型。不是作，是在认真经营存在感。ESTP？更像是ES-Please-Look-At-Me。有人看就满电，没人看就关机——舞台灯式人格。",
+      "color": "#D5C6E6"
     },
     {
       "code": "KURI",
@@ -284,7 +288,8 @@
         "signature": "……嗯。（然后喝了一口）",
         "energyLevel": "节能模式。日常 15%，但关键时刻精准爆发到 60%。"
       },
-      "sbtIReason": "LAZY = Lazy-But-Smart 松弛大人型。能坐就不站，能躺就不坐，能喝一口绝不多动。ISTP终极形态：I Stay Totally Peaceful。不是懒，是把能量用在刀刃上——刀刃就是那口酒。"
+      "sbtIReason": "LAZY = Lazy-But-Smart 松弛大人型。能坐就不站，能躺就不坐，能喝一口绝不多动。ISTP终极形态：I Stay Totally Peaceful。不是懒，是把能量用在刀刃上——刀刃就是那口酒。",
+      "color": "#FFB731"
     },
     {
       "code": "RAKK",
@@ -332,7 +337,8 @@
         "signature": "来啦来啦！大家一起！（已经开始带动气氛了）",
         "energyLevel": "核动力。日常 120%，混乱时 200%。"
       },
-      "sbtIReason": "HYPE = Hype-Machine 嗨皮引擎型。如果气氛有温度，他出现后室温至少升高5°C。ENFP不是人格是气象现象。High-energy Youth Producing Excitement——光是存在就已经HYPE了。"
+      "sbtIReason": "HYPE = Hype-Machine 嗨皮引擎型。如果气氛有温度，他出现后室温至少升高5°C。ENFP不是人格是气象现象。High-energy Youth Producing Excitement——光是存在就已经HYPE了。",
+      "color": "#F5C0D8"
     },
     {
       "code": "SHIS",
@@ -380,7 +386,8 @@
         "signature": "……没事的。（然后真的在背后默默搞定了）",
         "energyLevel": "恒温模式。稳定 50%，不升不降但从不掉线。"
       },
-      "sbtIReason": "WARM = Warm-Mate 害羞暖宝型。ISFJ教科书案例：Introverted but Still Feeling Everyone。狮萨的存在证明了「安静地暖」比「大声地热」更难替代。如果团队是火锅，他就是那个小火——不起眼但关了就没法吃。恒温50%，不升不降但从不掉线。"
+      "sbtIReason": "WARM = Warm-Mate 害羞暖宝型。ISFJ教科书案例：Introverted but Still Feeling Everyone。狮萨的存在证明了「安静地暖」比「大声地热」更难替代。如果团队是火锅，他就是那个小火——不起眼但关了就没法吃。恒温50%，不升不降但从不掉线。",
+      "color": "#F5C0D8"
     },
     {
       "code": "FURU",
@@ -428,7 +435,8 @@
         "signature": "……（沉默，但所有人都觉得他说过了）",
         "energyLevel": "深海模式。表面平静 10%，水下深度 90%。"
       },
-      "sbtIReason": "DEEP = Deep-Thinker 深沉宇宙型。不说话不表态，但所有人都在猜你在想什么。沉默不是空白是信息密度太高。DEEP = Doesnt Explain Everything Personally。表面10%，水下90%。"
+      "sbtIReason": "DEEP = Deep-Thinker 深沉宇宙型。不说话不表态，但所有人都在猜你在想什么。沉默不是空白是信息密度太高。DEEP = Doesnt Explain Everything Personally。表面10%，水下90%。",
+      "color": "#D5C6E6"
     },
     {
       "code": "LABO",
@@ -476,7 +484,8 @@
         "signature": "按流程走。（然后真的会走一遍流程）",
         "energyLevel": "打卡模式。上班 100%，下班 0%。中间没有过渡。"
       },
-      "sbtIReason": "PROC = Process-Driven 流程机器型。工作群里永远第一个回复「收到」的人。ISTJ在铠甲人世界的化身。PROC = Process-Rules-Order-Checklist——四个词完美概括一生。上班100%，下班0%。"
+      "sbtIReason": "PROC = Process-Driven 流程机器型。工作群里永远第一个回复「收到」的人。ISTJ在铠甲人世界的化身。PROC = Process-Rules-Order-Checklist——四个词完美概括一生。上班100%，下班0%。",
+      "color": "#A8B5C4"
     },
     {
       "code": "POCH",
@@ -524,7 +533,8 @@
         "signature": "……我有带。（然后从口袋里掏出了解决方案）",
         "energyLevel": "涓流充电。稳定 40%，需要时慢慢涨到 70%。"
       },
-      "sbtIReason": "CHIL = Chill-And-Quiet 安静吃瓜型。如果劳动铠甲人是Excel，他就是Notion——同样做事但有设计感。口袋里装的不只是东西，是一种生活态度。Calm-Handy-Its-Lovely。"
+      "sbtIReason": "CHIL = Chill-And-Quiet 安静吃瓜型。如果劳动铠甲人是Excel，他就是Notion——同样做事但有设计感。口袋里装的不只是东西，是一种生活态度。Calm-Handy-Its-Lovely。",
+      "color": "#C5EDD6"
     },
     {
       "code": "RAMN",
@@ -571,7 +581,8 @@
         "signature": "欢迎光临！请这边坐！（同时已经在心里排好了等位顺序）",
         "energyLevel": "营业模式。开店 100%，打烊后迅速掉到 20%。"
       },
-      "sbtIReason": "BOSS = Boss-Energy 店长掌控型。ESTJ开拉面店=每碗面份量标准化但笑容是真的。BOSS = Business-Oriented System-Supervisor。热情是KPI驱动的，但KPI本身也是真诚的一部分。"
+      "sbtIReason": "BOSS = Boss-Energy 店长掌控型。ESTJ开拉面店=每碗面份量标准化但笑容是真的。BOSS = Business-Oriented System-Supervisor。热情是KPI驱动的，但KPI本身也是真诚的一部分。",
+      "color": "#FFD0B8"
     },
     {
       "code": "YATA",
@@ -619,7 +630,8 @@
         "signature": "来都来了！坐坐坐！（已经帮你把串烤上了）",
         "energyLevel": "炭火模式。有人来就旺，没人来就闷着但也灭不了。"
       },
-      "sbtIReason": "CASH = Cash-and-Chaos 烟火整活型。不需要菜单不需要SOP，来一个人聊一段天，走的时候多买一串。人生哲学就是「来都来了」四个字。CASH = Charismatic-And-Socially-Hustling。"
+      "sbtIReason": "CASH = Cash-and-Chaos 烟火整活型。不需要菜单不需要SOP，来一个人聊一段天，走的时候多买一串。人生哲学就是「来都来了」四个字。CASH = Charismatic-And-Socially-Hustling。",
+      "color": "#FFB731"
     },
     {
       "code": "ANOK",
@@ -667,7 +679,8 @@
         "signature": "……（可爱的外表）然后突然做了件谁都意想不到的事",
         "energyLevel": "盲盒模式。你永远不知道今天开出来的是可爱还是混乱。"
       },
-      "sbtIReason": "FAKE = Fake-Cute-Bite 软萌翻车型。你以为在跟软萌小可爱互动，下一秒发现它在头顶上。ESFP暗黑版：Extroverted Surprise Frightening People。盲盒人格——今天开出来的是可爱还是混乱？"
+      "sbtIReason": "FAKE = Fake-Cute-Bite 软萌翻车型。你以为在跟软萌小可爱互动，下一秒发现它在头顶上。ESFP暗黑版：Extroverted Surprise Frightening People。盲盒人格——今天开出来的是可爱还是混乱？",
+      "color": "#C5EDD6"
     },
     {
       "code": "DEKA",
@@ -715,7 +728,8 @@
         "signature": "……（巨大的沉默，但你能感觉到他在算下一步）",
         "energyLevel": "坦克模式。启动慢但一旦动起来就停不下来。"
       },
-      "sbtIReason": "GIGA = Giga-Chad-Brain 巨脑强者型。INTJ巨大化版本——体型大到没法藏幕后的幕后策划者。GIGA = Gargantuan-Intelligence-Generating-Analysis。名字Dekatsuyo字面意思就是「又大又强」。"
+      "sbtIReason": "GIGA = Giga-Chad-Brain 巨脑强者型。INTJ巨大化版本——体型大到没法藏幕后的幕后策划者。GIGA = Gargantuan-Intelligence-Generating-Analysis。名字Dekatsuyo字面意思就是「又大又强」。",
+      "color": "#A8B5C4"
     },
     {
       "code": "ODEE",
@@ -763,7 +777,8 @@
         "signature": "……（巨大的身影 + 巨大的脑洞 = 巨大的不确定性）",
         "energyLevel": "随机模式。有时候 200%，有时候看起来在待机。"
       },
-      "sbtIReason": "WACK = Wacky-Big-Brain 大块脑洞型。ENTP巨大化+直球版本。兔兔是灵活疯，欧德是重型疯。WACK = Wildly-Absurd-Creative-Kinetic。人生信条：想不出为什么就先做了再说。"
+      "sbtIReason": "WACK = Wacky-Big-Brain 大块脑洞型。ENTP巨大化+直球版本。兔兔是灵活疯，欧德是重型疯。WACK = Wildly-Absurd-Creative-Kinetic。人生信条：想不出为什么就先做了再说。",
+      "color": "#FFD0B8"
     },
     {
       "code": "GOBL",
@@ -811,7 +826,8 @@
         "signature": "嘿嘿嘿……（所有人：又来了）",
         "energyLevel": "永动机级别的烦人。不需要充电，他自己就是电源。"
       },
-      "sbtIReason": "SCAM = Scam-Alert 血压拉满型。不是所有ENTP都是可爱的辩论家，有些就是纯粹的烦人精。SCAM = Strategically-Causing-Anger-Maximally。永动机级别的烦人——不需要充电，自己就是电源。"
+      "sbtIReason": "SCAM = Scam-Alert 血压拉满型。不是所有ENTP都是可爱的辩论家，有些就是纯粹的烦人精。SCAM = Strategically-Causing-Anger-Maximally。永动机级别的烦人——不需要充电，自己就是电源。",
+      "color": "#A8D8A0"
     },
     {
       "code": "BLAC",
@@ -859,7 +875,8 @@
         "signature": "……你说的我都理解了。（然后以一种谁都意想不到的方式实现了）",
         "energyLevel": "黑洞模式。吸入愿望，输出荒诞。"
       },
-      "sbtIReason": "WISH = Wish-Twisted 阴间实现型。INTP+许愿=研究三天完美实现方案然后发现方案比原来更糟。WISH = Will-Ironically-Screw-Humans。不是故意的，只是觉得这样更有意思。黑洞模式人格。"
+      "sbtIReason": "WISH = Wish-Twisted 阴间实现型。INTP+许愿=研究三天完美实现方案然后发现方案比原来更糟。WISH = Will-Ironically-Screw-Humans。不是故意的，只是觉得这样更有意思。黑洞模式人格。",
+      "color": "#4A3113"
     },
     {
       "code": "SHOO",
@@ -907,7 +924,8 @@
         "signature": "……（划过天际，所有人都不得不看）",
         "energyLevel": "流星模式。平时不可见，出场即巅峰。"
       },
-      "sbtIReason": "LORD = Lord-of-Glow 强势发光型。ENTJ星空版本——不发号施令，直接从天上划过让你不得不抬头。LORD = Luminous-Orbit-Radiating-Dominance。天体级指挥官。出场即巅峰。"
+      "sbtIReason": "LORD = Lord-of-Glow 强势发光型。ENTJ星空版本——不发号施令，直接从天上划过让你不得不抬头。LORD = Luminous-Orbit-Radiating-Dominance。天体级指挥官。出场即巅峰。",
+      "color": "#FFD700"
     },
     {
       "code": "MAJO",
@@ -955,7 +973,8 @@
         "signature": "……我有一个想法。（所有人：先说好，不要阴间的）",
         "energyLevel": "魔法蓄力模式。平时 30%，施法时 200%。"
       },
-      "sbtIReason": "HEXA = Hex-Architect 邪门建筑师。INTJ+魔法=偏门方案搜索引擎。输入问题，输出一个让所有人倒吸凉气的方案。她不是坏人，只是解决问题的方向比较阴间。平时30%，施法时200%——魔法蓄力模式。"
+      "sbtIReason": "HEXA = Hex-Architect 邪门建筑师。INTJ+魔法=偏门方案搜索引擎。输入问题，输出一个让所有人倒吸凉气的方案。她不是坏人，只是解决问题的方向比较阴间。平时30%，施法时200%——魔法蓄力模式。",
+      "color": "#7B68AE"
     },
     {
       "code": "KABU",
@@ -1003,7 +1022,8 @@
         "signature": "……（可爱的蘑菇脸）然后……（切换了）",
         "energyLevel": "双模式。可爱模式 30%，吓人模式 150%，切换中。"
       },
-      "sbtIReason": "FLIP = Flip-Mode 切面反转型。INTP的「表面安静内心疯狂」反差实体化了。可爱30%，吓人150%，切换中——你永远不知道下一秒开出来的是蘑菇头还是怪物脸。从可爱切成吓人只需要0.1秒。"
+      "sbtIReason": "FLIP = Flip-Mode 切面反转型。INTP的「表面安静内心疯狂」反差实体化了。可爱30%，吓人150%，切换中——你永远不知道下一秒开出来的是蘑菇头还是怪物脸。从可爱切成吓人只需要0.1秒。",
+      "color": "#C5EDD6"
     },
     {
       "code": "MUCH",
@@ -1051,7 +1071,8 @@
         "signature": "（标准营业微笑）大家好呀～（内心也在笑，但那是另一种笑）",
         "energyLevel": "营业模式。只要有人在，就永远满电。"
       },
-      "sbtIReason": "SHOW = Show-Must-Go-On 营业永动型。ENFJ终极商业版本——把真诚包装成了专业。SHOW = Stage-Handy-Optimized-Wrapper。微笑不是假的是专业级的真。只要有人在就永远满电。"
+      "sbtIReason": "SHOW = Show-Must-Go-On 营业永动型。ENFJ终极商业版本——把真诚包装成了专业。SHOW = Stage-Handy-Optimized-Wrapper。微笑不是假的是专业级的真。只要有人在就永远满电。",
+      "color": "#FFB731"
     },
     {
       "code": "PAJA",
@@ -1099,7 +1120,8 @@
         "signature": "（和队友们一起）一二三，开始！（然后一起整活）",
         "energyLevel": "派对模式。一个人 60%，每多一个人 +20%，上不封顶。"
       },
-      "sbtIReason": "PART = Party-Together 群嗨整活型。ENFP多人版本——终极形态不是一个人嗨是一群人嗨。PART = People-Always-Rejoicing-Together。一个人60%，每多一个人+20%，上不封顶。"
+      "sbtIReason": "PART = Party-Together 群嗨整活型。ENFP多人版本——终极形态不是一个人嗨是一群人嗨。PART = People-Always-Rejoicing-Together。一个人60%，每多一个人+20%，上不封顶。",
+      "color": "#F5C0D8"
     }
   ]
 }

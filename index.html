@@ -2,16 +2,28 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#FFF6E5">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>CHTI · 测你像哪个 Chiikawa 角色</title>
-  <meta name="description" content="15道题，测出你现在最像的 Chiikawa 角色。MBTI 娱乐向测试。">
+  <title>CHTI · 测你像哪个 Chiikawa 角色 | 吉伊卡哇性格测试</title>
+  <meta name="description" content="CHTI 是一个 Chiikawa（吉伊卡哇）MBTI 娱乐向性格测试，15道题测出你最像哪个角色。22张角色卡，支持分享海报。">
+  <meta name="keywords" content="Chiikawa,吉伊卡哇,MBTI,性格测试,角色测试,CHTI,小八,兔兔,飞鼠">
   <meta property="og:title" content="CHTI · 测你像哪个 Chiikawa 角色">
   <meta property="og:description" content="15道题，把你现在的状态翻译成一张角色卡。">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://txdywy.github.io/chika/og-cover.png">
+  <meta property="og:url" content="https://chika.hackx64.eu.org/">
+  <meta property="og:image" content="https://chika.hackx64.eu.org/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="CHTI">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CHTI · 测你像哪个 Chiikawa 角色">
+  <meta name="twitter:description" content="15道题，把你现在的状态翻译成一张角色卡。">
+  <meta name="twitter:image" content="https://chika.hackx64.eu.org/og-cover.png">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://chika.hackx64.eu.org/">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐹</text></svg>">
   <link rel="stylesheet" href="styles.css">
   <!-- Google tag (gtag.js) -->
@@ -24,6 +36,27 @@
   </script>
 </head>
 <body>
+  <noscript>
+    <div style="max-width:680px;margin:0 auto;padding:40px 16px;font-family:-apple-system,sans-serif;text-align:center;">
+      <h1>CHTI · 测你像哪个 Chiikawa 角色</h1>
+      <p>15道题，测出你现在最像的 Chiikawa 角色。请启用 JavaScript 以继续测试。</p>
+    </div>
+  </noscript>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CHTI",
+    "description": "15道题，测出你现在最像的 Chiikawa 角色。MBTI 娱乐向测试。",
+    "url": "https://chika.hackx64.eu.org/",
+    "applicationCategory": "Entertainment",
+    "operatingSystem": "All",
+    "inLanguage": "zh-CN",
+    "offers": { "@type": "Offer", "price": "0" }
+  }
+  </script>
+
   <div class="app-shell">
 
     <!-- WeChat tip -->
@@ -34,8 +67,19 @@
     <!-- Top bar -->
     <nav class="topbar">
       <span class="brand">CHTI</span>
-      <button class="ghost-btn" id="restartTop" hidden>重测</button>
+      <button class="ghost-btn" id="restartTop" hidden aria-label="重新测试">重测</button>
     </nav>
+
+    <!-- ========== HOME ========== -->
+    <!-- Error state -->
+    <section class="screen" id="screenError">
+      <div class="error-shell">
+        <div class="error-icon">!</div>
+        <h2 class="error-title">数据加载失败</h2>
+        <p class="error-desc">网络问题，请检查连接后重试。</p>
+        <button class="btn-primary" id="errorRetry" aria-label="重新加载数据">重新加载</button>
+      </div>
+    </section>
 
     <!-- ========== HOME ========== -->
     <section class="screen active" id="screenHome">
@@ -54,8 +98,14 @@
           <span class="tag">22 张角色卡</span>
           <span class="tag">适合手机测</span>
         </div>
-        <button class="btn-primary" id="startButton">开始测</button>
-        <p class="hero-resume" id="heroResume" hidden>上次测到第 <strong id="resumeCount">0</strong> 题，继续还是重测？</p>
+        <button class="btn-primary" id="startButton" aria-label="开始测试">开始测</button>
+        <div class="hero-resume" id="heroResume" hidden>
+          <p>已答 <strong id="resumeCount">0</strong> 题</p>
+          <div class="resume-actions">
+            <button class="btn-continue" id="resumeContinue" aria-label="继续测试">继续测试</button>
+            <button class="btn-restart" id="resumeRestart" aria-label="重新开始">重新开始</button>
+          </div>
+        </div>
       </div>
 
       <div class="roster">
@@ -69,7 +119,7 @@
       <div class="quiz-shell">
         <div class="progress-shell">
           <div class="progress-top">
-            <button class="back-btn" id="backBtn" hidden>
+            <button class="back-btn" id="backBtn" hidden aria-label="上一题">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
               上一题
             </button>
@@ -93,7 +143,7 @@
     <!-- ========== DETAIL ========== -->
     <section class="screen" id="screenDetail">
       <div class="detail-shell">
-        <button class="detail-back" id="detailBack">
+        <button class="detail-back" id="detailBack" aria-label="返回首页">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
           返回
         </button>
@@ -158,7 +208,7 @@
           </div>
         </div>
 
-        <button class="btn-primary" id="detailStartQuiz">开始测试</button>
+        <button class="btn-primary" id="detailStartQuiz" aria-label="开始测试">开始测试</button>
       </div>
     </section>
 
@@ -242,9 +292,9 @@
           <h3 class="section-title">分享文案</h3>
           <textarea id="shareCopy" readonly></textarea>
           <div class="action-row">
-            <button class="btn-secondary" id="copyButton">复制文案</button>
-            <button class="btn-secondary" id="downloadButton">导出海报</button>
-            <button class="btn-ghost" id="restartButton">再测一次</button>
+            <button class="btn-secondary" id="copyButton" aria-label="复制分享文案">复制文案</button>
+            <button class="btn-secondary" id="downloadButton" aria-label="导出海报">导出海报</button>
+            <button class="btn-ghost" id="restartButton" aria-label="重新测试">再测一次</button>
           </div>
           <p class="copy-feedback" id="copyFeedback"></p>
         </div>
