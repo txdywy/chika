@@ -78,7 +78,6 @@ function charPage(c, idx) {
   const img = imgPath(c.code);
   const charUrl = `${SITE_URL}/characters/${c.code}/`;
   const coverUrl = `${SITE_URL}/og-cover.png`;
-  const keywords = `${c.name} MBTI, ${c.name} 性格分析, ${c.name} 是什么角色, ${c.mbti}, ${c.sbtI}, Chiikawa, 吉伊卡哇`;
   const typeCode = c.typeCode || c.sbtI;
 
   // SEO description: hand-crafted short summary, complete sentence, no truncation
@@ -88,9 +87,9 @@ function charPage(c, idx) {
     USAG: '兔兔（ENTP / WILD）：疯狂自由不按套路出牌，是 Chiikawa 世界的混沌引擎。查看完整性格分析、名场面和角色搭配。',
     MOMO: '飞鼠（ESTP / GRAB）：自恋爱出风头但本质不坏的行动派。查看完整性格分析、名场面和角色搭配。',
     KURI: '栗子馒头（ISTP / LAZY）：佛系松弛有分寸的大人，最接近「活明白了」的角色。查看完整性格分析、名场面和角色搭配。',
-    RAKK: '海獭（ENFJ / HYPE）：活泼自信的社交恐怖分子，一出现就能热场的气氛担当。查看完整性格分析、名场面和角色搭配。',
-    SHIS: '狮萨（ENTJ / WARM）：温柔细心默默付出，是不声不响但谁都离不开的存在。查看完整性格分析、名场面和角色搭配。',
-    FURU: '古本（INTJ / DEEP）：安静深沉理想主义，内心有一个完整宇宙的神秘角色。查看完整性格分析、名场面和角色搭配。',
+    RAKK: '海獭（ENFP / HYPE）：活泼自信的社交恐怖分子，一出现就能热场的气氛担当。查看完整性格分析、名场面和角色搭配。',
+    SHIS: '狮萨（ISFJ / WARM）：温柔细心默默付出，是不声不响但谁都离不开的存在。查看完整性格分析、名场面和角色搭配。',
+    FURU: '古本（INFJ / DEEP）：安静深沉理想主义，内心有一个完整宇宙的神秘角色。查看完整性格分析、名场面和角色搭配。',
     LABO: '劳动铠甲人（ISTJ / PROC）：严谨务实守规矩的执行力担当，出了问题第一个被想到。查看完整性格分析、名场面和角色搭配。',
     POCH: '口袋铠甲人（ISFP / CHIL）：安静随性有品味，铠甲人世界里最有生活美学的角色。查看完整性格分析、名场面和角色搭配。',
     RAMN: '拉面铠甲人（ESTJ / BOSS）：管理型讲规则有底线，是铠甲人世界里开店的那一位。查看完整性格分析、名场面和角色搭配。',
@@ -139,7 +138,6 @@ function charPage(c, idx) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>${esc(c.name)} MBTI 是什么 | ${esc(c.name)}性格分析 | ${esc(typeCode)} ${c.mbti} | CHTI</title>
   <meta name="description" content="${esc(description)}">
-  <meta name="keywords" content="${esc(keywords)}">
   <meta property="og:title" content="${esc(c.name)} MBTI 是什么 | ${esc(c.name)}性格分析">
   <meta property="og:description" content="${esc(description)}">
   <meta property="og:type" content="website">
