@@ -1,0 +1,159 @@
+{
+  "meta": {
+    "version": "2.0",
+    "total_questions": 15,
+    "description": "Chiikawa MBTI 娱乐向测试题目，基于16维trait系统匹配22个角色"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "title": "周末聚会临时改到你家，你第一反应是？",
+      "answers": [
+        { "text": "终于轮到我做东了！大家想吃什么我来安排！", "traits": { "sunny": 2, "service": 1, "leader": 1 } },
+        { "text": "……好、好的，先把沙发收拾出来。", "traits": { "gentle": 2, "quiet": 1, "support": 1 } },
+        { "text": "来就来呗，我点外卖大家一起吃。", "traits": { "chill": 2, "quiet": 1 } },
+        { "text": "先想好怎么出场比较有趣，毕竟我是主人。", "traits": { "drama": 2, "perform": 1 } }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "群里突然有人发了一张很抽象的图，你通常？",
+      "answers": [
+        { "text": "看不懂但先跟着发个表情包。", "traits": { "sunny": 1, "perform": 1, "odd": 1 } },
+        { "text": "仔细放大看，试图理解其中的逻辑。", "traits": { "quiet": 2, "magic": 1 } },
+        { "text": "直接问这是什么鬼，不装懂。", "traits": { "chaos": 2, "menace": 1 } },
+        { "text": "默默存图，觉得以后可能有用。", "traits": { "odd": 2, "quiet": 1 } }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "朋友跟你说「我今天遇到了一件很奇怪的事」，你最想先知道什么？",
+      "answers": [
+        { "text": "你还好吧？有没有受影响？", "traits": { "gentle": 2, "support": 2 } },
+        { "text": "然后呢然后呢！快说！", "traits": { "sunny": 2, "chaos": 1 } },
+        { "text": "具体时间、地点、对方长什么样？", "traits": { "orderly": 2, "menace": 1 } },
+        { "text": "你说的「奇怪」是哪种意义上的奇怪？", "traits": { "magic": 2, "odd": 1 } }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "到了一个全是陌生人的聚会上，你一般会？",
+      "answers": [
+        { "text": "主动自我介绍，五分钟内认识一圈人。", "traits": { "sunny": 3, "perform": 1 } },
+        { "text": "找到一个角落待着，等别人来找我。", "traits": { "quiet": 3, "gentle": 1 } },
+        { "text": "先找吃的。", "traits": { "chill": 2, "huge": 1 } },
+        { "text": "观察一下气氛，判断自己该扮演什么角色。", "traits": { "perform": 2, "drama": 1 } }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "跟朋友吵架了，你更倾向于？",
+      "answers": [
+        { "text": "先低头，关系比道理重要。", "traits": { "gentle": 2, "support": 2 } },
+        { "text": "冷战几天等双方冷静再说。", "traits": { "quiet": 2, "chill": 1 } },
+        { "text": "把问题摊开讲清楚，对事不对人。", "traits": { "leader": 2, "menace": 1 } },
+        { "text": "虽然生气但会想办法用一个很怪的方式和好。", "traits": { "odd": 2, "magic": 1 } }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "小组作业还剩三天截止，目前进度为零，你的状态是？",
+      "answers": [
+        { "text": "已经建好文档分好任务拉好时间表了。", "traits": { "orderly": 3, "leader": 2 } },
+        { "text": "虽然没动但已经开始焦虑得睡不着。", "traits": { "gentle": 2, "quiet": 2 } },
+        { "text": "没事，最后一天通宵就行。", "traits": { "chaos": 2, "huge": 1 } },
+        { "text": "其实我脑子里有一个很天才但很难解释的方案。", "traits": { "magic": 2, "odd": 2 } }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "你精心计划的行程到了现场发现全不是那回事，你会？",
+      "answers": [
+        { "text": "既来之则安之，意外也是一种体验。", "traits": { "chaos": 2, "menace": 1 } },
+        { "text": "先看看同伴有没有受打击，安抚一下。", "traits": { "support": 2, "gentle": 1 } },
+        { "text": "立刻重新规划，把新安排理清楚。", "traits": { "orderly": 2, "leader": 1 } },
+        { "text": "觉得现在这个乱七八糟的版本更有意思。", "traits": { "odd": 2, "magic": 1 } }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "看到一个明显有问题的方案但大家都说 OK，你会？",
+      "answers": [
+        { "text": "会后私下跟负责人提一下，不当众让人难堪。", "traits": { "support": 2, "gentle": 1 } },
+        { "text": "会上直接指出来，对事不对人。", "traits": { "leader": 2, "menace": 1 } },
+        { "text": "算了吧反正不是我担责。", "traits": { "chill": 2, "menace": 1 } },
+        { "text": "用一个很刁钻的角度把问题拆穿。", "traits": { "magic": 2, "odd": 1, "menace": 1 } }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "你决定做一件事，最主要的动力通常是？",
+      "answers": [
+        { "text": "这件事对身边的人有好处。", "traits": { "support": 2, "service": 2 } },
+        { "text": "能学到新东西或者解决一个难题。", "traits": { "magic": 2, "leader": 1 } },
+        { "text": "有计划、有目标的感觉很好。", "traits": { "orderly": 2, "leader": 1 } },
+        { "text": "单纯觉得好玩有意思。", "traits": { "chaos": 2, "perform": 1 } }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "别人说你想太多了，你内心真实反应是？",
+      "answers": [
+        { "text": "可能吧……但还是会接着想。", "traits": { "quiet": 2, "gentle": 1 } },
+        { "text": "我觉得刚好，是你们想得太少了。", "traits": { "magic": 2, "menace": 1 } },
+        { "text": "你说得对。表面接受，内心保留意见。", "traits": { "chill": 2, "huge": 1, "menace": 1 } },
+        { "text": "哪里想多了你说清楚。", "traits": { "leader": 1, "orderly": 1 } }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "走在路上捡到一个很奇怪的东西，你会？",
+      "answers": [
+        { "text": "看看附近有没有失主，想办法还回去。", "traits": { "service": 2, "support": 1 } },
+        { "text": "先观察研究一下，搞清楚是什么再说。", "traits": { "magic": 2, "quiet": 1 } },
+        { "text": "交到管理处走流程。", "traits": { "orderly": 2, "huge": 1 } },
+        { "text": "带回家放桌上当装饰品。", "traits": { "odd": 2, "chill": 1 } }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "突然被要求在大家面前代表发言，你会？",
+      "answers": [
+        { "text": "先紧张一下，然后认真准备好再上。", "traits": { "gentle": 2, "support": 1, "quiet": 1 } },
+        { "text": "来了就来了，直接开讲。", "traits": { "sunny": 1, "chaos": 1, "perform": 1 } },
+        { "text": "先快速整理要点，结构化表达。", "traits": { "orderly": 2, "leader": 1, "huge": 1 } },
+        { "text": "先想一个炸裂的开场白再说。", "traits": { "drama": 2, "perform": 2 } }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "做重大决定时（比如换工作搬家），你最依赖什么？",
+      "answers": [
+        { "text": "直觉和内心感受。", "traits": { "gentle": 2, "wish": 1 } },
+        { "text": "身边人的意见和建议。", "traits": { "support": 2, "sunny": 1 } },
+        { "text": "具体的数据分析和利弊对比。", "traits": { "orderly": 2, "leader": 1, "menace": 1 } },
+        { "text": "一种说不清但很强烈的「就该这样」的感觉。", "traits": { "odd": 2, "magic": 1 } }
+      ]
+    },
+    {
+      "id": 14,
+      "title": "如果可以拥有一个超能力，你最想要？",
+      "answers": [
+        { "text": "治愈别人的能力。", "traits": { "gentle": 2, "wish": 2, "support": 1 } },
+        { "text": "看透一切本质的洞察力。", "traits": { "magic": 3, "odd": 1 } },
+        { "text": "绝对理性和超强效率。", "traits": { "leader": 2, "orderly": 1, "huge": 2 } },
+        { "text": "把混乱变成有趣的能力。", "traits": { "chaos": 2, "perform": 1, "odd": 1 } }
+      ]
+    },
+    {
+      "id": 15,
+      "title": "你被 Chiikawa 最初吸引的原因是？",
+      "answers": [
+        { "text": "角色之间那种又暖又努力的感觉。", "traits": { "gentle": 2, "support": 2, "sunny": 1 } },
+        { "text": "每个角色都好怪，但我好喜欢。", "traits": { "odd": 3, "magic": 1 } },
+        { "text": "明明很可爱但总是倒霉的反差感。", "traits": { "chaos": 2, "huge": 1, "perform": 1 } },
+        { "text": "看着它们努力活着，自己也被治愈了。", "traits": { "wish": 2, "quiet": 2, "gentle": 1 } }
+      ]
+    }
+  ]
+}

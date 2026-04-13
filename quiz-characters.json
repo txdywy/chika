@@ -1,0 +1,466 @@
+{
+  "meta": {
+    "version": "2.0",
+    "description": "22个Chiikawa角色的trait画像和MBTI数据，用于quiz-questions.json的评分匹配"
+  },
+  "traits_legend": {
+    "gentle": "温柔敏感",
+    "support": "接人补位",
+    "chaos": "冲动混乱",
+    "drama": "戏感与存在感",
+    "chill": "松弛与留白",
+    "leader": "压场与推进",
+    "sunny": "热场与外放",
+    "quiet": "安静陪伴",
+    "orderly": "流程与规矩",
+    "service": "待客与照顾",
+    "menace": "危险感与攻击性",
+    "odd": "怪异与反转",
+    "wish": "稀有感与愿望感",
+    "perform": "营业与舞台感",
+    "huge": "体量感与强度感",
+    "magic": "邪门点子与魔性"
+  },
+  "characters": [
+    {
+      "code": "CHII",
+      "name": "吉伊卡哇",
+      "englishName": "Chiikawa",
+      "mbti": "INFP",
+      "title": "内向温柔小治愈",
+      "oneLiner": "柔软是真的，敏感也是真的。",
+      "summary": "你内向又敏感，对世界充满温柔的感知力。容易被感动，也容易为别人多想，但你的善良本身就是一种力量。",
+      "evidence": [
+        "你对情绪和氛围的感知力比大多数人强。",
+        "你会因为别人的一个眼神或一句话想很久。",
+        "你的温柔不是软弱，是你选择用善良对待这个世界。"
+      ],
+      "groupRole": "默默回收到的努力型成员",
+      "todayRemark": "今天的你：先感受，再行动。",
+      "bestMatch": "小八",
+      "worstMatch": "哥布林",
+      "traits": { "gentle": 4, "quiet": 2, "wish": 2, "support": 1 },
+      "focusTraits": ["gentle", "wish"]
+    },
+    {
+      "code": "HACH",
+      "name": "小八",
+      "englishName": "Hachiware",
+      "mbti": "ESFJ",
+      "title": "体贴细心的社交担当",
+      "oneLiner": "别人还没开口，你已经准备接住了。",
+      "summary": "你体贴细心，社交能力强，很会照顾他人。你是群体里那个让每个人都觉得被在乎的人。",
+      "evidence": [
+        "你是那种会记住每个人喜好和忌口的人。",
+        "你总能敏锐地察觉到谁被冷落了。",
+        "你有一种很难彻底摆烂的善良。"
+      ],
+      "groupRole": "情绪缓冲垫",
+      "todayRemark": "今天的你：一边活着，一边给别人续命。",
+      "bestMatch": "吉伊卡哇",
+      "worstMatch": "山姥",
+      "traits": { "support": 4, "sunny": 2, "service": 2, "gentle": 1 },
+      "focusTraits": ["support", "service"]
+    },
+    {
+      "code": "USAG",
+      "name": "兔兔",
+      "englishName": "Usagi",
+      "mbti": "ENTP",
+      "title": "脑洞大开搞怪王",
+      "oneLiner": "计划可以没有，但脑洞必须先有。",
+      "summary": "你脑洞大、自由奔放、跳脱搞怪。别人还在犹豫时，你已经想出了三个完全不按套路出牌的方案。",
+      "evidence": [
+        "你的人生哲学里先整点不一样的权重很高。",
+        "你不怕把场面弄乱，因为你觉得乱中有序也是一种序。",
+        "你不是无序，你是高维度的序。"
+      ],
+      "groupRole": "混乱推进器",
+      "todayRemark": "今天的你：先想，再整活。",
+      "bestMatch": "狮萨",
+      "worstMatch": "劳动铠甲人",
+      "traits": { "odd": 4, "chaos": 2, "magic": 2, "sunny": 1 },
+      "focusTraits": ["odd", "magic"]
+    },
+    {
+      "code": "MOMO",
+      "name": "飞鼠",
+      "englishName": "Momonga",
+      "mbti": "ESTP",
+      "title": "行动力满分的冒险家",
+      "oneLiner": "你不是作，你是在认真经营存在感。",
+      "summary": "你行动力强、直接现实、爱冒险。你不太纠结，也不太等待，想到了就会去做。",
+      "evidence": [
+        "你不甘心当背景板。",
+        "你对行动、效果、结果这类东西很有自觉。",
+        "你会把想法变成一种可被看见的行动。"
+      ],
+      "groupRole": "镜头自动追踪对象",
+      "todayRemark": "今天的你：别想太多，先做了再说。",
+      "bestMatch": "营业超人",
+      "worstMatch": "栗子馒头",
+      "traits": { "chaos": 3, "sunny": 2, "perform": 2, "huge": 1 },
+      "focusTraits": ["chaos", "perform"]
+    },
+    {
+      "code": "KURI",
+      "name": "栗子馒头",
+      "englishName": "Kuri-Manju",
+      "mbti": "ISTP",
+      "title": "松弛型大人",
+      "oneLiner": "世界很吵，但你先吃一口再说。",
+      "summary": "你不是不懂压力，你只是比较懂得什么值得耗命、什么不值得。你的人生里，松弛是硬实力。",
+      "evidence": [
+        "你很少被无意义的紧张完全卷走。",
+        "你知道留白、停顿和缓一缓有多重要。",
+        "别人容易把你误会成摆烂，其实你只是有经验。"
+      ],
+      "groupRole": "稳定气压层",
+      "todayRemark": "今天的你：别催，先活舒服。",
+      "bestMatch": "古本",
+      "worstMatch": "飞鼠",
+      "traits": { "chill": 4, "quiet": 2, "huge": 1, "support": 1 },
+      "focusTraits": ["chill", "quiet"]
+    },
+    {
+      "code": "RAKK",
+      "name": "海獭",
+      "englishName": "Rakko",
+      "mbti": "ENFP",
+      "title": "活泼热情的氛围担当",
+      "oneLiner": "现场越乱，你越来劲。",
+      "summary": "你活泼热情、表达欲强、情绪感染力强。你不一定想管，但大家会被你的能量带动起来。",
+      "evidence": [
+        "混乱发生时，你天然想参与而不是围观。",
+        "你比起秩序，更在乎气氛热不热。",
+        "你自带一种会让别人忍不住笑的感染力。"
+      ],
+      "groupRole": "气氛与能量中心",
+      "todayRemark": "今天的你：别冷场，大家一起嗨。",
+      "bestMatch": "吉伊卡哇",
+      "worstMatch": "哥布林",
+      "traits": { "sunny": 4, "drama": 2, "perform": 2, "support": 1 },
+      "focusTraits": ["sunny", "drama"]
+    },
+    {
+      "code": "SHIS",
+      "name": "狮萨",
+      "englishName": "Shisa",
+      "mbti": "ISFJ",
+      "title": "温柔守护的默默付出者",
+      "oneLiner": "你一来，场子就不冷了——但你是默默暖起来的那种。",
+      "summary": "你温柔守护、细心负责、默默付出。你不是最热闹的，但你一定是最让人感到安心的那个。",
+      "evidence": [
+        "你对每个人的状态都很敏感。",
+        "你会自然地照顾到大家有没有被冷到。",
+        "你总能把尴尬聊活一点，但不抢风头。"
+      ],
+      "groupRole": "默默守护位",
+      "todayRemark": "今天的你：安静地暖着大家。",
+      "bestMatch": "兔兔",
+      "worstMatch": "古本",
+      "traits": { "gentle": 3, "support": 3, "quiet": 2, "service": 1 },
+      "focusTraits": ["gentle", "support"]
+    },
+    {
+      "code": "FURU",
+      "name": "古本",
+      "englishName": "Furuhonya",
+      "mbti": "INFJ",
+      "title": "安静深沉的理想主义者",
+      "oneLiner": "你话不多，但很容易被人默默依赖。",
+      "summary": "你安静深沉、理想主义、有点神秘。你不吵也不抢镜，但你内心的深度和洞察力很难被替代。",
+      "evidence": [
+        "你更擅长陪着，不是抢着说。",
+        "你会注意到很多别人忽略掉的深层原因。",
+        "你像那种后知后觉会被大家发现很有想法的人。"
+      ],
+      "groupRole": "深沉思考位",
+      "todayRemark": "今天的你：安静，但心里有宇宙。",
+      "bestMatch": "栗子馒头",
+      "worstMatch": "哥布林",
+      "traits": { "quiet": 4, "wish": 2, "magic": 2, "gentle": 1 },
+      "focusTraits": ["quiet", "magic"]
+    },
+    {
+      "code": "LABO",
+      "name": "劳动铠甲人",
+      "englishName": "Labor Yoroi-San",
+      "mbti": "ISTJ",
+      "title": "规则型打工前辈",
+      "oneLiner": "你不是没情绪，你只是先把流程走完。",
+      "summary": "你有很强的职业秩序感。你不一定最热情，但很可能最知道怎样把事情做对、做稳、做完整。",
+      "evidence": [
+        "你对规则、工序和步骤的容忍度明显低于别人。",
+        "你会在混乱里下意识找回秩序。",
+        "你不是冷，是先把系统扶起来。"
+      ],
+      "groupRole": "流程与工位守护者",
+      "todayRemark": "今天的你：先按流程来。",
+      "bestMatch": "口袋铠甲人",
+      "worstMatch": "兔兔",
+      "traits": { "orderly": 4, "leader": 2, "service": 1, "quiet": 1 },
+      "focusTraits": ["orderly", "leader"]
+    },
+    {
+      "code": "POCH",
+      "name": "口袋铠甲人",
+      "englishName": "Pochette Yoroi-san",
+      "mbti": "ISFP",
+      "title": "安静随性的审美派",
+      "oneLiner": "嘴上不吵，手上已经帮你准备好了——而且准备得很好看。",
+      "summary": "你安静随性、有审美、坚持自我。你不一定站在最前面，但你的品味和风格让人很难忽视。",
+      "evidence": [
+        "你会默默提前准备，而且准备得很有品味。",
+        "你对美感和质感的敏感度很高。",
+        "你不爱邀功，但很会用自己的方式表达关心。"
+      ],
+      "groupRole": "审美与随性位",
+      "todayRemark": "今天的你：先把东西备好，而且要好看。",
+      "bestMatch": "古本",
+      "worstMatch": "飞鼠",
+      "traits": { "quiet": 3, "gentle": 2, "chill": 2, "odd": 1 },
+      "focusTraits": ["quiet", "gentle"]
+    },
+    {
+      "code": "RAMN",
+      "name": "拉面铠甲人",
+      "englishName": "Ramen Yoroi-san",
+      "mbti": "ESTJ",
+      "title": "管理型的规则店长",
+      "oneLiner": "热情是服务态度，规矩是管理手段。",
+      "summary": "你管理型、讲规则、组织能力强。你既会招呼人，也会维持秩序，是很会撑住现场的职业前辈。",
+      "evidence": [
+        "你会先想着制度和流程有没有到位。",
+        "你愿意主动表达欢迎，也愿意管纪律。",
+        "你很有开门做生意的成熟管理感。"
+      ],
+      "groupRole": "管理型店长前辈",
+      "todayRemark": "今天的你：欢迎光临，但先遵守规矩。",
+      "bestMatch": "狮萨",
+      "worstMatch": "哥布林",
+      "traits": { "orderly": 4, "leader": 3, "service": 2 },
+      "focusTraits": ["orderly", "service"]
+    },
+    {
+      "code": "YATA",
+      "name": "摊贩铠甲人",
+      "englishName": "Yatai no Yoroi-san",
+      "mbti": "ESFP",
+      "title": "路边摊社交高手",
+      "oneLiner": "你有一种边忙边热闹、边热闹边看摊的本事。",
+      "summary": "你很接地气，也很会把场子经营出人情味。你不只是服务别人，你还会把一个小空间变成热热闹闹的小宇宙。",
+      "evidence": [
+        "你对摊位感、烟火气和人情味很有感觉。",
+        "你不怕边忙边聊天。",
+        "你是那种会把来都来了经营成热闹的人。"
+      ],
+      "groupRole": "路边摊气氛经营者",
+      "todayRemark": "今天的你：边招呼，边整活。",
+      "bestMatch": "狮萨",
+      "worstMatch": "劳动铠甲人",
+      "traits": { "service": 3, "sunny": 3, "chaos": 1, "perform": 1 },
+      "focusTraits": ["service", "perform"]
+    },
+    {
+      "code": "ANOK",
+      "name": "那个孩子",
+      "englishName": "Anoko",
+      "mbti": "ESFP",
+      "title": "外向爱玩的气氛担当",
+      "oneLiner": "看起来软，实际上可能会咬人。",
+      "summary": "你外向爱玩、享受当下、气氛担当。别人以为你是软萌路线，结果发现你其实很会整活搞气氛。",
+      "evidence": [
+        "你会在别人放下戒心后开始疯狂整活。",
+        "你不是稳定型可爱，你是现场型可爱。",
+        "你越兴奋，越容易显得危险。"
+      ],
+      "groupRole": "反转氛围制造者",
+      "todayRemark": "今天的你：软乎乎，但很会闹。",
+      "bestMatch": "飞鼠",
+      "worstMatch": "吉伊卡哇",
+      "traits": { "drama": 3, "chaos": 3, "perform": 2, "sunny": 1 },
+      "focusTraits": ["drama", "chaos"]
+    },
+    {
+      "code": "DEKA",
+      "name": "大强",
+      "englishName": "Dekatsuyo",
+      "mbti": "INTJ",
+      "title": "冷静策略的规划者",
+      "oneLiner": "看着很能打，心里其实早有规划。",
+      "summary": "你冷静策略、规划能力强、理性压制情绪。你给人的第一感受是体量和强度，但细看会发现你每一步都是算好的。",
+      "evidence": [
+        "你经常显得比实际更有策略。",
+        "你不是情绪路线，你是计算路线。",
+        "你身上有一种冷静又强大的反差。"
+      ],
+      "groupRole": "策略与规划担当",
+      "todayRemark": "今天的你：能顶，但每一击都有计划。",
+      "bestMatch": "海獭",
+      "worstMatch": "飞鼠",
+      "traits": { "leader": 3, "magic": 2, "menace": 2, "orderly": 1 },
+      "focusTraits": ["leader", "magic"]
+    },
+    {
+      "code": "ODEE",
+      "name": "欧德",
+      "englishName": "Ode",
+      "mbti": "ENTP",
+      "title": "脑洞大开的直球怪人",
+      "oneLiner": "体积很大，脑回路也不走寻常路。",
+      "summary": "你脑洞大、自由奔放，同时大体积直来直往。你常给人一种想法先到、逻辑后补的感觉，但你的创意往往很独特。",
+      "evidence": [
+        "你经常靠脑洞先到压过解释。",
+        "你不是最精细的，但一定很有想法。",
+        "你的怪异和创意经常绑定出现。"
+      ],
+      "groupRole": "脑洞直球型角色",
+      "todayRemark": "今天的你：脑洞先到，块头跟上。",
+      "bestMatch": "兔兔",
+      "worstMatch": "劳动铠甲人",
+      "traits": { "odd": 3, "chaos": 2, "huge": 2, "magic": 1 },
+      "focusTraits": ["odd", "chaos"]
+    },
+    {
+      "code": "GOBL",
+      "name": "哥布林",
+      "englishName": "Goblins",
+      "mbti": "ENTP",
+      "title": "经典麻烦制造者",
+      "oneLiner": "你不是恶，只是很会把场面搞难看。",
+      "summary": "你像那种一出场就意味着麻烦浓度上升的存在。不是每次都坏，但很容易把别人逼进高压状态。",
+      "evidence": [
+        "你有惹人生气的天赋。",
+        "你擅长把本来就乱的局面再拧一下。",
+        "别人对你最大的感受是又来了。"
+      ],
+      "groupRole": "高风险麻烦源",
+      "todayRemark": "今天的你：自己开心，别人血压高。",
+      "bestMatch": "山姥",
+      "worstMatch": "古本",
+      "traits": { "menace": 4, "chaos": 2, "odd": 1, "perform": 1 },
+      "focusTraits": ["menace", "chaos"]
+    },
+    {
+      "code": "BLAC",
+      "name": "黑星",
+      "englishName": "Black Star",
+      "mbti": "INTP",
+      "title": "黑色许愿反噬体",
+      "oneLiner": "你理解需求，但不保证按善意执行。",
+      "summary": "你不是常规意义的坏，而是会把事情往黑色幽默方向实现。你身上有种很冷的荒诞感。",
+      "evidence": [
+        "你很会把愿望翻译成代价。",
+        "你对黑色幽默有天然适配度。",
+        "你的问题不是不理解，是理解得太歪。"
+      ],
+      "groupRole": "阴间许愿实现器",
+      "todayRemark": "今天的你：懂了，但我偏要这么实现。",
+      "bestMatch": "山姥",
+      "worstMatch": "流星",
+      "traits": { "wish": 5, "odd": 2, "menace": 1, "magic": 4 },
+      "focusTraits": ["wish", "magic"]
+    },
+    {
+      "code": "SHOO",
+      "name": "流星",
+      "englishName": "Shooting Star",
+      "mbti": "ENTJ",
+      "title": "强势掌控的许愿星",
+      "oneLiner": "平时很稀有，一出现就要掌控全局。",
+      "summary": "你强势掌控、目标导向、压迫感强。你会发光，但不是脆弱型发光，而是带着目的和力量的那种。",
+      "evidence": [
+        "你不是天天高调，但出现时一定会推动事情发展。",
+        "你有一点强势，也有一点目标感。",
+        "你给人的感觉更像愿望必须被实现的压迫感。"
+      ],
+      "groupRole": "掌控与目标担当",
+      "todayRemark": "今天的你：发光可以，但先按计划来。",
+      "bestMatch": "小八",
+      "worstMatch": "黑星",
+      "traits": { "leader": 4, "huge": 2, "wish": 2, "orderly": 1 },
+      "focusTraits": ["leader", "huge"]
+    },
+    {
+      "code": "MAJO",
+      "name": "山姥",
+      "englishName": "Majo",
+      "mbti": "INTJ",
+      "title": "邪门点子型山姥",
+      "oneLiner": "你不是路子野，你是路子有点邪。",
+      "summary": "你脑子里会冒出一些很偏、很阴、很有效的想法。你不像热闹型疯子，更像冷静型怪人。",
+      "evidence": [
+        "你会想到别人想不到的偏门解法。",
+        "你的创意偶尔带点阴间审美。",
+        "你不是乱来，是邪门地成立。"
+      ],
+      "groupRole": "偏门方案提供者",
+      "todayRemark": "今天的你：招有点阴，但能成。",
+      "bestMatch": "黑星",
+      "worstMatch": "小八",
+      "traits": { "magic": 5, "menace": 2, "odd": 2, "leader": 1 },
+      "focusTraits": ["magic", "odd"]
+    },
+    {
+      "code": "KABU",
+      "name": "吉伊卡菇",
+      "englishName": "Chiikabu",
+      "mbti": "INTP",
+      "title": "先萌后吓人的变异体",
+      "oneLiner": "你平时看着无害，切模式时很有反差。",
+      "summary": "你最大的特色是反转。你不是完全危险，也不是完全可爱，而是会在某个瞬间切到另一种状态。",
+      "evidence": [
+        "别人很容易先被你的表面骗到。",
+        "你身上有一种诶怎么突然这样的切换感。",
+        "你不是单线程角色。"
+      ],
+      "groupRole": "反差值制造机",
+      "todayRemark": "今天的你：先萌，再吓人。",
+      "bestMatch": "那个孩子",
+      "worstMatch": "劳动铠甲人",
+      "traits": { "odd": 3, "magic": 2, "menace": 1, "gentle": 1 },
+      "focusTraits": ["odd", "magic"]
+    },
+    {
+      "code": "MUCH",
+      "name": "营业超人",
+      "englishName": "Muchauman",
+      "mbti": "ENFJ",
+      "title": "营业型吉祥物人格",
+      "oneLiner": "你的人前状态管理，已经是一套专业系统。",
+      "summary": "你很懂表情、动作、姿态和对外呈现。你不是假的，你只是很会开营业人格。",
+      "evidence": [
+        "你知道什么时候该笑、该接梗、该进入状态。",
+        "你有一种很成熟的对外界面。",
+        "你天生适合舞台、宣传和场面活。"
+      ],
+      "groupRole": "对外营业负责人",
+      "todayRemark": "今天的你：模式已切到营业人格。",
+      "bestMatch": "飞鼠",
+      "worstMatch": "栗子馒头",
+      "traits": { "perform": 4, "sunny": 2, "service": 1, "drama": 1 },
+      "focusTraits": ["perform", "service"]
+    },
+    {
+      "code": "PAJA",
+      "name": "睡衣派对组",
+      "englishName": "Pajama Parties",
+      "mbti": "ENFP",
+      "title": "团体营业型睡衣组合",
+      "oneLiner": "你不是一个人发光，你是拉着大家一起整活。",
+      "summary": "你很适合团体感、氛围感和一起营业的场景。你不是单兵作战型，你是一起唱、一起笑、一起热闹的那种。",
+      "evidence": [
+        "你更适合在有同伴的情况下变得更亮。",
+        "你对团体表演和一起整活很有适配度。",
+        "你的热闹感带一点可爱营业。"
+      ],
+      "groupRole": "团体整活担当",
+      "todayRemark": "今天的你：一个人也行，但一群人更来劲。",
+      "bestMatch": "狮萨",
+      "worstMatch": "古本",
+      "traits": { "perform": 3, "sunny": 2, "support": 2, "drama": 1 },
+      "focusTraits": ["perform", "support"]
+    }
+  ]
+}
