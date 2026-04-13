@@ -414,7 +414,7 @@ function renderDetail(c) {
 function imgEl(c, size) {
   if (!c.image) return `<span style="font-size:${size * 0.3}px;font-weight:800;color:#8B6D4E">${c.name.slice(0, 2)}</span>`;
   return `<img src="${c.image}" alt="${c.name}" loading="lazy" referrerpolicy="no-referrer"
-    style="width:${size}px;height:${size}px;object-fit:contain"
+    style="width:100%;height:100%;object-fit:contain"
     onerror="this.outerHTML='<span style=\\'font-size:${size*0.3}px;font-weight:800;color:#8B6D4E\\'>${c.name.slice(0,2)}</span>'">`;
 }
 
