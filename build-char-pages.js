@@ -64,6 +64,15 @@ const baiduScript = `
     })();
   </script>`;
 
+const gaScript = `
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DY71VXW75G"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-DY71VXW75G');
+  </script>`;
+
 function charPage(c) {
   const d = c.detail || {};
   const img = imgPath(c.code);
@@ -71,7 +80,22 @@ function charPage(c) {
   const coverUrl = `${SITE_URL}/og-cover.png`;
   const keywords = `${c.name} MBTI, ${c.name} 性格分析, ${c.name} 是什么角色, ${c.mbti}, ${c.sbtI}, Chiikawa, 吉伊卡哇`;
   const typeCode = c.typeCode || c.sbtI;
-  const description = `${c.name}（${c.nameJp || c.name}）角色性格分析 — ${c.sbtIFull}（${c.sbtI}）。${d.personality || ''} ${c.summary || ''}`.slice(0, 160);
+
+  // SEO description: concise, no duplication, complete sentence, ~70-80 chars
+  const rawDesc = `${c.name}：${c.sbtIFull}（${c.sbtI}）。${d.personality || ''}${c.summary ? '。' + c.summary : ''}`;
+  const description = rawDesc.length <= 80
+    ? rawDesc
+    : (rawDesc.slice(0, 80).match(/^(.*[。！？])/)?.[1] || rawDesc.slice(0, 75)) + '…';
+
+  // Build name-to-code lookup for internal match links
+  const nameToCode = {};
+  for (const ch of characters) { nameToCode[ch.name] = ch.code; }
+  function matchLink(name) {
+    const code = nameToCode[name];
+    return code
+      ? `<a href="/characters/${code}/" style="color:var(--accent-dark);text-decoration:underline;text-underline-offset:2px">${esc(name)}</a>`
+      : esc(name);
+  }
 
   const achievements = (d.achievements || []).map(a => `<li>${esc(a)}</li>`).join('\n        ');
   const evidence = (c.evidence || []).map(e => `<li>${esc(e)}</li>`).join('\n        ');
@@ -127,6 +151,7 @@ function charPage(c) {
 
   <script type="application/ld+json">${breadcrumbJson}</script>
   ${baiduScript}
+  ${gaScript}
 </head>
 <body>
   <nav class="topbar">
@@ -212,11 +237,11 @@ function charPage(c) {
           <div class="info-dual">
             <div class="info-card">
               <h3 class="info-title">最搭</h3>
-              <p class="info-body">${esc(c.bestMatch || '')}</p>
+              <p class="info-body">${matchLink(c.bestMatch || '')}</p>
             </div>
             <div class="info-card">
               <h3 class="info-title">最怕遇到</h3>
-              <p class="info-body">${esc(c.worstMatch || '')}</p>
+              <p class="info-body">${matchLink(c.worstMatch || '')}</p>
             </div>
           </div>
 
@@ -279,6 +304,7 @@ function indexPage() {
   <meta name="twitter:description" content="收录吉伊卡哇全部 22 个角色的性格分析和 MBTI 匹配。">
   <meta name="twitter:image" content="${SITE_URL}/og-cover.png">
   <link rel="canonical" href="${SITE_URL}/characters/">
+  <meta name="robots" content="index, follow">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐹</text></svg>">
   <link rel="stylesheet" href="/styles.css">
   ${baiduScript}
