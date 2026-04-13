@@ -560,39 +560,11 @@ a { color: inherit; }
 .result-card {
   border-radius: var(--r-xl);
   padding: 22px 18px;
-  background: var(--card-solid);
+  background: linear-gradient(160deg, #FFD0A0, #FFF6E5 70%, #FFF);
   color: var(--text);
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
-}
-.result-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 6px;
-  border-radius: var(--r-xl) var(--r-xl) 0 0;
-  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
-}
-.result-accent-bar {
-  position: absolute;
-  top: 6px;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), transparent);
-}
-.result-card::after {
-  content: "";
-  position: absolute;
-  inset: auto -30% -40% auto;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: rgba(255, 183, 49, 0.08);
-  filter: blur(8px);
 }
 .result-badges {
   display: flex;

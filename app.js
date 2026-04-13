@@ -344,8 +344,9 @@ function computeAndShow() {
     updateMetaTags(primary);
 
     /* result card */
+    const cardBg = `linear-gradient(160deg, ${primary.color || "#FFD0A0"}, #FFF6E5 70%, #FFF)`;
+    resultCard.style.background = cardBg;
     resultCard.innerHTML = `
-      <div class="result-accent-bar" style="background:linear-gradient(90deg, ${primary.color || "#FFB731"}, ${primary.color || "#FFB731"}88)"></div>
       <div class="result-badges">
         <span class="badge">${primary.typeCode}</span>
         <span class="badge">${primary.mbti}</span>
