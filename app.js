@@ -74,6 +74,7 @@ const progressFill   = $("#progressFill");
 const questionIndex  = $("#questionIndex");
 const questionTitle  = $("#questionTitle");
 const answersEl      = $("#answers");
+const backBtn        = $("#backBtn");
 const resultCard     = $("#resultCard");
 const posterEl       = $("#poster");
 const evidenceList   = $("#evidenceList");
@@ -124,6 +125,7 @@ async function init() {
 
   detailBack.addEventListener("click", () => showScreen(screenHome));
   detailStartQuiz.addEventListener("click", () => showScreen(screenHome));
+  backBtn.addEventListener("click", goBack);
   startButton.addEventListener("click", onStart);
   restartTop.addEventListener("click", resetAll);
   restartButton.addEventListener("click", resetAll);
@@ -185,6 +187,8 @@ function renderQuestion() {
   questionIndex.textContent = `问题 ${idx + 1}`;
   questionTitle.textContent = q.title;
 
+  backBtn.hidden = state.answers.length === 0;
+
   answersEl.innerHTML = q.answers.map((a, i) =>
     `<button class="answer-btn" data-i="${i}">${a.text}</button>`
   ).join("");
@@ -215,6 +219,35 @@ function pickAnswer(i) {
   /* subtle animation */
   answersEl.style.opacity = "0";
   answersEl.style.transform = "translateY(8px)";
+  setTimeout(() => {
+    renderQuestion();
+    answersEl.style.transition = "opacity 0.2s ease, transform 0.2s ease";
+    answersEl.style.opacity = "1";
+    answersEl.style.transform = "translateY(0)";
+    setTimeout(() => { answersEl.style.transition = ""; }, 250);
+  }, 120);
+}
+
+/* ===== go back ===== */
+function goBack() {
+  if (state.answers.length === 0) return;
+
+  const lastAnswerIdx = state.answers.length - 1;
+  const lastQIdx = lastAnswerIdx;
+  const lastAnswer = state.answers[lastAnswerIdx];
+  const q = questions[lastQIdx];
+  const chosen = q.answers[lastAnswer];
+
+  state.answers.pop();
+  state.currentQuestion = lastQIdx;
+  for (const [trait, val] of Object.entries(chosen.traits)) {
+    state.traitScores[trait] = (state.traitScores[trait] || 0) - val;
+  }
+  saveState();
+
+  /* fade transition */
+  answersEl.style.opacity = "0";
+  answersEl.style.transform = "translateY(-8px)";
   setTimeout(() => {
     renderQuestion();
     answersEl.style.transition = "opacity 0.2s ease, transform 0.2s ease";
