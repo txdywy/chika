@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#FFF6E5">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>CHTI · 测你像哪个 Chiikawa 角色</title>
+  <meta name="description" content="15道题，测出你现在最像的 Chiikawa 角色。MBTI 娱乐向测试。">
+  <meta property="og:title" content="CHTI · 测你像哪个 Chiikawa 角色">
+  <meta property="og:description" content="15道题，把你现在的状态翻译成一张角色卡。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://txdywy.github.io/chika/og-cover.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐹</text></svg>">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+
+    <!-- WeChat tip -->
+    <div class="wechat-tip" id="wechatTip" hidden>
+      微信里长按结果区域截图，发群或发给朋友。
+    </div>
+
+    <!-- Top bar -->
+    <nav class="topbar">
+      <span class="brand">CHTI</span>
+      <button class="ghost-btn" id="restartTop" hidden>重测</button>
+    </nav>
+
+    <!-- ========== HOME ========== -->
+    <section class="screen active" id="screenHome">
+      <div class="hero">
+        <div class="hero-visual">
+          <div class="hero-sticker">
+            <img src="images/01-Chiikawas/吉伊卡哇_chii.png" alt="Chiikawa" loading="eager">
+          </div>
+          <div class="hero-text">
+            <h1>测你像哪个<br>Chiikawa 角色</h1>
+            <p class="hero-desc">15 道题，把你现在的状态翻译成一张角色卡。</p>
+          </div>
+        </div>
+        <div class="hero-tags">
+          <span class="tag">MBTI 娱乐向</span>
+          <span class="tag">22 张角色卡</span>
+          <span class="tag">适合手机测</span>
+        </div>
+        <button class="btn-primary" id="startButton">开始测</button>
+        <p class="hero-resume" id="heroResume" hidden>上次测到第 <strong id="resumeCount">0</strong> 题，继续还是重测？</p>
+      </div>
+
+      <div class="roster">
+        <h2 class="section-title">22 张角色卡</h2>
+        <div class="roster-grid" id="rosterGrid"></div>
+      </div>
+    </section>
+
+    <!-- ========== QUIZ ========== -->
+    <section class="screen" id="screenQuiz">
+      <div class="quiz-shell">
+        <div class="progress-shell">
+          <div class="progress-info">
+            <span class="progress-count" id="progressCount"></span>
+            <span class="progress-tip" id="progressTip"></span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+
+        <div class="question-card">
+          <span class="question-index" id="questionIndex"></span>
+          <h2 class="question-title" id="questionTitle"></h2>
+        </div>
+
+        <div class="answers" id="answers"></div>
+      </div>
+    </section>
+
+    <!-- ========== RESULT ========== -->
+    <section class="screen" id="screenResult">
+      <div class="result-shell">
+        <!-- Main result -->
+        <div class="result-card" id="resultCard"></div>
+
+        <!-- Share poster preview -->
+        <div class="poster" id="poster"></div>
+
+        <!-- Evidence -->
+        <div class="info-card">
+          <h3 class="info-title">为什么像</h3>
+          <ul class="evidence-list" id="evidenceList"></ul>
+        </div>
+
+        <!-- Group role + today remark -->
+        <div class="info-dual">
+          <div class="info-card">
+            <h3 class="info-title">群聊职位</h3>
+            <p class="info-body" id="groupRole"></p>
+          </div>
+          <div class="info-card">
+            <h3 class="info-title">今日状态</h3>
+            <p class="info-body" id="todayRemark"></p>
+          </div>
+        </div>
+
+        <!-- Best / Worst match -->
+        <div class="info-dual">
+          <div class="info-card">
+            <h3 class="info-title">最搭</h3>
+            <p class="info-body" id="bestMatch"></p>
+          </div>
+          <div class="info-card">
+            <h3 class="info-title">最怕遇到</h3>
+            <p class="info-body" id="worstMatch"></p>
+          </div>
+        </div>
+
+        <!-- Deputy card -->
+        <div class="info-card" id="deputyCard"></div>
+
+        <!-- Share copy -->
+        <div class="share-section">
+          <h3 class="section-title">分享文案</h3>
+          <textarea id="shareCopy" readonly></textarea>
+          <div class="action-row">
+            <button class="btn-secondary" id="copyButton">复制文案</button>
+            <button class="btn-secondary" id="downloadButton">导出海报</button>
+            <button class="btn-ghost" id="restartButton">再测一次</button>
+          </div>
+          <p class="copy-feedback" id="copyFeedback"></p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
