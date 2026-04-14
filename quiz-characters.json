@@ -731,12 +731,12 @@
         "jp": -0.32
       },
       "styleProfile": {
-        "warmth": 0.74,
-        "weirdness": 0.18,
-        "showmanship": 0.66,
-        "discipline": 0.42,
-        "edge": 0.18,
-        "softness": 0.24
+        "warmth": 0.82,
+        "weirdness": 0.1,
+        "showmanship": 0.62,
+        "discipline": 0.48,
+        "edge": 0.12,
+        "softness": 0.26
       },
       "resultNotes": {
         "mbtiArchetype": "ESFP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
@@ -789,12 +789,12 @@
         "jp": -0.84
       },
       "styleProfile": {
-        "warmth": 0.12,
-        "weirdness": 0.88,
-        "showmanship": 0.82,
-        "discipline": 0.1,
-        "edge": 0.72,
-        "softness": 0.08
+        "warmth": 0.08,
+        "weirdness": 0.94,
+        "showmanship": 0.86,
+        "discipline": 0.06,
+        "edge": 0.82,
+        "softness": 0.04
       },
       "resultNotes": {
         "mbtiArchetype": "ESFP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
@@ -1021,12 +1021,12 @@
         "jp": -0.24
       },
       "styleProfile": {
-        "warmth": 0.06,
-        "weirdness": 0.8,
+        "warmth": 0.04,
+        "weirdness": 0.88,
         "showmanship": 0.02,
-        "discipline": 0.2,
-        "edge": 0.96,
-        "softness": 0.06
+        "discipline": 0.1,
+        "edge": 1,
+        "softness": 0.02
       },
       "resultNotes": {
         "mbtiArchetype": "INTP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
@@ -1195,12 +1195,12 @@
         "jp": -0.46
       },
       "styleProfile": {
-        "warmth": 0.22,
-        "weirdness": 0.82,
-        "showmanship": 0.22,
-        "discipline": 0.18,
-        "edge": 0.34,
-        "softness": 0.62
+        "warmth": 0.24,
+        "weirdness": 0.76,
+        "showmanship": 0.24,
+        "discipline": 0.16,
+        "edge": 0.24,
+        "softness": 0.72
       },
       "resultNotes": {
         "mbtiArchetype": "INTP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
