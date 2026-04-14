@@ -149,7 +149,7 @@ async function loadData() {
     characters = cData.characters.map(c => ({
       ...c,
       typeCode: c.typeCode || c.sbtI,
-      image: IMAGE_MAP[c.code] || ""
+      image: IMAGE_MAP[c.code] ? '/' + IMAGE_MAP[c.code] : ''
     }));
   } catch (e) {
     console.error("Failed to load quiz data", e);
@@ -571,11 +571,10 @@ function esc(s) {
 
 function imgEl(c, size) {
   if (!c.image) return `<span style="font-size:${size * 0.3}px;font-weight:800;color:#8B6D4E">${esc(c.name.slice(0, 2))}</span>`;
-  const fallback = `<span style="font-size:${size * 0.3}px;font-weight:800;color:#8B6D4E">${esc(c.name.slice(0, 2))}</span>`;
-  const safeFallback = JSON.stringify(fallback);
+  const fallbackName = esc(c.name.slice(0, 2));
   return `<img src="${esc(c.image)}" alt="${esc(c.name)}" loading="lazy" referrerpolicy="no-referrer"
     style="width:100%;height:100%;object-fit:contain"
-    onerror="this.outerHTML=${safeFallback}">`;
+    onerror="this.outerHTML='<span style=&quot;font-size:${size * 0.3}px;font-weight:800;color:#8B6D4E&quot;>${fallbackName}</span>'">`;
 }
 
 function fallbackResult() {
