@@ -157,9 +157,10 @@ function splitHalfReliability(samples = 20000, seed = 20260414) {
   const result = {};
   AXES.forEach((axis) => {
     const r = pearson(buckets[axis].odd, buckets[axis].even);
+    const denom = 1 + r;
     result[axis] = {
       rawCorrelation: Number(r.toFixed(3)),
-      spearmanBrown: Number((2 * r / (1 + r || 1)).toFixed(3))
+      spearmanBrown: Number((denom !== 0 ? 2 * r / denom : r).toFixed(3))
     };
   });
   return result;

@@ -112,6 +112,7 @@ async function init() {
   renderRoster();
   if (isWeChat) wechatTip.hidden = false;
   restoreState();
+  handleHash();
 
   detailBack.addEventListener("click", () => showScreen(screenHome));
   detailStartQuiz.addEventListener("click", () => {
@@ -228,7 +229,11 @@ function renderQuestion() {
 }
 
 /* ===== pick answer ===== */
+let isAnswering = false;
 function pickAnswer(i) {
+  if (isAnswering) return;
+  isAnswering = true;
+
   const q = questions[state.currentQuestion];
   const chosen = q.answers[i];
   const btns = answersEl.querySelectorAll(".answer-btn");
@@ -257,6 +262,7 @@ function pickAnswer(i) {
     setTimeout(() => {
       computeAndShow();
       showScreen(screenResult);
+      isAnswering = false;
     }, 250);
     return;
   }
@@ -270,14 +276,14 @@ function pickAnswer(i) {
       answersEl.style.transition = "opacity 0.2s ease, transform 0.2s ease";
       answersEl.style.opacity = "1";
       answersEl.style.transform = "translateY(0)";
-      setTimeout(() => { answersEl.style.transition = ""; }, 250);
+      setTimeout(() => { answersEl.style.transition = ""; isAnswering = false; }, 250);
     }, 100);
   }, 250);
 }
 
 /* ===== go back ===== */
 function goBack() {
-  if (state.answers.length === 0) return;
+  if (isAnswering || state.answers.length === 0) return;
 
   const lastAnswerIdx = state.answers.length - 1;
   const lastQIdx = lastAnswerIdx;
@@ -565,9 +571,11 @@ function esc(s) {
 
 function imgEl(c, size) {
   if (!c.image) return `<span style="font-size:${size * 0.3}px;font-weight:800;color:#8B6D4E">${esc(c.name.slice(0, 2))}</span>`;
+  const fallback = `<span style="font-size:${size * 0.3}px;font-weight:800;color:#8B6D4E">${esc(c.name.slice(0, 2))}</span>`;
+  const safeFallback = JSON.stringify(fallback);
   return `<img src="${esc(c.image)}" alt="${esc(c.name)}" loading="lazy" referrerpolicy="no-referrer"
     style="width:100%;height:100%;object-fit:contain"
-    onerror="this.outerHTML='<span style=&quot;font-size:${size*0.3}px;font-weight:800;color:#8B6D4E&quot;>${esc(c.name.slice(0,2))}</span>'">`;
+    onerror="this.outerHTML=${safeFallback}">`;
 }
 
 function fallbackResult() {
@@ -880,6 +888,18 @@ function resetAll() {
   restartTop.hidden = true;
   updateDetailCTA();
   showScreen(screenHome);
+}
+
+function handleHash() {
+  const hash = location.hash;
+  if (!hash || !hash.startsWith("#share/")) return;
+
+  const code = hash.replace("#share/", "").replace(/\/+$/, "");
+  const primary = characters.find(c => c.code === code);
+  if (!primary || !latestResult) return;
+
+  computeAndShow();
+  showScreen(screenResult);
 }
 
 function emptyScores() {

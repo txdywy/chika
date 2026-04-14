@@ -23,35 +23,14 @@ function esc(s) {
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;');
 }
 
+const IMAGE_MAP = require('./image-map.json');
+
 function imgPath(code) {
-  const map = {
-    CHII: 'images/01-Chiikawas/吉伊卡哇_chii.png',
-    HACH: 'images/01-Chiikawas/小八_hachi.png',
-    USAG: 'images/01-Chiikawas/兔兔_usagi.png',
-    MOMO: 'images/01-Chiikawas/飞鼠_momo.png',
-    KURI: 'images/01-Chiikawas/栗子馒头_kuri.png',
-    RAKK: 'images/01-Chiikawas/海獭_rakko.png',
-    SHIS: 'images/01-Chiikawas/狮萨_shisa.png',
-    FURU: 'images/01-Chiikawas/古本_furu.png',
-    LABO: 'images/02-Yoroi铠甲人/劳动铠甲人_labo.png',
-    POCH: 'images/02-Yoroi铠甲人/口袋铠甲人_poch.png',
-    RAMN: 'images/02-Yoroi铠甲人/拉面铠甲人_ramn.png',
-    YATA: 'images/02-Yoroi铠甲人/摊贩铠甲人_yata.png',
-    ANOK: 'images/03-Chimera/那个孩子_anok.png',
-    DEKA: 'images/03-Chimera/大强_deka.webp',
-    ODEE: 'images/04-Miscellaneous/欧德_odee.jpg',
-    GOBL: 'images/04-Miscellaneous/哥布林_gobl.png',
-    BLAC: 'images/04-Miscellaneous/黑星_blac.jpg',
-    SHOO: 'images/04-Miscellaneous/流星_shoo.jpg',
-    MAJO: 'images/04-Miscellaneous/山姥_majo.webp',
-    KABU: 'images/04-Miscellaneous/吉伊卡菇_kabu.jpeg',
-    MUCH: 'images/04-Miscellaneous/营业超人_much.png',
-    PAJA: 'images/04-Miscellaneous/睡衣派对组_paja.png'
-  };
-  return map[code] || '';
+  return IMAGE_MAP[code] || '';
 }
 
 const baiduScript = `
@@ -193,7 +172,7 @@ function charPage(c, idx) {
           <div class="detail-hero-img">
             <img src="/${img}" alt="${esc(c.name)}" loading="eager"
               style="width:100%;height:100%;object-fit:contain"
-              onerror="this.outerHTML='<span style=\\'font-size:36px;font-weight:800;color:#fff\\'>${esc(c.name.slice(0,2))}</span>'">
+              onerror="this.outerHTML=&#39;<span style=&quot;font-size:36px;font-weight:800;color:#fff&quot;>${esc(c.name.slice(0,2))}</span>&#39;">
           </div>
           <div class="detail-hero-content">
             <div class="detail-hero-badges">
@@ -392,7 +371,7 @@ function indexPage() {
       <div class="roster-avatar">
         <img src="/${imgPath(c.code)}" alt="${esc(c.name)}" loading="lazy"
           style="width:100%;height:100%;object-fit:contain"
-          onerror="this.outerHTML='<span style=\\'font-size:14px;font-weight:800;color:#8B6D4E\\'>${esc(c.name.slice(0,2))}</span>'">
+          onerror="this.outerHTML=&#39;<span style=&quot;font-size:14px;font-weight:800;color:#8B6D4E&quot;>${esc(c.name.slice(0,2))}</span>&#39;">
       </div>
       <span class="roster-name">${esc(c.name)}</span>
       <span style="font-size:10px;color:var(--muted)">${esc(c.mbti)}</span>
