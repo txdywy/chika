@@ -49,6 +49,7 @@ const PROGRESS_TIPS = [
 let questions = [];
 let characters = [];
 let latestResult = null;
+const HOME_PATH = "/";
 
 const state = {
   currentQuestion: 0,
@@ -442,10 +443,12 @@ function computeAndShow() {
     const matchRate = Math.max(68, Math.min(97, Math.round(ranked[0].score * 100)));
     const mbtiGuess = deriveMbti(state.scores);
     const styleTags = topStyleLabels(state.scores);
+    const shareUrl = `${location.origin}/share/${primary.code}/`;
 
-    latestResult = { primary, secondary, matchRate, mbtiGuess, styleTags };
+    latestResult = { primary, secondary, matchRate, mbtiGuess, styleTags, shareUrl };
     document.title = `我是 ${primary.name} | CHTI`;
-    updateMetaTags(primary);
+    updateMetaTags(primary, shareUrl);
+    history.replaceState({}, "", `/share/${primary.code}/`);
 
     /* result card */
     const cardBg = `linear-gradient(160deg, ${primary.color || "#FFD0A0"}, #FFF6E5 70%, #FFF)`;
@@ -522,7 +525,7 @@ function computeAndShow() {
       `我这次的风格标签：${styleTags.join("、")}。\n` +
       `副卡是 ${secondary.name}。\n` +
       `CHTI 说我：${primary.summary}\n` +
-      `你也去测测，看你会抽到谁。`;
+      `你也去测测，看你会抽到谁：${shareUrl}`;
 
     restartTop.hidden = false;
     saveState();
@@ -533,15 +536,16 @@ function computeAndShow() {
 }
 
 /* ===== dynamic meta tags ===== */
-function updateMetaTags(primary) {
+function updateMetaTags(primary, shareUrl) {
   const origin = location.origin;
-  const coverUrl = origin + '/og-cover.png';
+  const shareImage = `${origin}/social/${primary.code}.jpg`;
   setOrCreateMeta('property', 'og:title', `我是 ${primary.name} | CHTI`);
   setOrCreateMeta('property', 'og:description', `测出来了，我这次抽到的是 ${primary.name}。${primary.sbtIFull}。`);
-  setOrCreateMeta('property', 'og:image', coverUrl);
+  setOrCreateMeta('property', 'og:image', shareImage);
+  setOrCreateMeta('property', 'og:url', shareUrl);
   setOrCreateMeta('name', 'twitter:title', `我是 ${primary.name} | CHTI`);
   setOrCreateMeta('name', 'twitter:description', `测出来了，我这次抽到的是 ${primary.name}。`);
-  setOrCreateMeta('name', 'twitter:image', coverUrl);
+  setOrCreateMeta('name', 'twitter:image', shareImage);
 }
 
 function setOrCreateMeta(attrName, attrValue, content) {
@@ -872,6 +876,7 @@ function resetAll() {
   latestResult = null;
   copyFeedback.textContent = "";
   document.title = "CHTI · 测你像哪个 Chiikawa 角色";
+  history.replaceState({}, "", HOME_PATH);
   restartTop.hidden = true;
   updateDetailCTA();
   showScreen(screenHome);

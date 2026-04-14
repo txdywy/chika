@@ -10,6 +10,7 @@ const path = require('path');
 
 const SITE_URL = 'https://chika.hackx64.eu.org';
 const CHAR_DIR = path.join(__dirname, 'characters');
+const SHARE_DIR = path.join(__dirname, 'share');
 const BUILD_DATE = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
 
 // --- read data ---
@@ -78,7 +79,7 @@ function charPage(c, idx) {
   const img = imgPath(c.code);
   const charUrl = `${SITE_URL}/characters/${c.code}/`;
   const coverUrl = `${SITE_URL}/og-cover.png`;
-  const shareImageUrl = img ? encodeURI(`${SITE_URL}/${img}`) : coverUrl;
+  const shareImageUrl = `${SITE_URL}/social/${c.code}.jpg`;
   const typeCode = c.typeCode || c.sbtI;
 
   // SEO description: hand-crafted short summary, complete sentence, no truncation
@@ -306,6 +307,85 @@ function charPage(c, idx) {
 </html>`;
 }
 
+function sharePage(c) {
+  const shareUrl = `${SITE_URL}/share/${c.code}/`;
+  const shareImageUrl = `${SITE_URL}/social/${c.code}.jpg`;
+  const description = `我测出来最像 ${c.name}。${c.oneLiner} 来测测你像哪个 Chiikawa 角色。`;
+
+  return `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>我测出来是 ${esc(c.name)} | CHTI</title>
+  <meta name="description" content="${esc(description)}">
+  <meta property="og:title" content="我测出来是 ${esc(c.name)} | CHTI">
+  <meta property="og:description" content="${esc(description)}">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="${shareImageUrl}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="${esc(c.name)} 分享图">
+  <meta property="og:url" content="${shareUrl}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="我测出来是 ${esc(c.name)} | CHTI">
+  <meta name="twitter:description" content="${esc(description)}">
+  <meta name="twitter:image" content="${shareImageUrl}">
+  <link rel="canonical" href="${shareUrl}">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐹</text></svg>">
+  <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">${JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": `我测出来是 ${c.name} | CHTI`,
+    "description": description,
+    "url": shareUrl,
+    "image": shareImageUrl
+  })}</script>
+  ${baiduScript}
+  ${gaScript}
+</head>
+<body>
+  <div class="app-shell">
+    <section class="screen active" style="display:grid">
+      <div class="detail-shell" style="max-width:720px">
+        <div class="detail-hero" style="background:linear-gradient(145deg, ${c.color || '#FFD0A0'}, #FFF2DB)">
+          <div class="detail-hero-img">
+            <img src="/${imgPath(c.code)}" alt="${esc(c.name)}" loading="eager" style="width:100%;height:100%;object-fit:contain">
+          </div>
+          <div class="detail-hero-content">
+            <div class="detail-hero-badges">
+              <span class="detail-hero-badge">${esc(c.typeCode || c.sbtI)}</span>
+              <span class="detail-hero-badge">${esc(c.mbti)}</span>
+            </div>
+            <h1 class="detail-hero-name">我测出来是 ${esc(c.name)}</h1>
+            <p class="detail-hero-title">${esc(c.title)}</p>
+            <p class="detail-hero-oneliner">"${esc(c.oneLiner)}"</p>
+          </div>
+        </div>
+
+        <div class="info-card" style="margin-top:16px">
+          <h3 class="info-title">结果总结</h3>
+          <p class="info-body">${esc(c.summary || '')}</p>
+        </div>
+
+        <div style="margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+          <a class="btn-primary" href="/" style="display:inline-block;text-decoration:none;text-align:center;min-width:220px">
+            我也测测
+          </a>
+          <a class="btn-secondary" href="/characters/${c.code}/" style="display:inline-block;text-decoration:none;text-align:center;min-width:220px">
+            查看角色详情
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>`;
+}
+
 function indexPage() {
   const gridItems = characters.map(c => `
     <a class="roster-item" href="/characters/${c.code}/" style="text-decoration:none;color:inherit">
@@ -396,11 +476,21 @@ if (fs.existsSync(CHAR_DIR)) {
 }
 fs.mkdirSync(CHAR_DIR, { recursive: true });
 
+if (fs.existsSync(SHARE_DIR)) {
+  fs.rmSync(SHARE_DIR, { recursive: true });
+}
+fs.mkdirSync(SHARE_DIR, { recursive: true });
+
 for (const c of characters) {
   const dir = path.join(CHAR_DIR, c.code);
   fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(path.join(dir, 'index.html'), charPage(c, characters.indexOf(c)), 'utf-8');
   console.log(`  ✓ ${c.code} — ${c.name}`);
+
+  const shareDir = path.join(SHARE_DIR, c.code);
+  fs.mkdirSync(shareDir, { recursive: true });
+  fs.writeFileSync(path.join(shareDir, 'index.html'), sharePage(c), 'utf-8');
+  console.log(`  ✓ share/${c.code} — ${c.name}`);
 }
 
 fs.writeFileSync(path.join(CHAR_DIR, 'index.html'), indexPage(), 'utf-8');
@@ -430,5 +520,5 @@ ${sitemapChars}
 fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), sitemapContent, 'utf-8');
 console.log('  ✓ sitemap.xml 已更新（构建日期: ' + BUILD_DATE + '）');
 
-console.log(`\n✅ 已生成 22 个角色页 + 1 个列表页，共 23 个文件`);
-console.log(`   输出目录: ${CHAR_DIR}`);
+console.log(`\n✅ 已生成 22 个角色页 + 1 个列表页 + 22 个分享页，共 45 个文件`);
+console.log(`   输出目录: ${CHAR_DIR}, ${SHARE_DIR}`);
