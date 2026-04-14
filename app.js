@@ -29,19 +29,20 @@ const IMAGE_MAP = {
   PAJA: "images/04-Miscellaneous/睡衣派对组_paja.png"
 };
 
-const TRAITS = [
-  "gentle","support","chaos","drama","chill","leader","sunny","quiet",
-  "orderly","service","menace","odd","wish","perform","huge","magic"
-];
+const AXES = ["ei", "sn", "tf", "jp"];
+const STYLES = ["warmth", "weirdness", "showmanship", "discipline", "edge", "softness"];
+const SCORE_KEYS = [...AXES, ...STYLES];
 
-const STORAGE_KEY = "chti-state-v1";
-const TOTAL_QUESTIONS = 15;
+const STORAGE_KEY = "chti-state-v2";
+let totalQuestions = 0;
+let axisMax = {};
+let styleMax = {};
 
 const PROGRESS_TIPS = [
-  "前 5 题，先别装。",
-  "过半了，有点暴露了。",
-  "快到最后了，角色卡快抽出来了。",
-  "最后一题，别急。"
+  "前 6 题，先按直觉答。",
+  "做到一半了，四维偏好开始成形。",
+  "快到最后了，风格差异会拉开。",
+  "最后几题，别回头修人设。"
 ];
 
 /* ===== state ===== */
@@ -52,7 +53,7 @@ let latestResult = null;
 const state = {
   currentQuestion: 0,
   answers: [],
-  traitScores: emptyTraits()
+  scores: emptyScores()
 };
 
 /* ===== DOM ===== */
@@ -113,7 +114,7 @@ async function init() {
 
   detailBack.addEventListener("click", () => showScreen(screenHome));
   detailStartQuiz.addEventListener("click", () => {
-    if (state.answers.length >= TOTAL_QUESTIONS) {
+    if (state.answers.length >= totalQuestions) {
       computeAndShow();
       showScreen(screenResult);
     } else {
@@ -141,9 +142,11 @@ async function loadData() {
     const qData = await qRes.json();
     const cData = await cRes.json();
     questions = qData.questions;
+    totalQuestions = questions.length;
+    ({ axisMax, styleMax } = getQuestionMaxima(questions));
     characters = cData.characters.map(c => ({
       ...c,
-      typeCode: c.sbtI,
+      typeCode: c.typeCode || c.sbtI,
       image: IMAGE_MAP[c.code] || ""
     }));
   } catch (e) {
@@ -188,12 +191,12 @@ function showScreen(target) {
 
 /* ===== start ===== */
 function onStart() {
-  if (state.answers.length >= TOTAL_QUESTIONS) {
+  if (state.answers.length >= totalQuestions) {
     computeAndShow();
     showScreen(screenResult);
     return;
   }
-  state.currentQuestion = Math.min(state.currentQuestion, TOTAL_QUESTIONS - 1);
+  state.currentQuestion = Math.min(state.currentQuestion, totalQuestions - 1);
   saveState();
   renderQuestion();
   showScreen(screenQuiz);
@@ -203,11 +206,11 @@ function onStart() {
 function renderQuestion() {
   const q = questions[state.currentQuestion];
   const idx = state.currentQuestion;
-  const pct = ((idx + 1) / TOTAL_QUESTIONS) * 100;
+  const pct = ((idx + 1) / totalQuestions) * 100;
 
-  progressCount.textContent = `第 ${idx + 1} / ${TOTAL_QUESTIONS} 题`;
+  progressCount.textContent = `第 ${idx + 1} / ${totalQuestions} 题`;
   progressFill.style.width = `${pct}%`;
-  const tipIdx = Math.min(PROGRESS_TIPS.length - 1, Math.floor(idx / 4));
+  const tipIdx = Math.min(PROGRESS_TIPS.length - 1, Math.floor(idx / 6));
   progressTip.textContent = PROGRESS_TIPS[tipIdx];
   questionIndex.textContent = `问题 ${idx + 1}`;
   questionTitle.textContent = q.title;
@@ -243,13 +246,13 @@ function pickAnswer(i) {
   });
 
   state.answers.push(i);
-  for (const [trait, val] of Object.entries(chosen.traits)) {
-    state.traitScores[trait] = (state.traitScores[trait] || 0) + val;
+  for (const [key, val] of Object.entries(chosen.scores || {})) {
+    state.scores[key] = (state.scores[key] || 0) + val;
   }
   state.currentQuestion++;
   saveState();
 
-  if (state.currentQuestion >= TOTAL_QUESTIONS) {
+  if (state.currentQuestion >= totalQuestions) {
     setTimeout(() => {
       computeAndShow();
       showScreen(screenResult);
@@ -283,8 +286,8 @@ function goBack() {
 
   state.answers.pop();
   state.currentQuestion = lastQIdx;
-  for (const [trait, val] of Object.entries(chosen.traits)) {
-    state.traitScores[trait] = (state.traitScores[trait] || 0) - val;
+  for (const [key, val] of Object.entries(chosen.scores || {})) {
+    state.scores[key] = (state.scores[key] || 0) - val;
   }
   saveState();
 
@@ -301,45 +304,146 @@ function goBack() {
 }
 
 /* ===== scoring ===== */
-function computeScore(character, traits) {
-  const raw = Object.entries(character.traits).reduce(
-    (sum, [t, w]) => sum + (traits[t] || 0) * w, 0
-  );
-  const totalW = Object.values(character.traits).reduce((s, v) => s + v, 0);
-  const norm = totalW > 0 ? raw / totalW : 0;
+function getQuestionMaxima(questionList) {
+  const nextAxisMax = Object.fromEntries(AXES.map(key => [key, 0]));
+  const nextStyleMax = Object.fromEntries(STYLES.map(key => [key, 0]));
 
-  const topT = Object.entries(traits)
-    .filter(([, v]) => v > 0)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 4)
-    .map(([t]) => t);
+  questionList.forEach(question => {
+    AXES.forEach(axis => {
+      const localMax = question.answers.reduce(
+        (best, answer) => Math.max(best, Math.abs(answer.scores?.[axis] || 0)),
+        0
+      );
+      nextAxisMax[axis] += localMax;
+    });
 
-  const hits = (character.focusTraits || []).filter(t => topT.includes(t)).length;
-  let bonus = 0;
-  if (hits === 2) bonus = 2.4;
-  else if (hits === 1) bonus = 0.8;
+    STYLES.forEach(style => {
+      const localMax = question.answers.reduce(
+        (best, answer) => Math.max(best, answer.scores?.[style] || 0),
+        0
+      );
+      nextStyleMax[style] += localMax;
+    });
+  });
 
-  return raw + norm * 3 + bonus;
+  return { axisMax: nextAxisMax, styleMax: nextStyleMax };
 }
 
-function rank(traits) {
+function clamp01(value) {
+  return Math.max(0, Math.min(1, value));
+}
+
+function normalizeAxisScore(axis, scores) {
+  const max = axisMax[axis] || 1;
+  return Math.max(-1, Math.min(1, (scores[axis] || 0) / max));
+}
+
+function normalizeStyleScore(style, scores) {
+  const max = styleMax[style] || 1;
+  return clamp01((scores[style] || 0) / max);
+}
+
+function axisPole(axis, mbti) {
+  const index = AXES.indexOf(axis);
+  const letter = mbti[index];
+  return ["E", "N", "T", "J"].includes(letter) ? 1 : -1;
+}
+
+function axisSimilarity(character, scores) {
+  const similarities = AXES.map(axis => {
+    const userValue = normalizeAxisScore(axis, scores);
+    const targetPole = axisPole(axis, character.mbti);
+    const directionalMatch = userValue === 0
+      ? 0.5
+      : (Math.sign(userValue) === targetPole ? 1 : 0);
+    const profileValue = character.profile?.[axis] ?? targetPole;
+    const distanceCloseness = 1 - Math.abs(userValue - profileValue) / 2;
+    return directionalMatch * 0.7 + distanceCloseness * 0.3;
+  });
+
+  return similarities.reduce((sum, value) => sum + value, 0) / similarities.length;
+}
+
+function styleSimilarity(character, scores) {
+  const closeness = STYLES.map(style => {
+    const userValue = normalizeStyleScore(style, scores);
+    const targetValue = character.styleProfile?.[style] || 0;
+    return 1 - Math.abs(userValue - targetValue);
+  });
+
+  const userTopStyles = STYLES
+    .map(style => [style, normalizeStyleScore(style, scores)])
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 2);
+
+  const totalWeight = userTopStyles.reduce((sum, [, value]) => sum + value, 0);
+  const alignment = totalWeight > 0
+    ? userTopStyles.reduce(
+        (sum, [style, value]) => sum + value * (character.styleProfile?.[style] || 0),
+        0
+      ) / totalWeight
+    : 0.5;
+
+  const closenessMean = closeness.reduce((sum, value) => sum + value, 0) / closeness.length;
+  return closenessMean * 0.55 + alignment * 0.45;
+}
+
+function computeScore(character, scores) {
+  const primary = axisSimilarity(character, scores);
+  const style = styleSimilarity(character, scores);
+  return {
+    score: primary * 0.76 + style * 0.24,
+    primary,
+    style
+  };
+}
+
+function deriveMbti(scores) {
+  return [
+    (scores.ei || 0) >= 0 ? "E" : "I",
+    (scores.sn || 0) >= 0 ? "N" : "S",
+    (scores.tf || 0) >= 0 ? "T" : "F",
+    (scores.jp || 0) >= 0 ? "J" : "P"
+  ].join("");
+}
+
+function topStyleLabels(scores, count = 2) {
+  const labels = {
+    warmth: "接住别人",
+    weirdness: "脑洞感",
+    showmanship: "存在感",
+    discipline: "收束力",
+    edge: "锋利度",
+    softness: "敏感度"
+  };
+
+  return STYLES
+    .map(style => [style, normalizeStyleScore(style, scores)])
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, count)
+    .map(([style]) => labels[style]);
+}
+
+function rank(scores) {
   return characters
-    .map(c => ({ character: c, score: computeScore(c, traits) }))
+    .map(c => ({
+      character: c,
+      ...computeScore(c, scores)
+    }))
     .sort((a, b) => b.score - a.score);
 }
 
 /* ===== show result ===== */
 function computeAndShow() {
   try {
-    const ranked = rank(state.traitScores);
+    const ranked = rank(state.scores);
     const primary = ranked[0].character;
     const secondary = ranked[1].character;
-    const total = ranked.reduce((s, r) => s + r.score, 0);
-    const matchRate = total > 0
-      ? Math.max(66, Math.min(98, Math.round((ranked[0].score / total) * 260)))
-      : 72;
+    const matchRate = Math.max(68, Math.min(97, Math.round(ranked[0].score * 100)));
+    const mbtiGuess = deriveMbti(state.scores);
+    const styleTags = topStyleLabels(state.scores);
 
-    latestResult = { primary, secondary, matchRate };
+    latestResult = { primary, secondary, matchRate, mbtiGuess, styleTags };
     document.title = `我是 ${primary.name} | CHTI`;
     updateMetaTags(primary);
 
@@ -349,7 +453,7 @@ function computeAndShow() {
     resultCard.innerHTML = `
       <div class="result-badges">
         <span class="badge">${primary.typeCode}</span>
-        <span class="badge">${primary.mbti}</span>
+        <span class="badge">${mbtiGuess}</span>
         <span class="badge">${matchRate}% 匹配</span>
       </div>
       <p class="result-eyebrow">角色卡抽出来了</p>
@@ -357,7 +461,7 @@ function computeAndShow() {
       <p class="result-title">${primary.title}</p>
       <p class="result-oneliner">${primary.oneLiner}</p>
       <div class="result-match">
-        <span>${primary.group || ""}</span>
+        <span>${primary.groupRole || ""}</span>
         <span>副卡：${secondary.name}</span>
       </div>
       <div class="result-image-wrap">
@@ -375,7 +479,7 @@ function computeAndShow() {
         <div>
           <div class="poster-badges">
             <span class="poster-badge">${primary.typeCode}</span>
-            <span class="poster-badge">${primary.mbti}</span>
+            <span class="poster-badge">${mbtiGuess}</span>
           </div>
           <p class="poster-title">${primary.name} · ${primary.title}</p>
         </div>
@@ -388,7 +492,8 @@ function computeAndShow() {
 
     /* sbti reason */
     sbtIHeading.textContent = `${primary.sbtI} · ${primary.sbtIFull}`;
-    sbtIReasonEl.textContent = primary.sbtIReason || "";
+    sbtIReasonEl.textContent =
+      `你的四维偏好更接近 ${mbtiGuess}，再叠加 ${styleTags.join(" / ")} 这组风格信号，因此最像 ${primary.name}。${primary.sbtIReason || ""}`;
 
     /* group + today */
     groupRole.textContent = primary.groupRole;
@@ -412,9 +517,9 @@ function computeAndShow() {
     /* share copy */
     shareCopy.value =
       `测出来了，我这次抽到的是 ${primary.name}。\n` +
-      `${primary.typeCode} / ${primary.mbti}\n` +
+      `${primary.typeCode} / ${mbtiGuess}\n` +
       `${primary.oneLiner}\n` +
-      `${primary.sbtIReason}\n` +
+      `我这次的风格标签：${styleTags.join("、")}。\n` +
       `副卡是 ${secondary.name}。\n` +
       `CHTI 说我：${primary.summary}\n` +
       `你也去测测，看你会抽到谁。`;
@@ -484,7 +589,7 @@ function renderDeputy(c) {
 
 /* ===== detail page button ===== */
 function updateDetailCTA() {
-  const done = state.answers.length >= TOTAL_QUESTIONS;
+  const done = state.answers.length >= totalQuestions;
   detailStartQuiz.textContent = done ? "查看我的结果" : "开始测试";
 }
 
@@ -581,7 +686,7 @@ async function exportPoster() {
 }
 
 /* ===== canvas poster ===== */
-async function makePosterCanvas({ primary, secondary, matchRate }) {
+async function makePosterCanvas({ primary, secondary, matchRate, mbtiGuess }) {
   const canvas = document.createElement("canvas");
   canvas.width = 1080;
   canvas.height = 1740;
@@ -614,7 +719,7 @@ async function makePosterCanvas({ primary, secondary, matchRate }) {
 
   /* pills */
   drawPill(ctx, 548, 232, primary.typeCode, "#FFF4CE", "#4A3113");
-  drawPill(ctx, 548, 316, primary.mbti, "#fff", "#4A3113");
+  drawPill(ctx, 548, 316, mbtiGuess || primary.mbti, "#fff", "#4A3113");
   drawPill(ctx, 548, 400, `${matchRate}% 匹配`, "#FFE2D4", "#4A3113");
 
   /* brand */
@@ -720,20 +825,30 @@ function roundRect(ctx, x, y, w, h, r) {
 /* ===== state persistence ===== */
 function saveState() {
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      version: 2,
+      currentQuestion: state.currentQuestion,
+      answers: state.answers,
+      scores: state.scores
+    }));
   } catch {}
 }
 
 function restoreState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) { showScreen(screenHome); return; }
+    if (!raw) {
+      localStorage.removeItem("chti-state-v1");
+      showScreen(screenHome);
+      return;
+    }
     const saved = JSON.parse(raw);
+    if (saved.version !== 2) throw new Error("stale schema");
     state.currentQuestion = saved.currentQuestion ?? 0;
     state.answers = saved.answers ?? [];
-    state.traitScores = { ...emptyTraits(), ...(saved.traitScores || {}) };
+    state.scores = { ...emptyScores(), ...(saved.scores || {}) };
 
-    if (state.answers.length >= TOTAL_QUESTIONS) {
+    if (state.answers.length >= totalQuestions) {
       computeAndShow();
       showScreen(screenResult);
       return;
@@ -751,8 +866,9 @@ function restoreState() {
 function resetAll() {
   state.currentQuestion = 0;
   state.answers = [];
-  state.traitScores = emptyTraits();
+  state.scores = emptyScores();
   localStorage.removeItem(STORAGE_KEY);
+  localStorage.removeItem("chti-state-v1");
   latestResult = null;
   copyFeedback.textContent = "";
   document.title = "CHTI · 测你像哪个 Chiikawa 角色";
@@ -761,8 +877,11 @@ function resetAll() {
   showScreen(screenHome);
 }
 
-function emptyTraits() {
-  return TRAITS.reduce((o, t) => { o[t] = 0; return o; }, {});
+function emptyScores() {
+  return SCORE_KEYS.reduce((scores, key) => {
+    scores[key] = 0;
+    return scores;
+  }, {});
 }
 
 /* ===== go ===== */

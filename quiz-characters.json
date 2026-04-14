@@ -1,26 +1,4 @@
 {
-  "meta": {
-    "version": "3.0",
-    "description": "22个Chiikawa角色的完整数据：MBTI、SBTI搞笑编码、trait画像、角色详情页内容"
-  },
-  "traits_legend": {
-    "gentle": "温柔敏感",
-    "support": "接人补位",
-    "chaos": "冲动混乱",
-    "drama": "戏感与存在感",
-    "chill": "松弛与留白",
-    "leader": "压场与推进",
-    "sunny": "热场与外放",
-    "quiet": "安静陪伴",
-    "orderly": "流程与规矩",
-    "service": "待客与照顾",
-    "menace": "危险感与攻击性",
-    "odd": "怪异与反转",
-    "wish": "稀有感与愿望感",
-    "perform": "营业与舞台感",
-    "huge": "体量感与强度感",
-    "magic": "邪门点子与魔性"
-  },
   "sbt_legend": {
     "CRYF": "Cry-Freak — 开哭型人格",
     "HUGS": "Hug-Seeking — 求抱抱型人格",
@@ -45,6 +23,29 @@
     "SHOW": "Show-Must-Go-On — 营业永动型",
     "PART": "Party-Together — 群嗨整活型"
   },
+  "meta": {
+    "version": "4.0",
+    "description": "22 个 Chiikawa 角色画像：保留原有角色文案，并新增 MBTI 四维原型与 6 个风格副维度。",
+    "scoring_model": {
+      "primary_axes_weight": 0.76,
+      "style_weight": 0.24,
+      "tie_breaker": "风格距离更近者优先"
+    }
+  },
+  "axes_legend": {
+    "ei": "外向(E) <-> 内向(I)",
+    "sn": "直觉(N) <-> 实感(S)",
+    "tf": "思考(T) <-> 情感(F)",
+    "jp": "判断(J) <-> 知觉(P)"
+  },
+  "styles_legend": {
+    "warmth": "照顾与接住他人的倾向",
+    "weirdness": "跳脱、脑洞和反常规风格",
+    "showmanship": "被看见、带气氛和舞台感",
+    "discipline": "秩序、收束和执行感",
+    "edge": "锋利、直给和攻击性",
+    "softness": "脆弱、敏感和低刺激偏好"
+  },
   "characters": [
     {
       "code": "CHII",
@@ -67,16 +68,6 @@
       "worstMatch": "哥布林",
       "bestMatchReason": "小八是唯一能听懂吉伊卡哇'咿呀呀'的人。INFP需要被真正理解的感受，在这段关系里是双向的——一个不会说，一个愿意听。",
       "worstMatchReason": "哥布林会持续刺激吉伊卡哇的高敏感神经。INFP最需要安静的安全感，而哥布林就是安全感粉碎机的存在。",
-      "traits": {
-        "gentle": 4,
-        "quiet": 2,
-        "wish": 2,
-        "support": 1
-      },
-      "focusTraits": [
-        "gentle",
-        "wish"
-      ],
       "detail": {
         "personality": "敏感、胆小、善良、努力。明明很害怕但还是在往前走，是 Chiikawa 宇宙里最让人心疼的角色。虽然不会说话（用咿呀呀代替），但感情非常丰富。",
         "achievements": [
@@ -93,7 +84,26 @@
         "energyLevel": "低电量模式。日常电量 20%，但关键时刻能冲到 100%。"
       },
       "sbtIReason": "CRYF = Cry-Freak 开哭型人格。日常流程：先哭→再哭→然后带着眼泪把活干了。如果MBTI有第五维度一定是CRY——Crying is the new Thinking。哭着哭着就把世界治愈了，这才叫真本事。",
-      "color": "#FFD0A0"
+      "color": "#FFD0A0",
+      "typeCode": "CRYF",
+      "profile": {
+        "ei": -0.92,
+        "sn": -0.18,
+        "tf": -0.88,
+        "jp": 0.12
+      },
+      "styleProfile": {
+        "warmth": 0.78,
+        "weirdness": 0.12,
+        "showmanship": 0.08,
+        "discipline": 0.42,
+        "edge": 0.08,
+        "softness": 0.98
+      },
+      "resultNotes": {
+        "mbtiArchetype": "INFP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "吉伊卡哇 的角色风格重点在 softness / warmth。"
+      }
     },
     {
       "code": "HACH",
@@ -116,16 +126,6 @@
       "worstMatch": "山姥",
       "bestMatchReason": "小八天生的ESFJ照顾欲在吉伊卡哇身上得到了最大释放——有人需要被理解，有人恰好擅长倾听，这是完美的互助闭环。",
       "worstMatchReason": "山姥的邪门方案和ESFJ的温暖底色天然冲突。小八想暖化一切，但山姥的阴间思路是小八唯一兜不住的能量场。",
-      "traits": {
-        "support": 4,
-        "sunny": 2,
-        "service": 2,
-        "gentle": 1
-      },
-      "focusTraits": [
-        "support",
-        "service"
-      ],
       "detail": {
         "personality": "外向、热心、善于表达、共情能力超强。是 Chiikawa 世界里最会说人话（字面意思）的角色，也是唯一一个能流利说话的主角。天生就是团队的粘合剂。",
         "achievements": [
@@ -142,7 +142,26 @@
         "energyLevel": "充电宝体质。给别人充电 80%，自己还剩 20%。"
       },
       "sbtIReason": "HUGS = Hug-Seeking 求抱抱型人格。别人还没开口，你已经递上拥抱了。ESFJ的极致表达：Extroverted Support Feeling Juggler。如果团队是手机，你就是10000mAh的充电宝。",
-      "color": "#B8DEF0"
+      "color": "#B8DEF0",
+      "typeCode": "HUGS",
+      "profile": {
+        "ei": 0.86,
+        "sn": -0.22,
+        "tf": -0.92,
+        "jp": 0.58
+      },
+      "styleProfile": {
+        "warmth": 0.96,
+        "weirdness": 0.18,
+        "showmanship": 0.52,
+        "discipline": 0.62,
+        "edge": 0.1,
+        "softness": 0.58
+      },
+      "resultNotes": {
+        "mbtiArchetype": "ESFJ 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "小八 的角色风格重点在 warmth / discipline。"
+      }
     },
     {
       "code": "USAG",
@@ -165,16 +184,6 @@
       "worstMatch": "劳动铠甲人",
       "bestMatchReason": "ENTP和ISFJ是经典的互补搭——兔兔负责疯，狮萨负责收。一个放火一个善后，化学反应好到连宇宙都嫉妒。",
       "worstMatchReason": "劳动铠甲人的流程洁癖遇上兔兔的反物理操作，简直是ISTJ最恐怖的噩梦场景。'呀哈'这两个字足够让他加班一整晚。",
-      "traits": {
-        "odd": 4,
-        "chaos": 2,
-        "magic": 2,
-        "sunny": 1
-      },
-      "focusTraits": [
-        "odd",
-        "magic"
-      ],
       "detail": {
         "personality": "疯狂、自由、不按套路出牌。说话永远是「呀哈！」级别，脑回路是所有人里最跳脱的。看似疯癫但偶尔展现出惊人的能力。是 Chiikawa 世界的混沌引擎。",
         "achievements": [
@@ -191,7 +200,26 @@
         "energyLevel": "永动机。电量显示永远是 ∞%。"
       },
       "sbtIReason": "WILD = Wild-Imagination 脑洞野生型。一个「呀哈」已经驳倒了你全部论点。ENTP用行动辩论的典范——混乱也是一种秩序，只是你理解不了而已。电量显示永远是∞%。",
-      "color": "#F5C0D8"
+      "color": "#F5C0D8",
+      "typeCode": "WILD",
+      "profile": {
+        "ei": 0.92,
+        "sn": 0.96,
+        "tf": 0.22,
+        "jp": -0.96
+      },
+      "styleProfile": {
+        "warmth": 0.2,
+        "weirdness": 0.96,
+        "showmanship": 0.72,
+        "discipline": 0.16,
+        "edge": 0.42,
+        "softness": 0.08
+      },
+      "resultNotes": {
+        "mbtiArchetype": "ENTP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "兔兔 的角色风格重点在 weirdness / showmanship。"
+      }
     },
     {
       "code": "MOMO",
@@ -214,16 +242,6 @@
       "worstMatch": "栗子馒头",
       "bestMatchReason": "两个戏剧化人格的巅峰合作——飞鼠想当主角，营业超人会递话筒。ESFP+ENFJ的舞台感叠加，全场自动变成演唱会。",
       "worstMatchReason": "飞鼠需要观众和掌声，但栗子馒头的反应是'……嗯。（喝一口）'。对飞鼠来说，没有反馈就是最大的酷刑。",
-      "traits": {
-        "chaos": 3,
-        "sunny": 2,
-        "perform": 2,
-        "huge": 1
-      },
-      "focusTraits": [
-        "chaos",
-        "perform"
-      ],
       "detail": {
         "personality": "自恋、爱出风头、行动派、有点小任性但本质不坏。非常在意别人怎么看自己，所以会做出各种夸张行为。虽然表面上很自信但其实内心也有脆弱的一面。",
         "achievements": [
@@ -240,7 +258,26 @@
         "energyLevel": "舞台灯模式。有人看就满电，没人看就关机。"
       },
       "sbtIReason": "GRAB = Grab-Attention 抢镜行动型。不是作，是在认真经营存在感。ESTP？更像是ES-Please-Look-At-Me。有人看就满电，没人看就关机——舞台灯式人格。",
-      "color": "#D5C6E6"
+      "color": "#D5C6E6",
+      "typeCode": "GRAB",
+      "profile": {
+        "ei": 0.92,
+        "sn": -0.66,
+        "tf": 0.48,
+        "jp": -0.52
+      },
+      "styleProfile": {
+        "warmth": 0.28,
+        "weirdness": 0.42,
+        "showmanship": 0.98,
+        "discipline": 0.22,
+        "edge": 0.54,
+        "softness": 0.18
+      },
+      "resultNotes": {
+        "mbtiArchetype": "ESTP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "飞鼠 的角色风格重点在 showmanship / edge。"
+      }
     },
     {
       "code": "KURI",
@@ -263,16 +300,6 @@
       "worstMatch": "飞鼠",
       "bestMatchReason": "两个安静的人在一起，可以安静到世界都替他们尴尬。ISTP+INFJ的留白美学：不说话、不催促、各自舒服地待着。",
       "worstMatchReason": "飞鼠的存在本身就是栗子馒头的反义词。一个要全场安静地喝，一个要全场都看他。ISTP最怕的就是被迫参与戏剧化表演。",
-      "traits": {
-        "chill": 4,
-        "quiet": 2,
-        "huge": 1,
-        "support": 1
-      },
-      "focusTraits": [
-        "chill",
-        "quiet"
-      ],
       "detail": {
         "personality": "佛系、松弛、有分寸的大人。看起来在摆但其实在观察。是 Chiikawa 世界里最接近「活明白了」的角色。喝酒、悠闲、不争不抢，但心里跟明镜一样。",
         "achievements": [
@@ -289,7 +316,26 @@
         "energyLevel": "节能模式。日常 15%，但关键时刻精准爆发到 60%。"
       },
       "sbtIReason": "LAZY = Lazy-But-Smart 松弛大人型。能坐就不站，能躺就不坐，能喝一口绝不多动。ISTP终极形态：I Stay Totally Peaceful。不是懒，是把能量用在刀刃上——刀刃就是那口酒。",
-      "color": "#FFB731"
+      "color": "#FFB731",
+      "typeCode": "LAZY",
+      "profile": {
+        "ei": -0.82,
+        "sn": -0.62,
+        "tf": 0.48,
+        "jp": -0.58
+      },
+      "styleProfile": {
+        "warmth": 0.34,
+        "weirdness": 0.22,
+        "showmanship": 0.06,
+        "discipline": 0.48,
+        "edge": 0.28,
+        "softness": 0.16
+      },
+      "resultNotes": {
+        "mbtiArchetype": "ISTP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "栗子馒头 的角色风格重点在 discipline / warmth。"
+      }
     },
     {
       "code": "RAKK",
@@ -312,16 +358,6 @@
       "worstMatch": "哥布林",
       "bestMatchReason": "ENFP的核动力能量遇到INFP的柔软感知力，海獭负责带动节奏，吉伊卡哇负责感受节奏——两种完全不同的能量却意外和谐。",
       "worstMatchReason": "海獭的嗨皮引擎会被哥布林直接砸碎。ENFP需要正向反馈来维持能量，哥布林给的只有纯粹的负能量和血压。",
-      "traits": {
-        "sunny": 4,
-        "drama": 2,
-        "perform": 2,
-        "support": 1
-      },
-      "focusTraits": [
-        "sunny",
-        "drama"
-      ],
       "detail": {
         "personality": "活泼、自信、社交恐怖分子。在 Chiikawa 宇宙里属于那种一出现就能把整个场子热起来的角色。不怕生、不怕事、不怕尴尬，是所有人默认的气氛担当。",
         "achievements": [
@@ -338,7 +374,26 @@
         "energyLevel": "核动力。日常 120%，混乱时 200%。"
       },
       "sbtIReason": "HYPE = Hype-Machine 嗨皮引擎型。如果气氛有温度，他出现后室温至少升高5°C。ENFP不是人格是气象现象。High-energy Youth Producing Excitement——光是存在就已经HYPE了。",
-      "color": "#F5C0D8"
+      "color": "#F5C0D8",
+      "typeCode": "HYPE",
+      "profile": {
+        "ei": 0.94,
+        "sn": 0.72,
+        "tf": -0.62,
+        "jp": -0.56
+      },
+      "styleProfile": {
+        "warmth": 0.74,
+        "weirdness": 0.36,
+        "showmanship": 0.82,
+        "discipline": 0.36,
+        "edge": 0.24,
+        "softness": 0.22
+      },
+      "resultNotes": {
+        "mbtiArchetype": "ENFP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "海獭 的角色风格重点在 showmanship / warmth。"
+      }
     },
     {
       "code": "SHIS",
@@ -361,16 +416,6 @@
       "worstMatch": "古本",
       "bestMatchReason": "ISFJ的恒温暖意配上ENTP的跳跃思维，狮萨是兔兔唯一的'疯完回来的地方'。一个敢飞，一个敢接。",
       "worstMatchReason": "两个都安静的人在一起，安静到连空气都凝固了。ISFJ想暖化对方，但INFJ的深海底模式让暖流传不过去。",
-      "traits": {
-        "gentle": 3,
-        "support": 3,
-        "quiet": 2,
-        "service": 1
-      },
-      "focusTraits": [
-        "gentle",
-        "support"
-      ],
       "detail": {
         "personality": "温柔、细心、默默付出型。是 Chiikawa 世界里那种不声不响但大家都离不开的存在。和兔兔是完全相反的类型，但两个人的化学反应意外地好。",
         "achievements": [
@@ -387,7 +432,26 @@
         "energyLevel": "恒温模式。稳定 50%，不升不降但从不掉线。"
       },
       "sbtIReason": "WARM = Warm-Mate 害羞暖宝型。ISFJ教科书案例：Introverted but Still Feeling Everyone。狮萨的存在证明了「安静地暖」比「大声地热」更难替代。如果团队是火锅，他就是那个小火——不起眼但关了就没法吃。恒温50%，不升不降但从不掉线。",
-      "color": "#F5C0D8"
+      "color": "#F5C0D8",
+      "typeCode": "WARM",
+      "profile": {
+        "ei": -0.72,
+        "sn": -0.62,
+        "tf": -0.92,
+        "jp": 0.64
+      },
+      "styleProfile": {
+        "warmth": 0.98,
+        "weirdness": 0.1,
+        "showmanship": 0.1,
+        "discipline": 0.72,
+        "edge": 0.08,
+        "softness": 0.62
+      },
+      "resultNotes": {
+        "mbtiArchetype": "ISFJ 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "狮萨 的角色风格重点在 warmth / discipline。"
+      }
     },
     {
       "code": "FURU",
@@ -410,16 +474,6 @@
       "worstMatch": "哥布林",
       "bestMatchReason": "INFJ的深海模式需要同样懂留白的人。栗子馒头的'嗯。（喝一口）'就是对古本最好的回复——不需要多说，懂的人自然懂。",
       "worstMatchReason": "哥布林是INFJ最想消失的原因。古本的深沉宇宙被哥布林的'嘿嘿嘿'入侵，安静被迫变成噪音，简直是人格级别的灾难。",
-      "traits": {
-        "quiet": 4,
-        "wish": 2,
-        "magic": 2,
-        "gentle": 1
-      },
-      "focusTraits": [
-        "quiet",
-        "magic"
-      ],
       "detail": {
         "personality": "安静、深沉、理想主义、神秘。在 Chiikawa 世界里属于那种话不多但每句话都有分量的角色。内心有一个完整的宇宙，只是不太想跟所有人分享。",
         "achievements": [
@@ -436,7 +490,26 @@
         "energyLevel": "深海模式。表面平静 10%，水下深度 90%。"
       },
       "sbtIReason": "DEEP = Deep-Thinker 深沉宇宙型。不说话不表态，但所有人都在猜你在想什么。沉默不是空白是信息密度太高。DEEP = Doesnt Explain Everything Personally。表面10%，水下90%。",
-      "color": "#D5C6E6"
+      "color": "#D5C6E6",
+      "typeCode": "DEEP",
+      "profile": {
+        "ei": -0.92,
+        "sn": 0.86,
+        "tf": -0.72,
+        "jp": 0.52
+      },
+      "styleProfile": {
+        "warmth": 0.58,
+        "weirdness": 0.58,
+        "showmanship": 0.04,
+        "discipline": 0.54,
+        "edge": 0.14,
+        "softness": 0.82
+      },
+      "resultNotes": {
+        "mbtiArchetype": "INFJ 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "古本 的角色风格重点在 softness / warmth。"
+      }
     },
     {
       "code": "LABO",
@@ -459,16 +532,6 @@
       "worstMatch": "兔兔",
       "bestMatchReason": "ISTJ+ISFP是经典的流程×审美搭档。劳动铠甲人负责'按流程走'，口袋铠甲人负责'走好看了'——互补到像同一人的两半。",
       "worstMatchReason": "兔兔的'呀哈'是劳动铠甲人毕生流程手册里不存在的章节。ISTJ遇到不按流程走的人，第一反应是重写流程。",
-      "traits": {
-        "orderly": 4,
-        "leader": 2,
-        "service": 1,
-        "quiet": 1
-      },
-      "focusTraits": [
-        "orderly",
-        "leader"
-      ],
       "detail": {
         "personality": "严谨、务实、守规矩、执行力强。铠甲人世界的打工人代表。不是最有趣的那个，但绝对是出了问题第一个被想到的。ISTJ 的极致代表。",
         "achievements": [
@@ -485,7 +548,26 @@
         "energyLevel": "打卡模式。上班 100%，下班 0%。中间没有过渡。"
       },
       "sbtIReason": "PROC = Process-Driven 流程机器型。工作群里永远第一个回复「收到」的人。ISTJ在铠甲人世界的化身。PROC = Process-Rules-Order-Checklist——四个词完美概括一生。上班100%，下班0%。",
-      "color": "#A8B5C4"
+      "color": "#A8B5C4",
+      "typeCode": "PROC",
+      "profile": {
+        "ei": -0.38,
+        "sn": -0.78,
+        "tf": 0.72,
+        "jp": 0.96
+      },
+      "styleProfile": {
+        "warmth": 0.26,
+        "weirdness": 0.06,
+        "showmanship": 0.06,
+        "discipline": 0.98,
+        "edge": 0.42,
+        "softness": 0.1
+      },
+      "resultNotes": {
+        "mbtiArchetype": "ISTJ 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "劳动铠甲人 的角色风格重点在 discipline / edge。"
+      }
     },
     {
       "code": "POCH",
@@ -508,16 +590,6 @@
       "worstMatch": "飞鼠",
       "bestMatchReason": "ISFP的随性审美遇上INFJ的深沉安静——两个都不急着说话的人，可以用沉默完成最高效的沟通。",
       "worstMatchReason": "飞鼠的高调戏剧化会让ISFP的随性节奏彻底崩溃。口袋铠甲人最烦被打断，飞鼠最擅长的就是打断所有人。",
-      "traits": {
-        "quiet": 3,
-        "gentle": 2,
-        "chill": 2,
-        "odd": 1
-      },
-      "focusTraits": [
-        "quiet",
-        "gentle"
-      ],
       "detail": {
         "personality": "安静、随性、有品味。口袋铠甲人是铠甲人世界里最有生活美学的角色。做事不紧不慢但总能完成，有一种「慢工出细活」的气质。",
         "achievements": [
@@ -534,7 +606,26 @@
         "energyLevel": "涓流充电。稳定 40%，需要时慢慢涨到 70%。"
       },
       "sbtIReason": "CHIL = Chill-And-Quiet 安静吃瓜型。如果劳动铠甲人是Excel，他就是Notion——同样做事但有设计感。口袋里装的不只是东西，是一种生活态度。Calm-Handy-Its-Lovely。",
-      "color": "#C5EDD6"
+      "color": "#C5EDD6",
+      "typeCode": "CHIL",
+      "profile": {
+        "ei": -0.72,
+        "sn": -0.48,
+        "tf": -0.46,
+        "jp": -0.34
+      },
+      "styleProfile": {
+        "warmth": 0.56,
+        "weirdness": 0.3,
+        "showmanship": 0.1,
+        "discipline": 0.62,
+        "edge": 0.12,
+        "softness": 0.42
+      },
+      "resultNotes": {
+        "mbtiArchetype": "ISFP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "口袋铠甲人 的角色风格重点在 discipline / warmth。"
+      }
     },
     {
       "code": "RAMN",
@@ -557,15 +648,6 @@
       "worstMatch": "哥布林",
       "bestMatchReason": "ESTJ的管理感遇上ISFJ的温暖服务——拉面铠甲人制定标准，狮萨执行温度。两家合作就是服务业的天花板。",
       "worstMatchReason": "哥布林在拉面店=ESTJ的终极压力测试。不排队、捣乱、破坏规矩——这三条够拉面铠甲人把他永久拉黑。",
-      "traits": {
-        "orderly": 4,
-        "leader": 3,
-        "service": 2
-      },
-      "focusTraits": [
-        "orderly",
-        "service"
-      ],
       "detail": {
         "personality": "管理型、讲规则、热情但有底线。是铠甲人世界里开店的那一位，既会招呼客人也会维持秩序。ESTJ 的极致体现。",
         "achievements": [
@@ -582,7 +664,26 @@
         "energyLevel": "营业模式。开店 100%，打烊后迅速掉到 20%。"
       },
       "sbtIReason": "BOSS = Boss-Energy 店长掌控型。ESTJ开拉面店=每碗面份量标准化但笑容是真的。BOSS = Business-Oriented System-Supervisor。热情是KPI驱动的，但KPI本身也是真诚的一部分。",
-      "color": "#FFD0B8"
+      "color": "#FFD0B8",
+      "typeCode": "BOSS",
+      "profile": {
+        "ei": 0.64,
+        "sn": -0.72,
+        "tf": 0.88,
+        "jp": 0.92
+      },
+      "styleProfile": {
+        "warmth": 0.52,
+        "weirdness": 0.08,
+        "showmanship": 0.28,
+        "discipline": 0.94,
+        "edge": 0.56,
+        "softness": 0.1
+      },
+      "resultNotes": {
+        "mbtiArchetype": "ESTJ 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "拉面铠甲人 的角色风格重点在 discipline / edge。"
+      }
     },
     {
       "code": "YATA",
@@ -605,16 +706,6 @@
       "worstMatch": "劳动铠甲人",
       "bestMatchReason": "ESFP的烟火气+ISFJ的温暖感=路边摊最有人情味的组合。摊贩负责热闹，狮萨负责兜底，两个人让路边摊变成家。",
       "worstMatchReason": "劳动铠甲人来检查摊贩的'不规范操作'=两个世界观的碰撞。ESFP的自由经营vs ISTJ的标准流程，永远谈不拢。",
-      "traits": {
-        "service": 3,
-        "sunny": 3,
-        "chaos": 1,
-        "perform": 1
-      },
-      "focusTraits": [
-        "service",
-        "perform"
-      ],
       "detail": {
         "personality": "接地气、社交能力强、烟火气十足。是铠甲人世界里最有路边摊气质的那一位。边忙边聊、边聊边做，人情味拉满。",
         "achievements": [
@@ -631,7 +722,26 @@
         "energyLevel": "炭火模式。有人来就旺，没人来就闷着但也灭不了。"
       },
       "sbtIReason": "CASH = Cash-and-Chaos 烟火整活型。不需要菜单不需要SOP，来一个人聊一段天，走的时候多买一串。人生哲学就是「来都来了」四个字。CASH = Charismatic-And-Socially-Hustling。",
-      "color": "#FFB731"
+      "color": "#FFB731",
+      "typeCode": "CASH",
+      "profile": {
+        "ei": 0.88,
+        "sn": -0.52,
+        "tf": -0.26,
+        "jp": -0.32
+      },
+      "styleProfile": {
+        "warmth": 0.74,
+        "weirdness": 0.18,
+        "showmanship": 0.66,
+        "discipline": 0.42,
+        "edge": 0.18,
+        "softness": 0.24
+      },
+      "resultNotes": {
+        "mbtiArchetype": "ESFP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "摊贩铠甲人 的角色风格重点在 warmth / showmanship。"
+      }
     },
     {
       "code": "ANOK",
@@ -654,16 +764,6 @@
       "worstMatch": "吉伊卡哇",
       "bestMatchReason": "两个戏剧化角色的化学反应——飞鼠抢镜，那个孩子反转。ESFP+ESFP的叠加不是2倍是指数级的戏剧效果。",
       "worstMatchReason": "那个孩子的反转模式直接击穿吉伊卡哇的心理防线。一个喜欢吓人，一个最容易被吓到——这是欺负不是搭配。",
-      "traits": {
-        "drama": 3,
-        "chaos": 3,
-        "perform": 2,
-        "sunny": 1
-      },
-      "focusTraits": [
-        "drama",
-        "chaos"
-      ],
       "detail": {
         "personality": "外表可爱但行为不可预测。是 Chiikawa 世界里「看起来无害但实际上可能翻车」的代表。名字就叫「那个孩子」——连正式称呼都懒得给的神秘感。",
         "achievements": [
@@ -680,7 +780,26 @@
         "energyLevel": "盲盒模式。你永远不知道今天开出来的是可爱还是混乱。"
       },
       "sbtIReason": "FAKE = Fake-Cute-Bite 软萌翻车型。你以为在跟软萌小可爱互动，下一秒发现它在头顶上。ESFP暗黑版：Extroverted Surprise Frightening People。盲盒人格——今天开出来的是可爱还是混乱？",
-      "color": "#C5EDD6"
+      "color": "#C5EDD6",
+      "typeCode": "FAKE",
+      "profile": {
+        "ei": 0.76,
+        "sn": -0.18,
+        "tf": -0.18,
+        "jp": -0.84
+      },
+      "styleProfile": {
+        "warmth": 0.24,
+        "weirdness": 0.72,
+        "showmanship": 0.76,
+        "discipline": 0.16,
+        "edge": 0.58,
+        "softness": 0.14
+      },
+      "resultNotes": {
+        "mbtiArchetype": "ESFP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "那个孩子 的角色风格重点在 showmanship / weirdness。"
+      }
     },
     {
       "code": "DEKA",
@@ -703,16 +822,6 @@
       "worstMatch": "飞鼠",
       "bestMatchReason": "INTJ的策略大脑遇上ENFP的核动力能量——大强在算，海獭在嗨，一个负责想一个负责带，意外的完美战术组合。",
       "worstMatchReason": "飞鼠的抢镜本能和大强的'别注意到我体型'痛点精准碰撞。INTJ最怕被当成道具，飞鼠最爱的就是把人当道具。",
-      "traits": {
-        "leader": 3,
-        "magic": 2,
-        "menace": 2,
-        "orderly": 1
-      },
-      "focusTraits": [
-        "leader",
-        "magic"
-      ],
       "detail": {
         "personality": "体型巨大、实力强劲、但内心并非单纯的暴力角色。有策略、有想法，是 Chiikawa 世界里「大个子但大智慧」的代表。",
         "achievements": [
@@ -729,7 +838,26 @@
         "energyLevel": "坦克模式。启动慢但一旦动起来就停不下来。"
       },
       "sbtIReason": "GIGA = Giga-Chad-Brain 巨脑强者型。INTJ巨大化版本——体型大到没法藏幕后的幕后策划者。GIGA = Gargantuan-Intelligence-Generating-Analysis。名字Dekatsuyo字面意思就是「又大又强」。",
-      "color": "#A8B5C4"
+      "color": "#A8B5C4",
+      "typeCode": "GIGA",
+      "profile": {
+        "ei": -0.54,
+        "sn": 0.62,
+        "tf": 0.92,
+        "jp": 0.82
+      },
+      "styleProfile": {
+        "warmth": 0.18,
+        "weirdness": 0.44,
+        "showmanship": 0.16,
+        "discipline": 0.74,
+        "edge": 0.7,
+        "softness": 0.08
+      },
+      "resultNotes": {
+        "mbtiArchetype": "INTJ 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "大强 的角色风格重点在 discipline / edge。"
+      }
     },
     {
       "code": "ODEE",
@@ -752,16 +880,6 @@
       "worstMatch": "劳动铠甲人",
       "bestMatchReason": "两个ENTP的脑洞对决——兔兔灵活疯，欧德重型疯。不是谁理解谁，是两个疯子找到了同类。",
       "worstMatchReason": "劳动铠甲人的流程世界容不下欧德的随机模式。ENTP+ISTJ=永远在'你为什么不能按流程来'和'我为什么要按流程来'的死循环里。",
-      "traits": {
-        "odd": 3,
-        "chaos": 2,
-        "huge": 2,
-        "magic": 1
-      },
-      "focusTraits": [
-        "odd",
-        "chaos"
-      ],
       "detail": {
         "personality": "大块头 + 怪脑回路 = 欧德。是 Chiikawa 世界里那种「体积和脑回路成正比」的角色。想法很多、逻辑随缘、但创意拉满。",
         "achievements": [
@@ -778,7 +896,26 @@
         "energyLevel": "随机模式。有时候 200%，有时候看起来在待机。"
       },
       "sbtIReason": "WACK = Wacky-Big-Brain 大块脑洞型。ENTP巨大化+直球版本。兔兔是灵活疯，欧德是重型疯。WACK = Wildly-Absurd-Creative-Kinetic。人生信条：想不出为什么就先做了再说。",
-      "color": "#FFD0B8"
+      "color": "#FFD0B8",
+      "typeCode": "WACK",
+      "profile": {
+        "ei": 0.66,
+        "sn": 0.88,
+        "tf": 0.1,
+        "jp": -0.88
+      },
+      "styleProfile": {
+        "warmth": 0.34,
+        "weirdness": 0.86,
+        "showmanship": 0.54,
+        "discipline": 0.14,
+        "edge": 0.36,
+        "softness": 0.12
+      },
+      "resultNotes": {
+        "mbtiArchetype": "ENTP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "欧德 的角色风格重点在 weirdness / showmanship。"
+      }
     },
     {
       "code": "GOBL",
@@ -801,16 +938,6 @@
       "worstMatch": "古本",
       "bestMatchReason": "ENTP的烦人精遇上INTJ的邪门军师——哥布林负责制造麻烦，山姥负责用阴间方案解决麻烦。麻烦的完整产业链。",
       "worstMatchReason": "古本的INFJ深海模式对哥布林的烦人攻击完全免疫——不理就是最好的防御。哥布林遇到古本就像对着黑洞喊话，没有回声。",
-      "traits": {
-        "menace": 4,
-        "chaos": 2,
-        "odd": 1,
-        "perform": 1
-      },
-      "focusTraits": [
-        "menace",
-        "chaos"
-      ],
       "detail": {
         "personality": "烦人、捣蛋、制造混乱。哥布林在 Chiikawa 世界里就是标准的麻烦制造机。不是大奸大恶，就是那种会让你血压升高 20 的存在。",
         "achievements": [
@@ -827,7 +954,26 @@
         "energyLevel": "永动机级别的烦人。不需要充电，他自己就是电源。"
       },
       "sbtIReason": "SCAM = Scam-Alert 血压拉满型。不是所有ENTP都是可爱的辩论家，有些就是纯粹的烦人精。SCAM = Strategically-Causing-Anger-Maximally。永动机级别的烦人——不需要充电，自己就是电源。",
-      "color": "#A8D8A0"
+      "color": "#A8D8A0",
+      "typeCode": "SCAM",
+      "profile": {
+        "ei": 0.72,
+        "sn": 0.62,
+        "tf": 0.42,
+        "jp": -0.84
+      },
+      "styleProfile": {
+        "warmth": 0.02,
+        "weirdness": 0.34,
+        "showmanship": 0.58,
+        "discipline": 0.04,
+        "edge": 0.98,
+        "softness": 0.02
+      },
+      "resultNotes": {
+        "mbtiArchetype": "ENTP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "哥布林 的角色风格重点在 edge / showmanship。"
+      }
     },
     {
       "code": "BLAC",
@@ -850,16 +996,6 @@
       "worstMatch": "流星",
       "bestMatchReason": "INTP+INTJ=阴间智囊团的终极形态。黑星负责扭曲愿望，山姥负责偏门方案。两个阴间天才的合作效率比正面强一万倍。",
       "worstMatchReason": "流星的ENTJ强势掌控和黑星的INTP反向实现是两个极端的方向感。一个要按计划发光，一个偏要反向实现——同一个星系的死对头。",
-      "traits": {
-        "wish": 5,
-        "odd": 2,
-        "menace": 1,
-        "magic": 4
-      },
-      "focusTraits": [
-        "wish",
-        "magic"
-      ],
       "detail": {
         "personality": "冷、荒诞、黑色幽默大师。黑星是 Chiikawa 世界里那种「你说什么他都懂但偏要往另一个方向实现」的存在。INTP 的黑暗面完全体。",
         "achievements": [
@@ -876,7 +1012,26 @@
         "energyLevel": "黑洞模式。吸入愿望，输出荒诞。"
       },
       "sbtIReason": "WISH = Wish-Twisted 阴间实现型。INTP+许愿=研究三天完美实现方案然后发现方案比原来更糟。WISH = Will-Ironically-Screw-Humans。不是故意的，只是觉得这样更有意思。黑洞模式人格。",
-      "color": "#4A3113"
+      "color": "#4A3113",
+      "typeCode": "WISH",
+      "profile": {
+        "ei": -0.92,
+        "sn": 0.92,
+        "tf": 0.24,
+        "jp": -0.24
+      },
+      "styleProfile": {
+        "warmth": 0.12,
+        "weirdness": 0.84,
+        "showmanship": 0.04,
+        "discipline": 0.48,
+        "edge": 0.72,
+        "softness": 0.22
+      },
+      "resultNotes": {
+        "mbtiArchetype": "INTP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "黑星 的角色风格重点在 weirdness / edge。"
+      }
     },
     {
       "code": "SHOO",
@@ -899,16 +1054,6 @@
       "worstMatch": "黑星",
       "bestMatchReason": "ENTJ的强势发光需要ESFJ的温暖接住——流星是天体级指挥官，小八是唯一敢给天体盖被子的人。强势也需要被温柔对待。",
       "worstMatchReason": "流星的'按预期发光'和黑星的'偏不按你预期实现'是宇宙级的方向冲突。两个星的正面对决，一个正面一个阴间。",
-      "traits": {
-        "leader": 4,
-        "huge": 2,
-        "wish": 2,
-        "orderly": 1
-      },
-      "focusTraits": [
-        "leader",
-        "huge"
-      ],
       "detail": {
         "personality": "稀有、发光、强势、目标导向。流星在 Chiikawa 世界里是那种「平时看不到，一出现就自带 BGM」的存在。ENTJ 的宇宙级表达。",
         "achievements": [
@@ -925,7 +1070,26 @@
         "energyLevel": "流星模式。平时不可见，出场即巅峰。"
       },
       "sbtIReason": "LORD = Lord-of-Glow 强势发光型。ENTJ星空版本——不发号施令，直接从天上划过让你不得不抬头。LORD = Luminous-Orbit-Radiating-Dominance。天体级指挥官。出场即巅峰。",
-      "color": "#FFD700"
+      "color": "#FFD700",
+      "typeCode": "LORD",
+      "profile": {
+        "ei": 0.82,
+        "sn": 0.58,
+        "tf": 0.88,
+        "jp": 0.84
+      },
+      "styleProfile": {
+        "warmth": 0.18,
+        "weirdness": 0.12,
+        "showmanship": 0.62,
+        "discipline": 0.86,
+        "edge": 0.64,
+        "softness": 0.06
+      },
+      "resultNotes": {
+        "mbtiArchetype": "ENTJ 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "流星 的角色风格重点在 discipline / edge。"
+      }
     },
     {
       "code": "MAJO",
@@ -948,16 +1112,6 @@
       "worstMatch": "小八",
       "bestMatchReason": "INTJ的邪门方案需要INTP的黑色幽默来翻译——山姥想出的阴间招，黑星用最荒诞的方式实现，效率翻倍还能笑出来。",
       "worstMatchReason": "小八的ESFJ温暖是山姥阴间方案的天然克制。山姥的方案需要一个冷静的环境来酝酿，小八一来就把气氛暖化了，方案全废。",
-      "traits": {
-        "magic": 5,
-        "menace": 2,
-        "odd": 2,
-        "leader": 1
-      },
-      "focusTraits": [
-        "magic",
-        "odd"
-      ],
       "detail": {
         "personality": "邪门、冷静、偏门方案大师。山姥是 Chiikawa 世界里那种「你想不到的她都想到了，而且方向都很阴」的角色。INTJ 的魔法版本。",
         "achievements": [
@@ -974,7 +1128,26 @@
         "energyLevel": "魔法蓄力模式。平时 30%，施法时 200%。"
       },
       "sbtIReason": "HEXA = Hex-Architect 邪门建筑师。INTJ+魔法=偏门方案搜索引擎。输入问题，输出一个让所有人倒吸凉气的方案。她不是坏人，只是解决问题的方向比较阴间。平时30%，施法时200%——魔法蓄力模式。",
-      "color": "#7B68AE"
+      "color": "#7B68AE",
+      "typeCode": "HEXA",
+      "profile": {
+        "ei": -0.76,
+        "sn": 0.96,
+        "tf": 0.74,
+        "jp": 0.66
+      },
+      "styleProfile": {
+        "warmth": 0.08,
+        "weirdness": 0.92,
+        "showmanship": 0.08,
+        "discipline": 0.82,
+        "edge": 0.82,
+        "softness": 0.06
+      },
+      "resultNotes": {
+        "mbtiArchetype": "INTJ 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "山姥 的角色风格重点在 weirdness / discipline。"
+      }
     },
     {
       "code": "KABU",
@@ -997,16 +1170,6 @@
       "worstMatch": "劳动铠甲人",
       "bestMatchReason": "两个切面反转角色的巅峰碰撞——吉伊卡菇在可爱和吓人之间切换，那个孩子在软萌和翻车之间跳跃。反转×反转=无法预测。",
       "worstMatchReason": "劳动铠甲人的流程世界不允许模式切换——'按流程走'和'先萌再吓人'是完全不兼容的操作系统。ISTJ最怕的就是不确定性。",
-      "traits": {
-        "odd": 3,
-        "magic": 2,
-        "menace": 1,
-        "gentle": 1
-      },
-      "focusTraits": [
-        "odd",
-        "magic"
-      ],
       "detail": {
         "personality": "吉伊卡哇 + 蘑菇 = 吉伊卡菇。先萌后吓人，是 Chiikawa 宇宙里的变异体代表。平时看着无害，切到另一种状态时反差极大。",
         "achievements": [
@@ -1023,7 +1186,26 @@
         "energyLevel": "双模式。可爱模式 30%，吓人模式 150%，切换中。"
       },
       "sbtIReason": "FLIP = Flip-Mode 切面反转型。INTP的「表面安静内心疯狂」反差实体化了。可爱30%，吓人150%，切换中——你永远不知道下一秒开出来的是蘑菇头还是怪物脸。从可爱切成吓人只需要0.1秒。",
-      "color": "#C5EDD6"
+      "color": "#C5EDD6",
+      "typeCode": "FLIP",
+      "profile": {
+        "ei": -0.62,
+        "sn": 0.36,
+        "tf": -0.12,
+        "jp": -0.46
+      },
+      "styleProfile": {
+        "warmth": 0.22,
+        "weirdness": 0.88,
+        "showmanship": 0.18,
+        "discipline": 0.24,
+        "edge": 0.52,
+        "softness": 0.42
+      },
+      "resultNotes": {
+        "mbtiArchetype": "INTP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "吉伊卡菇 的角色风格重点在 weirdness / edge。"
+      }
     },
     {
       "code": "MUCH",
@@ -1046,16 +1228,6 @@
       "worstMatch": "栗子馒头",
       "bestMatchReason": "ENFJ+ESFP=舞台上的黄金搭档。营业超人负责专业呈现，飞鼠负责自发抢镜。一个是科班出身一个是野生天才。",
       "worstMatchReason": "营业超人的专业级表情管理遇上栗子馒头的'……嗯。（喝一口）'——你营业得再专业，对方根本不需要你营业，这比冷场更崩溃。",
-      "traits": {
-        "perform": 4,
-        "sunny": 2,
-        "service": 1,
-        "drama": 1
-      },
-      "focusTraits": [
-        "perform",
-        "service"
-      ],
       "detail": {
         "personality": "专业的营业人格。营业超人是 Chiikawa 世界里那个「永远在状态」的角色。表情管理满分、姿态满分、对外呈现满分。ENFJ 的舞台版本。",
         "achievements": [
@@ -1072,7 +1244,26 @@
         "energyLevel": "营业模式。只要有人在，就永远满电。"
       },
       "sbtIReason": "SHOW = Show-Must-Go-On 营业永动型。ENFJ终极商业版本——把真诚包装成了专业。SHOW = Stage-Handy-Optimized-Wrapper。微笑不是假的是专业级的真。只要有人在就永远满电。",
-      "color": "#FFB731"
+      "color": "#FFB731",
+      "typeCode": "SHOW",
+      "profile": {
+        "ei": 0.92,
+        "sn": 0.44,
+        "tf": -0.54,
+        "jp": 0.72
+      },
+      "styleProfile": {
+        "warmth": 0.62,
+        "weirdness": 0.16,
+        "showmanship": 0.96,
+        "discipline": 0.74,
+        "edge": 0.24,
+        "softness": 0.18
+      },
+      "resultNotes": {
+        "mbtiArchetype": "ENFJ 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "营业超人 的角色风格重点在 showmanship / discipline。"
+      }
     },
     {
       "code": "PAJA",
@@ -1095,16 +1286,6 @@
       "worstMatch": "古本",
       "bestMatchReason": "ENFP的团体嗨皮需要ISFJ的温暖兜底——睡衣派对组负责拉着大家一起整活，狮萨负责确保每个人都被照顾到。团魂的温暖版。",
       "worstMatchReason": "睡衣派对组需要'一起'的能量，但古本的INFJ深海底模式是'别来'的最高级表达。ENFP的'大家一起来'对古本是'大家都别来'。",
-      "traits": {
-        "perform": 3,
-        "sunny": 2,
-        "support": 2,
-        "drama": 1
-      },
-      "focusTraits": [
-        "perform",
-        "support"
-      ],
       "detail": {
         "personality": "团体型角色。睡衣派对组证明了在 Chiikawa 宇宙里「一个人不行，一群人很行」也是一种人格类型。ENFP 的团体版本。",
         "achievements": [
@@ -1121,7 +1302,26 @@
         "energyLevel": "派对模式。一个人 60%，每多一个人 +20%，上不封顶。"
       },
       "sbtIReason": "PART = Party-Together 群嗨整活型。ENFP多人版本——终极形态不是一个人嗨是一群人嗨。PART = People-Always-Rejoicing-Together。一个人60%，每多一个人+20%，上不封顶。",
-      "color": "#F5C0D8"
+      "color": "#F5C0D8",
+      "typeCode": "PART",
+      "profile": {
+        "ei": 0.88,
+        "sn": 0.62,
+        "tf": -0.42,
+        "jp": -0.82
+      },
+      "styleProfile": {
+        "warmth": 0.7,
+        "weirdness": 0.42,
+        "showmanship": 0.72,
+        "discipline": 0.28,
+        "edge": 0.1,
+        "softness": 0.28
+      },
+      "resultNotes": {
+        "mbtiArchetype": "ENFP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
+        "styleBias": "睡衣派对组 的角色风格重点在 showmanship / warmth。"
+      }
     }
   ]
 }

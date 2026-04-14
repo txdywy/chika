@@ -1,158 +1,857 @@
 {
   "meta": {
-    "version": "2.0",
-    "total_questions": 15,
-    "description": "Chiikawa MBTI 娱乐向测试题目，基于16维trait系统匹配22个角色"
+    "version": "3.0",
+    "total_questions": 24,
+    "description": "Chiikawa MBTI 娱乐向测试题目，使用 4 条 MBTI 主维度和 6 个角色风格副维度。",
+    "axes_legend": {
+      "ei": "外向(E) <-> 内向(I)",
+      "sn": "直觉(N) <-> 实感(S)",
+      "tf": "思考(T) <-> 情感(F)",
+      "jp": "判断(J) <-> 知觉(P)"
+    },
+    "styles_legend": {
+      "warmth": "照顾与接住他人的倾向",
+      "weirdness": "跳脱、脑洞和反常规风格",
+      "showmanship": "被看见、带气氛和舞台感",
+      "discipline": "秩序、收束和执行感",
+      "edge": "锋利、直给和攻击性",
+      "softness": "脆弱、敏感和低刺激偏好"
+    }
   },
   "questions": [
     {
       "id": 1,
-      "title": "周末聚会临时改到你家，你第一反应是？",
+      "axis": "ei",
+      "title": "第一次参加一个谁都不熟的小型活动，你通常会怎么进入状态？",
       "answers": [
-        { "text": "终于轮到我做东了！大家想吃什么我来安排！", "traits": { "sunny": 2, "service": 1, "leader": 1 } },
-        { "text": "……好、好的，先把沙发收拾出来。", "traits": { "gentle": 2, "quiet": 1, "support": 1 } },
-        { "text": "来就来呗，我点外卖大家一起吃。", "traits": { "chill": 2, "quiet": 1 } },
-        { "text": "先想好怎么出场比较有趣，毕竟我是主人。", "traits": { "drama": 2, "perform": 1 } }
+        {
+          "text": "我会主动找人聊天，边聊边认识场子。",
+          "scores": {
+            "ei": 2,
+            "showmanship": 1
+          }
+        },
+        {
+          "text": "先听一会儿，找到顺眼的人再加入。",
+          "scores": {
+            "ei": 1,
+            "warmth": 1
+          }
+        },
+        {
+          "text": "等别人来找我，自己先熟悉一下环境。",
+          "scores": {
+            "ei": -1,
+            "softness": 1
+          }
+        },
+        {
+          "text": "我更想先待在一边，等彻底适应后再说。",
+          "scores": {
+            "ei": -2,
+            "discipline": 1
+          }
+        }
       ]
     },
     {
       "id": 2,
-      "title": "群里突然有人发了一张很抽象的图，你通常？",
+      "axis": "ei",
+      "title": "忙完一整天之后，你恢复精力最需要什么？",
       "answers": [
-        { "text": "看不懂但先跟着发个表情包。", "traits": { "sunny": 1, "perform": 1, "odd": 1 } },
-        { "text": "仔细放大看，试图理解其中的逻辑。", "traits": { "quiet": 2, "magic": 1 } },
-        { "text": "直接问这是什么鬼，不装懂。", "traits": { "chaos": 2, "menace": 1 } },
-        { "text": "默默存图，觉得以后可能有用。", "traits": { "odd": 2, "quiet": 1 } }
+        {
+          "text": "找朋友见一面，聊一聊当天发生的事。",
+          "scores": {
+            "ei": 2,
+            "warmth": 1
+          }
+        },
+        {
+          "text": "和熟人随便待着，有人气就行。",
+          "scores": {
+            "ei": 1,
+            "showmanship": 1
+          }
+        },
+        {
+          "text": "回到自己的节奏里，安静做点喜欢的小事。",
+          "scores": {
+            "ei": -1,
+            "softness": 1
+          }
+        },
+        {
+          "text": "完全独处，不想被任何人继续打扰。",
+          "scores": {
+            "ei": -2
+          }
+        }
       ]
     },
     {
       "id": 3,
-      "title": "朋友跟你说「我今天遇到了一件很奇怪的事」，你最想先知道什么？",
+      "axis": "ei",
+      "title": "小组讨论突然冷场时，你更自然的反应是？",
       "answers": [
-        { "text": "你还好吧？有没有受影响？", "traits": { "gentle": 2, "support": 2 } },
-        { "text": "然后呢然后呢！快说！", "traits": { "sunny": 2, "chaos": 1 } },
-        { "text": "具体时间、地点、对方长什么样？", "traits": { "orderly": 2, "menace": 1 } },
-        { "text": "你说的「奇怪」是哪种意义上的奇怪？", "traits": { "magic": 2, "odd": 1 } }
+        {
+          "text": "我会先抛一个话题，把气氛拉回来。",
+          "scores": {
+            "ei": 2,
+            "showmanship": 1
+          }
+        },
+        {
+          "text": "我会顺着前面的人补一句，让讨论继续。",
+          "scores": {
+            "ei": 1,
+            "warmth": 1
+          }
+        },
+        {
+          "text": "如果没人点我，我会先继续听。",
+          "scores": {
+            "ei": -1,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "我宁愿在心里想清楚，也不想为了填空而说。",
+          "scores": {
+            "ei": -2,
+            "softness": 1
+          }
+        }
       ]
     },
     {
       "id": 4,
-      "title": "到了一个全是陌生人的聚会上，你一般会？",
+      "axis": "ei",
+      "title": "在朋友的聚会照片里，你通常更像哪一种？",
       "answers": [
-        { "text": "主动自我介绍，五分钟内认识一圈人。", "traits": { "sunny": 3, "perform": 1 } },
-        { "text": "找到一个角落待着，等别人来找我。", "traits": { "quiet": 3, "gentle": 1 } },
-        { "text": "先找吃的。", "traits": { "chill": 2, "huge": 1 } },
-        { "text": "观察一下气氛，判断自己该扮演什么角色。", "traits": { "perform": 2, "drama": 1 } }
+        {
+          "text": "经常在中间，顺手还会组织大家拍照。",
+          "scores": {
+            "ei": 2,
+            "showmanship": 1
+          }
+        },
+        {
+          "text": "会参与，也愿意配合大家热闹一下。",
+          "scores": {
+            "ei": 1,
+            "warmth": 1
+          }
+        },
+        {
+          "text": "人在现场，但更像安静陪伴的背景板。",
+          "scores": {
+            "ei": -1,
+            "softness": 1
+          }
+        },
+        {
+          "text": "可能根本没出现在照片里。",
+          "scores": {
+            "ei": -2
+          }
+        }
       ]
     },
     {
       "id": 5,
-      "title": "跟朋友吵架了，你更倾向于？",
+      "axis": "ei",
+      "title": "开会前还有十分钟，你一般会怎么用？",
       "answers": [
-        { "text": "先低头，关系比道理重要。", "traits": { "gentle": 2, "support": 2 } },
-        { "text": "冷战几天等双方冷静再说。", "traits": { "quiet": 2, "chill": 1 } },
-        { "text": "把问题摊开讲清楚，对事不对人。", "traits": { "leader": 2, "menace": 1 } },
-        { "text": "虽然生气但会想办法用一个很怪的方式和好。", "traits": { "odd": 2, "magic": 1 } }
+        {
+          "text": "先和在场的人聊起来，顺便摸清大家状态。",
+          "scores": {
+            "ei": 2,
+            "warmth": 1
+          }
+        },
+        {
+          "text": "看有没有人需要我配合，简单交流一下。",
+          "scores": {
+            "ei": 1,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "自己过一遍要说的内容，不太想被打断。",
+          "scores": {
+            "ei": -1,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "安静坐着整理思路，最好谁都别来找我。",
+          "scores": {
+            "ei": -2
+          }
+        }
       ]
     },
     {
       "id": 6,
-      "title": "小组作业还剩三天截止，目前进度为零，你的状态是？",
+      "axis": "ei",
+      "title": "别人评价你“存在感很强/很弱”时，你更可能是哪一边？",
       "answers": [
-        { "text": "已经建好文档分好任务拉好时间表了。", "traits": { "orderly": 3, "leader": 2 } },
-        { "text": "虽然没动但已经开始焦虑得睡不着。", "traits": { "gentle": 2, "quiet": 2 } },
-        { "text": "没事，最后一天通宵就行。", "traits": { "chaos": 2, "huge": 1 } },
-        { "text": "其实我脑子里有一个很天才但很难解释的方案。", "traits": { "magic": 2, "odd": 2 } }
+        {
+          "text": "大多时候存在感是我主动带出来的。",
+          "scores": {
+            "ei": 2,
+            "showmanship": 1
+          }
+        },
+        {
+          "text": "熟了以后我会明显活起来。",
+          "scores": {
+            "ei": 1,
+            "warmth": 1
+          }
+        },
+        {
+          "text": "我不介意存在感低一点，省得被过度关注。",
+          "scores": {
+            "ei": -1,
+            "softness": 1
+          }
+        },
+        {
+          "text": "我本来就不太需要被看见。",
+          "scores": {
+            "ei": -2
+          }
+        }
       ]
     },
     {
       "id": 7,
-      "title": "你精心计划的行程到了现场发现全不是那回事，你会？",
+      "axis": "sn",
+      "title": "接到一个全新任务时，你通常先抓什么？",
       "answers": [
-        { "text": "既来之则安之，意外也是一种体验。", "traits": { "chaos": 2, "menace": 1 } },
-        { "text": "先看看同伴有没有受打击，安抚一下。", "traits": { "support": 2, "gentle": 1 } },
-        { "text": "立刻重新规划，把新安排理清楚。", "traits": { "orderly": 2, "leader": 1 } },
-        { "text": "觉得现在这个乱七八糟的版本更有意思。", "traits": { "odd": 2, "magic": 1 } }
+        {
+          "text": "先看它背后的方向和可能性。",
+          "scores": {
+            "sn": 2,
+            "weirdness": 1
+          }
+        },
+        {
+          "text": "先看它和别的事情怎么连起来。",
+          "scores": {
+            "sn": 1,
+            "weirdness": 1
+          }
+        },
+        {
+          "text": "先确认现有资料、规则和已知信息。",
+          "scores": {
+            "sn": -1,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "先把具体步骤和边界条件摸清楚。",
+          "scores": {
+            "sn": -2,
+            "discipline": 1
+          }
+        }
       ]
     },
     {
       "id": 8,
-      "title": "看到一个明显有问题的方案但大家都说 OK，你会？",
+      "axis": "sn",
+      "title": "朋友讲一件经历时，你更容易被什么吸引？",
       "answers": [
-        { "text": "会后私下跟负责人提一下，不当众让人难堪。", "traits": { "support": 2, "gentle": 1 } },
-        { "text": "会上直接指出来，对事不对人。", "traits": { "leader": 2, "menace": 1 } },
-        { "text": "算了吧反正不是我担责。", "traits": { "chill": 2, "menace": 1 } },
-        { "text": "用一个很刁钻的角度把问题拆穿。", "traits": { "magic": 2, "odd": 1, "menace": 1 } }
+        {
+          "text": "这件事背后代表了什么、更深层的意味。",
+          "scores": {
+            "sn": 2,
+            "weirdness": 1
+          }
+        },
+        {
+          "text": "它暴露出的模式和隐藏线索。",
+          "scores": {
+            "sn": 1,
+            "edge": 1
+          }
+        },
+        {
+          "text": "具体发生了什么、顺序是怎样的。",
+          "scores": {
+            "sn": -1,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "现场细节够不够真实、信息有没有落地。",
+          "scores": {
+            "sn": -2
+          }
+        }
       ]
     },
     {
       "id": 9,
-      "title": "你决定做一件事，最主要的动力通常是？",
+      "axis": "sn",
+      "title": "逛一家有点特别的小店时，你通常最先注意什么？",
       "answers": [
-        { "text": "这件事对身边的人有好处。", "traits": { "support": 2, "service": 2 } },
-        { "text": "能学到新东西或者解决一个难题。", "traits": { "magic": 2, "leader": 1 } },
-        { "text": "有计划、有目标的感觉很好。", "traits": { "orderly": 2, "leader": 1 } },
-        { "text": "单纯觉得好玩有意思。", "traits": { "chaos": 2, "perform": 1 } }
+        {
+          "text": "它整体的概念、氛围和风格设定。",
+          "scores": {
+            "sn": 2,
+            "weirdness": 1
+          }
+        },
+        {
+          "text": "它和常见做法不一样的地方。",
+          "scores": {
+            "sn": 1,
+            "showmanship": 1
+          }
+        },
+        {
+          "text": "价格、材质、使用感这些实际信息。",
+          "scores": {
+            "sn": -1,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "动线顺不顺、摆放是否合理。",
+          "scores": {
+            "sn": -2,
+            "discipline": 1
+          }
+        }
       ]
     },
     {
       "id": 10,
-      "title": "别人说你想太多了，你内心真实反应是？",
+      "axis": "sn",
+      "title": "学一个新技能时，你更喜欢哪种开始方式？",
       "answers": [
-        { "text": "可能吧……但还是会接着想。", "traits": { "quiet": 2, "gentle": 1 } },
-        { "text": "我觉得刚好，是你们想得太少了。", "traits": { "magic": 2, "menace": 1 } },
-        { "text": "你说得对。表面接受，内心保留意见。", "traits": { "chill": 2, "huge": 1, "menace": 1 } },
-        { "text": "哪里想多了你说清楚。", "traits": { "leader": 1, "orderly": 1 } }
+        {
+          "text": "先理解原理和整体框架，再慢慢试。",
+          "scores": {
+            "sn": 2,
+            "weirdness": 1
+          }
+        },
+        {
+          "text": "先知道这个技能以后还能玩出什么花样。",
+          "scores": {
+            "sn": 1,
+            "showmanship": 1
+          }
+        },
+        {
+          "text": "先照着成熟步骤做一遍，建立手感。",
+          "scores": {
+            "sn": -1,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "先掌握基本动作和标准操作。",
+          "scores": {
+            "sn": -2
+          }
+        }
       ]
     },
     {
       "id": 11,
-      "title": "走在路上捡到一个很奇怪的东西，你会？",
+      "axis": "sn",
+      "title": "做旅行计划时，你更容易先想什么？",
       "answers": [
-        { "text": "看看附近有没有失主，想办法还回去。", "traits": { "service": 2, "support": 1 } },
-        { "text": "先观察研究一下，搞清楚是什么再说。", "traits": { "magic": 2, "quiet": 1 } },
-        { "text": "交到管理处走流程。", "traits": { "orderly": 2, "huge": 1 } },
-        { "text": "带回家放桌上当装饰品。", "traits": { "odd": 2, "chill": 1 } }
+        {
+          "text": "这趟旅行想获得什么感觉和记忆。",
+          "scores": {
+            "sn": 2,
+            "softness": 1
+          }
+        },
+        {
+          "text": "有没有一些意外路线值得试试看。",
+          "scores": {
+            "sn": 1,
+            "weirdness": 1
+          }
+        },
+        {
+          "text": "交通、时间、预算、住宿怎么排。",
+          "scores": {
+            "sn": -1,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "每个地点具体能做什么、风险在哪里。",
+          "scores": {
+            "sn": -2,
+            "edge": 1
+          }
+        }
       ]
     },
     {
       "id": 12,
-      "title": "突然被要求在大家面前代表发言，你会？",
+      "axis": "sn",
+      "title": "看到一个看起来怪怪的想法，你第一反应更像？",
       "answers": [
-        { "text": "先紧张一下，然后认真准备好再上。", "traits": { "gentle": 2, "support": 1, "quiet": 1 } },
-        { "text": "来了就来了，直接开讲。", "traits": { "sunny": 1, "chaos": 1, "perform": 1 } },
-        { "text": "先快速整理要点，结构化表达。", "traits": { "orderly": 2, "leader": 1, "huge": 1 } },
-        { "text": "先想一个炸裂的开场白再说。", "traits": { "drama": 2, "perform": 2 } }
+        {
+          "text": "它也许能通向一个更大的东西。",
+          "scores": {
+            "sn": 2,
+            "weirdness": 1
+          }
+        },
+        {
+          "text": "先留着，说不定以后能用上。",
+          "scores": {
+            "sn": 1,
+            "weirdness": 1
+          }
+        },
+        {
+          "text": "先问它具体怎么落地。",
+          "scores": {
+            "sn": -1,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "没有可执行细节之前，我不会太买账。",
+          "scores": {
+            "sn": -2,
+            "edge": 1
+          }
+        }
       ]
     },
     {
       "id": 13,
-      "title": "做重大决定时（比如换工作搬家），你最依赖什么？",
+      "axis": "tf",
+      "title": "朋友来找你倾诉时，你更自然的起手式是？",
       "answers": [
-        { "text": "直觉和内心感受。", "traits": { "gentle": 2, "wish": 1 } },
-        { "text": "身边人的意见和建议。", "traits": { "support": 2, "sunny": 1 } },
-        { "text": "具体的数据分析和利弊对比。", "traits": { "orderly": 2, "leader": 1, "menace": 1 } },
-        { "text": "一种说不清但很强烈的「就该这样」的感觉。", "traits": { "odd": 2, "magic": 1 } }
+        {
+          "text": "先接住情绪，让对方知道自己没被丢下。",
+          "scores": {
+            "tf": -2,
+            "warmth": 1
+          }
+        },
+        {
+          "text": "先确认对方最难受的是哪一部分。",
+          "scores": {
+            "tf": -1,
+            "softness": 1
+          }
+        },
+        {
+          "text": "先帮对方把问题拆开，看卡点在哪。",
+          "scores": {
+            "tf": 1,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "先判断什么做法最有效，不绕弯子。",
+          "scores": {
+            "tf": 2,
+            "edge": 1
+          }
+        }
       ]
     },
     {
       "id": 14,
-      "title": "如果可以拥有一个超能力，你最想要？",
+      "axis": "tf",
+      "title": "团队里出现分歧时，你更看重什么？",
       "answers": [
-        { "text": "治愈别人的能力。", "traits": { "gentle": 2, "wish": 2, "support": 1 } },
-        { "text": "看透一切本质的洞察力。", "traits": { "magic": 3, "odd": 1 } },
-        { "text": "绝对理性和超强效率。", "traits": { "leader": 2, "orderly": 1, "huge": 2 } },
-        { "text": "把混乱变成有趣的能力。", "traits": { "chaos": 2, "perform": 1, "odd": 1 } }
+        {
+          "text": "别让关系先坏掉，事情才能继续做。",
+          "scores": {
+            "tf": -2,
+            "warmth": 1
+          }
+        },
+        {
+          "text": "让每个人都觉得被听到了。",
+          "scores": {
+            "tf": -1,
+            "softness": 1
+          }
+        },
+        {
+          "text": "把标准说清楚，按标准判断。",
+          "scores": {
+            "tf": 1,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "谁的方案更站得住脚就用谁的。",
+          "scores": {
+            "tf": 2,
+            "edge": 1
+          }
+        }
       ]
     },
     {
       "id": 15,
-      "title": "你被 Chiikawa 最初吸引的原因是？",
+      "axis": "tf",
+      "title": "别人做错事时，你更可能怎么回应？",
       "answers": [
-        { "text": "角色之间那种又暖又努力的感觉。", "traits": { "gentle": 2, "support": 2, "sunny": 1 } },
-        { "text": "每个角色都好怪，但我好喜欢。", "traits": { "odd": 3, "magic": 1 } },
-        { "text": "明明很可爱但总是倒霉的反差感。", "traits": { "chaos": 2, "huge": 1, "perform": 1 } },
-        { "text": "看着它们努力活着，自己也被治愈了。", "traits": { "wish": 2, "quiet": 2, "gentle": 1 } }
+        {
+          "text": "先顾对方感受，再找机会慢慢说。",
+          "scores": {
+            "tf": -2,
+            "warmth": 1
+          }
+        },
+        {
+          "text": "会提醒，但会尽量留给对方面子。",
+          "scores": {
+            "tf": -1,
+            "warmth": 1
+          }
+        },
+        {
+          "text": "直接说明问题和后果，避免下次再犯。",
+          "scores": {
+            "tf": 1,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "我会优先把影响控制住，话会比较直。",
+          "scores": {
+            "tf": 2,
+            "edge": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "axis": "tf",
+      "title": "评价一个方案时，你默认先看哪一项？",
+      "answers": [
+        {
+          "text": "它会不会让相关的人更舒服、更安心。",
+          "scores": {
+            "tf": -2,
+            "warmth": 1
+          }
+        },
+        {
+          "text": "它是不是符合我认同的价值和氛围。",
+          "scores": {
+            "tf": -1,
+            "softness": 1
+          }
+        },
+        {
+          "text": "它的逻辑和执行链条是否成立。",
+          "scores": {
+            "tf": 1,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "它能不能稳定地产生结果。",
+          "scores": {
+            "tf": 2,
+            "edge": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "axis": "tf",
+      "title": "吵架之后，你最难放下的通常是什么？",
+      "answers": [
+        {
+          "text": "对方那句真正伤人的话。",
+          "scores": {
+            "tf": -2,
+            "softness": 1
+          }
+        },
+        {
+          "text": "这段关系是不是因此被改变了。",
+          "scores": {
+            "tf": -1,
+            "warmth": 1
+          }
+        },
+        {
+          "text": "有些关键问题始终没说清楚。",
+          "scores": {
+            "tf": 1,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "明明有更有效的处理方式却没人用。",
+          "scores": {
+            "tf": 2,
+            "edge": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "axis": "tf",
+      "title": "如果你需要拒绝别人帮忙的请求，你更像哪一种？",
+      "answers": [
+        {
+          "text": "会很在意对方会不会因此难受。",
+          "scores": {
+            "tf": -2,
+            "warmth": 1
+          }
+        },
+        {
+          "text": "会解释自己的处境，尽量让对方理解。",
+          "scores": {
+            "tf": -1,
+            "softness": 1
+          }
+        },
+        {
+          "text": "我会说明边界和原因，保持清楚。",
+          "scores": {
+            "tf": 1,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "不能做就是不能做，模糊反而更麻烦。",
+          "scores": {
+            "tf": 2,
+            "edge": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "axis": "jp",
+      "title": "面对一个一周后的截止时间，你更安心的状态是？",
+      "answers": [
+        {
+          "text": "先把结构和节奏定下来，再慢慢推进。",
+          "scores": {
+            "jp": 2,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "提前动手，给自己留修正空间。",
+          "scores": {
+            "jp": 1,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "先放在心里，等信息更多再集中处理。",
+          "scores": {
+            "jp": -1,
+            "softness": 1
+          }
+        },
+        {
+          "text": "到后面灵感和效率会更高，我习惯那样做。",
+          "scores": {
+            "jp": -2,
+            "weirdness": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "axis": "jp",
+      "title": "行程临时被打乱时，你更容易怎么反应？",
+      "answers": [
+        {
+          "text": "先把新的安排快速重排出来。",
+          "scores": {
+            "jp": 2,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "我会先确认边界，再决定怎么调整。",
+          "scores": {
+            "jp": 1,
+            "edge": 1
+          }
+        },
+        {
+          "text": "看情况顺着改，也许新版本会更有趣。",
+          "scores": {
+            "jp": -1,
+            "weirdness": 1
+          }
+        },
+        {
+          "text": "既然变了，就先别急着控制它。",
+          "scores": {
+            "jp": -2,
+            "softness": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "axis": "jp",
+      "title": "买东西之前，你通常更接近哪一种？",
+      "answers": [
+        {
+          "text": "会先列标准，按标准筛掉不合适的。",
+          "scores": {
+            "jp": 2,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "大致比较一下，心里有一个范围。",
+          "scores": {
+            "jp": 1,
+            "edge": 1
+          }
+        },
+        {
+          "text": "看当时状态和现场感觉，留一点弹性。",
+          "scores": {
+            "jp": -1,
+            "showmanship": 1
+          }
+        },
+        {
+          "text": "常常会被临场出现的新选项带走。",
+          "scores": {
+            "jp": -2,
+            "weirdness": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "axis": "jp",
+      "title": "你自己的工作区/书桌更像哪一种？",
+      "answers": [
+        {
+          "text": "物品有明确位置，找东西很快。",
+          "scores": {
+            "jp": 2,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "整体算整齐，但会保留一点个人习惯。",
+          "scores": {
+            "jp": 1,
+            "warmth": 1
+          }
+        },
+        {
+          "text": "看起来乱一点，但我自己知道怎么找。",
+          "scores": {
+            "jp": -1,
+            "weirdness": 1
+          }
+        },
+        {
+          "text": "状态会变，桌面也跟着变。",
+          "scores": {
+            "jp": -2,
+            "softness": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "axis": "jp",
+      "title": "别人突然说“现在就决定吧”，你更可能？",
+      "answers": [
+        {
+          "text": "如果该定了，我会直接拍板。",
+          "scores": {
+            "jp": 2,
+            "edge": 1
+          }
+        },
+        {
+          "text": "会先收束信息，然后尽快给出结论。",
+          "scores": {
+            "jp": 1,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "还想再看看，过早定下来容易错过别的可能。",
+          "scores": {
+            "jp": -1,
+            "weirdness": 1
+          }
+        },
+        {
+          "text": "会本能地抗拒这种立刻定案的压力。",
+          "scores": {
+            "jp": -2,
+            "softness": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "axis": "jp",
+      "title": "如果一天里突然多出两个空闲小时，你最可能怎么用？",
+      "answers": [
+        {
+          "text": "补掉待办，顺便把后面几件事也排一排。",
+          "scores": {
+            "jp": 2,
+            "discipline": 1
+          }
+        },
+        {
+          "text": "先处理最重要的一件，剩下的再看。",
+          "scores": {
+            "jp": 1,
+            "edge": 1
+          }
+        },
+        {
+          "text": "看当下最想做什么，把时间留给状态。",
+          "scores": {
+            "jp": -1,
+            "softness": 1
+          }
+        },
+        {
+          "text": "临时起意去试一个原本没计划的东西。",
+          "scores": {
+            "jp": -2,
+            "weirdness": 1,
+            "showmanship": 1
+          }
+        }
       ]
     }
   ]
