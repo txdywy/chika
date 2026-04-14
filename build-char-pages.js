@@ -78,6 +78,7 @@ function charPage(c, idx) {
   const img = imgPath(c.code);
   const charUrl = `${SITE_URL}/characters/${c.code}/`;
   const coverUrl = `${SITE_URL}/og-cover.png`;
+  const shareImageUrl = img ? encodeURI(`${SITE_URL}/${img}`) : coverUrl;
   const typeCode = c.typeCode || c.sbtI;
 
   // SEO description: hand-crafted short summary, complete sentence, no truncation
@@ -141,14 +142,15 @@ function charPage(c, idx) {
   <meta property="og:title" content="${esc(c.name)} MBTI 是什么 | ${esc(c.name)}性格分析">
   <meta property="og:description" content="${esc(description)}">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="${coverUrl}">
+  <meta property="og:image" content="${shareImageUrl}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="${esc(c.name)} 角色图">
   <meta property="og:url" content="${charUrl}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${esc(c.name)} MBTI 是什么 | ${esc(c.name)}性格分析">
   <meta name="twitter:description" content="${esc(description)}">
-  <meta name="twitter:image" content="${coverUrl}">
+  <meta name="twitter:image" content="${shareImageUrl}">
   <link rel="canonical" href="${charUrl}">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐹</text></svg>">
   <link rel="stylesheet" href="/styles.css">
@@ -160,7 +162,7 @@ function charPage(c, idx) {
     "name": `${c.name} MBTI 是什么 | ${c.name}性格分析`,
     "description": description,
     "url": charUrl,
-    "image": coverUrl,
+    "image": shareImageUrl,
     "mainEntity": {
       "@type": "Thing",
       "name": c.name,
