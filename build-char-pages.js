@@ -481,10 +481,11 @@ if (fs.existsSync(SHARE_DIR)) {
 }
 fs.mkdirSync(SHARE_DIR, { recursive: true });
 
-for (const c of characters) {
+for (let i = 0; i < characters.length; i++) {
+  const c = characters[i];
   const dir = path.join(CHAR_DIR, c.code);
   fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, 'index.html'), charPage(c, characters.indexOf(c)), 'utf-8');
+  fs.writeFileSync(path.join(dir, 'index.html'), charPage(c, i), 'utf-8');
   console.log(`  ✓ ${c.code} — ${c.name}`);
 
   const shareDir = path.join(SHARE_DIR, c.code);

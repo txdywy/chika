@@ -46,7 +46,7 @@ function buildCharacterCard(character) {
   const output = path.join(OUT_DIR, `${character.code}.jpg`);
   const bg = hexToFfmpegColor(character.color || '#FFF2DB');
 
-  execFileSync('/opt/homebrew/bin/ffmpeg', [
+  execFileSync('ffmpeg', [
     '-y',
     '-f', 'lavfi',
     '-i', `color=${bg}:s=1200x630`,
@@ -68,7 +68,7 @@ function buildHomeCard() {
   const output = path.join(OUT_DIR, 'home.jpg');
   const input = path.join(ROOT, 'og-cover.png');
 
-  execFileSync('/opt/homebrew/bin/ffmpeg', [
+  execFileSync('ffmpeg', [
     '-y',
     '-i', input,
     '-vf', 'scale=1200:630:force_original_aspect_ratio=increase,crop=1200:630',

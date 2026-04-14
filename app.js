@@ -448,7 +448,7 @@ function computeAndShow() {
     latestResult = { primary, secondary, matchRate, mbtiGuess, styleTags, shareUrl };
     document.title = `我是 ${primary.name} | CHTI`;
     updateMetaTags(primary, shareUrl);
-    history.replaceState({}, "", `/share/${primary.code}/`);
+    history.replaceState({}, "", `#share/${primary.code}`);
 
     /* result card */
     const cardBg = `linear-gradient(160deg, ${primary.color || "#FFD0A0"}, #FFF6E5 70%, #FFF)`;
@@ -560,7 +560,7 @@ function setOrCreateMeta(attrName, attrValue, content) {
 
 /* ===== image helper (HTML-escaped) ===== */
 function esc(s) {
-  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;');
 }
 
 function imgEl(c, size) {
@@ -751,9 +751,9 @@ async function makePosterCanvas({ primary, secondary, matchRate, mbtiGuess }) {
   ctx.font = "700 34px -apple-system, 'PingFang SC', sans-serif";
   ctx.fillText("为什么像", 148, 1076);
   ctx.font = "500 30px -apple-system, 'PingFang SC', sans-serif";
-  wrapText(ctx, `1. ${primary.evidence[0]}`, 148, 1140, 780, 42);
-  wrapText(ctx, `2. ${primary.evidence[1]}`, 148, 1218, 780, 42);
-  wrapText(ctx, `3. ${primary.evidence[2]}`, 148, 1296, 780, 42);
+  wrapText(ctx, `1. ${primary.evidence[0] || ""}`, 148, 1140, 780, 42);
+  wrapText(ctx, `2. ${primary.evidence[1] || ""}`, 148, 1218, 780, 42);
+  wrapText(ctx, `3. ${primary.evidence[2] || ""}`, 148, 1296, 780, 42);
 
   /* dual info */
   ctx.fillStyle = "#FFF7ED";

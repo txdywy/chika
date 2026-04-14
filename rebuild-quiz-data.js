@@ -463,5 +463,7 @@ function rebuildCharacters() {
   fs.writeFileSync(CHARACTERS_PATH, JSON.stringify(payload, null, 2) + '\n');
 }
 
-rebuildQuestions();
-rebuildCharacters();
+if (require.main === module) {
+  rebuildQuestions();
+  rebuildCharacters();
+}
