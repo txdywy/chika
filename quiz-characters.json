@@ -27,8 +27,8 @@
     "version": "4.0",
     "description": "22 个 Chiikawa 角色画像：保留原有角色文案，并新增 MBTI 四维原型与 6 个风格副维度。",
     "scoring_model": {
-      "primary_axes_weight": 0.76,
-      "style_weight": 0.24,
+      "primary_axes_weight": 0.7,
+      "style_weight": 0.3,
       "tie_breaker": "风格距离更近者优先"
     }
   },
@@ -88,9 +88,9 @@
       "typeCode": "CRYF",
       "profile": {
         "ei": -0.92,
-        "sn": -0.18,
+        "sn": 0.18,
         "tf": -0.88,
-        "jp": 0.12
+        "jp": -0.12
       },
       "styleProfile": {
         "warmth": 0.78,
@@ -209,12 +209,12 @@
         "jp": -0.96
       },
       "styleProfile": {
-        "warmth": 0.2,
-        "weirdness": 0.96,
-        "showmanship": 0.72,
-        "discipline": 0.16,
-        "edge": 0.42,
-        "softness": 0.08
+        "warmth": 0.16,
+        "weirdness": 1,
+        "showmanship": 0.92,
+        "discipline": 0.08,
+        "edge": 0.28,
+        "softness": 0.04
       },
       "resultNotes": {
         "mbtiArchetype": "ENTP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
@@ -383,12 +383,12 @@
         "jp": -0.56
       },
       "styleProfile": {
-        "warmth": 0.74,
-        "weirdness": 0.36,
-        "showmanship": 0.82,
-        "discipline": 0.36,
-        "edge": 0.24,
-        "softness": 0.22
+        "warmth": 0.9,
+        "weirdness": 0.2,
+        "showmanship": 0.94,
+        "discipline": 0.24,
+        "edge": 0.18,
+        "softness": 0.18
       },
       "resultNotes": {
         "mbtiArchetype": "ENFP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
@@ -789,16 +789,16 @@
         "jp": -0.84
       },
       "styleProfile": {
-        "warmth": 0.24,
-        "weirdness": 0.72,
-        "showmanship": 0.76,
-        "discipline": 0.16,
-        "edge": 0.58,
-        "softness": 0.14
+        "warmth": 0.12,
+        "weirdness": 0.88,
+        "showmanship": 0.82,
+        "discipline": 0.1,
+        "edge": 0.72,
+        "softness": 0.08
       },
       "resultNotes": {
         "mbtiArchetype": "ESFP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
-        "styleBias": "那个孩子 的角色风格重点在 showmanship / weirdness。"
+        "styleBias": "那个孩子 的角色风格重点在 weirdness / showmanship。"
       }
     },
     {
@@ -905,16 +905,16 @@
         "jp": -0.88
       },
       "styleProfile": {
-        "warmth": 0.34,
-        "weirdness": 0.86,
-        "showmanship": 0.54,
-        "discipline": 0.14,
-        "edge": 0.36,
-        "softness": 0.12
+        "warmth": 0.28,
+        "weirdness": 0.74,
+        "showmanship": 0.44,
+        "discipline": 0.18,
+        "edge": 0.46,
+        "softness": 0.18
       },
       "resultNotes": {
         "mbtiArchetype": "ENTP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
-        "styleBias": "欧德 的角色风格重点在 weirdness / showmanship。"
+        "styleBias": "欧德 的角色风格重点在 weirdness / edge。"
       }
     },
     {
@@ -1021,16 +1021,16 @@
         "jp": -0.24
       },
       "styleProfile": {
-        "warmth": 0.12,
-        "weirdness": 0.84,
-        "showmanship": 0.04,
-        "discipline": 0.48,
-        "edge": 0.72,
-        "softness": 0.22
+        "warmth": 0.06,
+        "weirdness": 0.8,
+        "showmanship": 0.02,
+        "discipline": 0.2,
+        "edge": 0.96,
+        "softness": 0.06
       },
       "resultNotes": {
         "mbtiArchetype": "INTP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
-        "styleBias": "黑星 的角色风格重点在 weirdness / edge。"
+        "styleBias": "黑星 的角色风格重点在 edge / weirdness。"
       }
     },
     {
@@ -1191,20 +1191,20 @@
       "profile": {
         "ei": -0.62,
         "sn": 0.36,
-        "tf": -0.12,
+        "tf": 0.12,
         "jp": -0.46
       },
       "styleProfile": {
         "warmth": 0.22,
-        "weirdness": 0.88,
-        "showmanship": 0.18,
-        "discipline": 0.24,
-        "edge": 0.52,
-        "softness": 0.42
+        "weirdness": 0.82,
+        "showmanship": 0.22,
+        "discipline": 0.18,
+        "edge": 0.34,
+        "softness": 0.62
       },
       "resultNotes": {
         "mbtiArchetype": "INTP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",
-        "styleBias": "吉伊卡菇 的角色风格重点在 weirdness / edge。"
+        "styleBias": "吉伊卡菇 的角色风格重点在 weirdness / softness。"
       }
     },
     {
@@ -1311,12 +1311,12 @@
         "jp": -0.82
       },
       "styleProfile": {
-        "warmth": 0.7,
-        "weirdness": 0.42,
-        "showmanship": 0.72,
-        "discipline": 0.28,
-        "edge": 0.1,
-        "softness": 0.28
+        "warmth": 0.58,
+        "weirdness": 0.58,
+        "showmanship": 0.64,
+        "discipline": 0.24,
+        "edge": 0.08,
+        "softness": 0.34
       },
       "resultNotes": {
         "mbtiArchetype": "ENFP 原型会定义你的四维主轮廓，角色风格只负责微调同类型角色之间的差异。",

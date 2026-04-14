@@ -380,7 +380,7 @@ function indexPage() {
     <div class="info-card">
       <h3 class="info-title">Chiikawa 角色简介</h3>
       <p class="info-body" style="font-size:14px;line-height:1.7;color:var(--muted)">
-        Chiikawa（ちいかわ，吉伊卡哇）是日本漫画家ナガノ创作的漫画作品及其衍生动画的角色系列。CHTI 收录了包括主角团吉伊卡哇、小八、兔兔、飞鼠等在内的 ${characters.length} 个主要角色，每个角色都有独特的性格特征和 MBTI 类型。通过 CHTI 的 24 道题测试，你可以看到自己在 MBTI 四维偏好和角色风格上最接近哪个角色。
+        Chiikawa（ちいかわ，吉伊卡哇）是日本漫画家ナガノ创作的漫画作品及其衍生动画的角色系列。CHTI 收录了包括主角团吉伊卡哇、小八、兔兔、飞鼠等在内的 ${characters.length} 个主要角色，每个角色都有独特的性格特征和 MBTI 类型。通过 CHTI 的 28 道题测试，你可以看到自己在 MBTI 四维偏好和角色风格上最接近哪个角色。
       </p>
     </div>
   </div>

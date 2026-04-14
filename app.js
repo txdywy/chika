@@ -392,7 +392,7 @@ function computeScore(character, scores) {
   const primary = axisSimilarity(character, scores);
   const style = styleSimilarity(character, scores);
   return {
-    score: primary * 0.76 + style * 0.24,
+    score: primary * 0.70 + style * 0.30,
     primary,
     style
   };

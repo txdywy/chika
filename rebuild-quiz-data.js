@@ -19,7 +19,7 @@ const questions = [
       { text: '我会主动找人聊天，边聊边认识场子。', scores: { ei: 2, showmanship: 1 } },
       { text: '先听一会儿，找到顺眼的人再加入。', scores: { ei: 1, warmth: 1 } },
       { text: '等别人来找我，自己先熟悉一下环境。', scores: { ei: -1, softness: 1 } },
-      { text: '我更想先待在一边，等彻底适应后再说。', scores: { ei: -2, discipline: 1 } }
+      { text: '我更想先待在一边，等彻底适应后再说。', scores: { ei: -2 } }
     ]
   },
   {
@@ -50,7 +50,7 @@ const questions = [
     title: '在朋友的聚会照片里，你通常更像哪一种？',
     answers: [
       { text: '经常在中间，顺手还会组织大家拍照。', scores: { ei: 2, showmanship: 1 } },
-      { text: '会参与，也愿意配合大家热闹一下。', scores: { ei: 1, warmth: 1 } },
+      { text: '会参与，也愿意配合大家热闹一下。', scores: { ei: 1, showmanship: 1 } },
       { text: '人在现场，但更像安静陪伴的背景板。', scores: { ei: -1, softness: 1 } },
       { text: '可能根本没出现在照片里。', scores: { ei: -2 } }
     ]
@@ -61,8 +61,8 @@ const questions = [
     title: '开会前还有十分钟，你一般会怎么用？',
     answers: [
       { text: '先和在场的人聊起来，顺便摸清大家状态。', scores: { ei: 2, warmth: 1 } },
-      { text: '看有没有人需要我配合，简单交流一下。', scores: { ei: 1, discipline: 1 } },
-      { text: '自己过一遍要说的内容，不太想被打断。', scores: { ei: -1, discipline: 1 } },
+      { text: '看有没有人需要我配合，简单交流一下。', scores: { ei: 1, showmanship: 1 } },
+      { text: '自己过一遍要说的内容，不太想被打断。', scores: { ei: -1 } },
       { text: '安静坐着整理思路，最好谁都别来找我。', scores: { ei: -2 } }
     ]
   },
@@ -205,7 +205,7 @@ const questions = [
     answers: [
       { text: '会很在意对方会不会因此难受。', scores: { tf: -2, warmth: 1 } },
       { text: '会解释自己的处境，尽量让对方理解。', scores: { tf: -1, softness: 1 } },
-      { text: '我会说明边界和原因，保持清楚。', scores: { tf: 1, discipline: 1 } },
+      { text: '我会说明边界和原因，保持清楚。', scores: { tf: 1 } },
       { text: '不能做就是不能做，模糊反而更麻烦。', scores: { tf: 2, edge: 1 } }
     ]
   },
@@ -272,7 +272,51 @@ const questions = [
       { text: '补掉待办，顺便把后面几件事也排一排。', scores: { jp: 2, discipline: 1 } },
       { text: '先处理最重要的一件，剩下的再看。', scores: { jp: 1, edge: 1 } },
       { text: '看当下最想做什么，把时间留给状态。', scores: { jp: -1, softness: 1 } },
-      { text: '临时起意去试一个原本没计划的东西。', scores: { jp: -2, weirdness: 1, showmanship: 1 } }
+      { text: '临时起意去试一个原本没计划的东西。', scores: { jp: -2, weirdness: 1 } }
+    ]
+  },
+  {
+    id: 25,
+    axis: 'sn',
+    title: '看完一段别人分享的旅行 vlog，你最容易记住哪一类内容？',
+    answers: [
+      { text: '它整体传达出的气氛和故事感。', scores: { sn: 2, showmanship: 1 } },
+      { text: '它让我联想到的另一种生活方式。', scores: { sn: 1, weirdness: 1 } },
+      { text: '路线、预算、交通这些是否讲清楚了。', scores: { sn: -1, edge: 1 } },
+      { text: '镜头里那些很具体的小细节和现场感。', scores: { sn: -2, softness: 1 } }
+    ]
+  },
+  {
+    id: 26,
+    axis: 'sn',
+    title: '别人丢给你一个还很粗糙的新点子时，你第一步更像？',
+    answers: [
+      { text: '先顺着它往外想，看看它还能长成什么样。', scores: { sn: 2, weirdness: 1 } },
+      { text: '先想它如果做出来，呈现会不会很抓人。', scores: { sn: 1, showmanship: 1 } },
+      { text: '先问现在手上有没有足够的信息支撑它。', scores: { sn: -1, edge: 1 } },
+      { text: '先确认对方最在意的是哪部分，避免一下子把热情压没。', scores: { sn: -2, softness: 1 } }
+    ]
+  },
+  {
+    id: 27,
+    axis: 'tf',
+    title: '朋友做了一个公开分享，效果不理想，你更自然会怎么反馈？',
+    answers: [
+      { text: '先接住情绪，别让对方在众人面前更难堪。', scores: { tf: -2, softness: 1 } },
+      { text: '先夸住亮点，再慢慢补建议。', scores: { tf: -1, showmanship: 1 } },
+      { text: '会直接指出最影响效果的那一环。', scores: { tf: 1, edge: 1 } },
+      { text: '先把结构拆开，告诉对方下次怎么更稳。', scores: { tf: 2, weirdness: 1 } }
+    ]
+  },
+  {
+    id: 28,
+    axis: 'tf',
+    title: '团队里有人提出一个风险很高但也很吸睛的方案，你更在意什么？',
+    answers: [
+      { text: '先看这会不会让参与的人背太大压力。', scores: { tf: -2, softness: 1 } },
+      { text: '如果它能让大家更有感觉，我愿意先保住那个火花。', scores: { tf: -1, showmanship: 1 } },
+      { text: '我会先看失败成本，别被表面效果带跑。', scores: { tf: 1, edge: 1 } },
+      { text: '只要逻辑成立、执行路径清楚，冒险也可以。', scores: { tf: 2, weirdness: 1 } }
     ]
   }
 ];
@@ -280,30 +324,30 @@ const questions = [
 const styleProfiles = {
   CHII: { warmth: 0.78, weirdness: 0.12, showmanship: 0.08, discipline: 0.42, edge: 0.08, softness: 0.98 },
   HACH: { warmth: 0.96, weirdness: 0.18, showmanship: 0.52, discipline: 0.62, edge: 0.10, softness: 0.58 },
-  USAG: { warmth: 0.20, weirdness: 0.96, showmanship: 0.72, discipline: 0.16, edge: 0.42, softness: 0.08 },
+  USAG: { warmth: 0.16, weirdness: 1.00, showmanship: 0.92, discipline: 0.08, edge: 0.28, softness: 0.04 },
   MOMO: { warmth: 0.28, weirdness: 0.42, showmanship: 0.98, discipline: 0.22, edge: 0.54, softness: 0.18 },
   KURI: { warmth: 0.34, weirdness: 0.22, showmanship: 0.06, discipline: 0.48, edge: 0.28, softness: 0.16 },
-  RAKK: { warmth: 0.74, weirdness: 0.36, showmanship: 0.82, discipline: 0.36, edge: 0.24, softness: 0.22 },
+  RAKK: { warmth: 0.90, weirdness: 0.20, showmanship: 0.94, discipline: 0.24, edge: 0.18, softness: 0.18 },
   SHIS: { warmth: 0.98, weirdness: 0.10, showmanship: 0.10, discipline: 0.72, edge: 0.08, softness: 0.62 },
   FURU: { warmth: 0.58, weirdness: 0.58, showmanship: 0.04, discipline: 0.54, edge: 0.14, softness: 0.82 },
   LABO: { warmth: 0.26, weirdness: 0.06, showmanship: 0.06, discipline: 0.98, edge: 0.42, softness: 0.10 },
   POCH: { warmth: 0.56, weirdness: 0.30, showmanship: 0.10, discipline: 0.62, edge: 0.12, softness: 0.42 },
   RAMN: { warmth: 0.52, weirdness: 0.08, showmanship: 0.28, discipline: 0.94, edge: 0.56, softness: 0.10 },
   YATA: { warmth: 0.74, weirdness: 0.18, showmanship: 0.66, discipline: 0.42, edge: 0.18, softness: 0.24 },
-  ANOK: { warmth: 0.24, weirdness: 0.72, showmanship: 0.76, discipline: 0.16, edge: 0.58, softness: 0.14 },
+  ANOK: { warmth: 0.12, weirdness: 0.88, showmanship: 0.82, discipline: 0.10, edge: 0.72, softness: 0.08 },
   DEKA: { warmth: 0.18, weirdness: 0.44, showmanship: 0.16, discipline: 0.74, edge: 0.70, softness: 0.08 },
-  ODEE: { warmth: 0.34, weirdness: 0.86, showmanship: 0.54, discipline: 0.14, edge: 0.36, softness: 0.12 },
+  ODEE: { warmth: 0.28, weirdness: 0.74, showmanship: 0.44, discipline: 0.18, edge: 0.46, softness: 0.18 },
   GOBL: { warmth: 0.02, weirdness: 0.34, showmanship: 0.58, discipline: 0.04, edge: 0.98, softness: 0.02 },
-  BLAC: { warmth: 0.12, weirdness: 0.84, showmanship: 0.04, discipline: 0.48, edge: 0.72, softness: 0.22 },
+  BLAC: { warmth: 0.06, weirdness: 0.80, showmanship: 0.02, discipline: 0.20, edge: 0.96, softness: 0.06 },
   SHOO: { warmth: 0.18, weirdness: 0.12, showmanship: 0.62, discipline: 0.86, edge: 0.64, softness: 0.06 },
   MAJO: { warmth: 0.08, weirdness: 0.92, showmanship: 0.08, discipline: 0.82, edge: 0.82, softness: 0.06 },
-  KABU: { warmth: 0.22, weirdness: 0.88, showmanship: 0.18, discipline: 0.24, edge: 0.52, softness: 0.42 },
+  KABU: { warmth: 0.22, weirdness: 0.82, showmanship: 0.22, discipline: 0.18, edge: 0.34, softness: 0.62 },
   MUCH: { warmth: 0.62, weirdness: 0.16, showmanship: 0.96, discipline: 0.74, edge: 0.24, softness: 0.18 },
-  PAJA: { warmth: 0.70, weirdness: 0.42, showmanship: 0.72, discipline: 0.28, edge: 0.10, softness: 0.28 }
+  PAJA: { warmth: 0.58, weirdness: 0.58, showmanship: 0.64, discipline: 0.24, edge: 0.08, softness: 0.34 }
 };
 
 const profileOverrides = {
-  CHII: { ei: -0.92, sn: -0.18, tf: -0.88, jp: 0.12 },
+  CHII: { ei: -0.92, sn: 0.18, tf: -0.88, jp: -0.12 },
   HACH: { ei: 0.86, sn: -0.22, tf: -0.92, jp: 0.58 },
   USAG: { ei: 0.92, sn: 0.96, tf: 0.22, jp: -0.96 },
   MOMO: { ei: 0.92, sn: -0.66, tf: 0.48, jp: -0.52 },
@@ -322,7 +366,7 @@ const profileOverrides = {
   BLAC: { ei: -0.92, sn: 0.92, tf: 0.24, jp: -0.24 },
   SHOO: { ei: 0.82, sn: 0.58, tf: 0.88, jp: 0.84 },
   MAJO: { ei: -0.76, sn: 0.96, tf: 0.74, jp: 0.66 },
-  KABU: { ei: -0.62, sn: 0.36, tf: -0.12, jp: -0.46 },
+  KABU: { ei: -0.62, sn: 0.36, tf: 0.12, jp: -0.46 },
   MUCH: { ei: 0.92, sn: 0.44, tf: -0.54, jp: 0.72 },
   PAJA: { ei: 0.88, sn: 0.62, tf: -0.42, jp: -0.82 }
 };
@@ -394,8 +438,8 @@ function rebuildCharacters() {
       version: '4.0',
       description: '22 个 Chiikawa 角色画像：保留原有角色文案，并新增 MBTI 四维原型与 6 个风格副维度。',
       scoring_model: {
-        primary_axes_weight: 0.76,
-        style_weight: 0.24,
+        primary_axes_weight: 0.70,
+        style_weight: 0.30,
         tie_breaker: '风格距离更近者优先'
       }
     },

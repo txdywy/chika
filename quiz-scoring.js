@@ -8,8 +8,8 @@ const characters = require('./quiz-characters.json').characters;
 
 const AXES = ['ei', 'sn', 'tf', 'jp'];
 const STYLES = ['warmth', 'weirdness', 'showmanship', 'discipline', 'edge', 'softness'];
-const PRIMARY_WEIGHT = 0.76;
-const STYLE_WEIGHT = 0.24;
+const PRIMARY_WEIGHT = 0.70;
+const STYLE_WEIGHT = 0.30;
 
 function emptyVector() {
   return Object.fromEntries([...AXES, ...STYLES].map((key) => [key, 0]));

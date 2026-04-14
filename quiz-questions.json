@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "3.0",
-    "total_questions": 24,
+    "total_questions": 28,
     "description": "Chiikawa MBTI 娱乐向测试题目，使用 4 条 MBTI 主维度和 6 个角色风格副维度。",
     "axes_legend": {
       "ei": "外向(E) <-> 内向(I)",
@@ -48,8 +48,7 @@
         {
           "text": "我更想先待在一边，等彻底适应后再说。",
           "scores": {
-            "ei": -2,
-            "discipline": 1
+            "ei": -2
           }
         }
       ]
@@ -139,7 +138,7 @@
           "text": "会参与，也愿意配合大家热闹一下。",
           "scores": {
             "ei": 1,
-            "warmth": 1
+            "showmanship": 1
           }
         },
         {
@@ -173,14 +172,13 @@
           "text": "看有没有人需要我配合，简单交流一下。",
           "scores": {
             "ei": 1,
-            "discipline": 1
+            "showmanship": 1
           }
         },
         {
           "text": "自己过一遍要说的内容，不太想被打断。",
           "scores": {
-            "ei": -1,
-            "discipline": 1
+            "ei": -1
           }
         },
         {
@@ -630,8 +628,7 @@
         {
           "text": "我会说明边界和原因，保持清楚。",
           "scores": {
-            "tf": 1,
-            "discipline": 1
+            "tf": 1
           }
         },
         {
@@ -848,8 +845,147 @@
           "text": "临时起意去试一个原本没计划的东西。",
           "scores": {
             "jp": -2,
-            "weirdness": 1,
+            "weirdness": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "axis": "sn",
+      "title": "看完一段别人分享的旅行 vlog，你最容易记住哪一类内容？",
+      "answers": [
+        {
+          "text": "它整体传达出的气氛和故事感。",
+          "scores": {
+            "sn": 2,
             "showmanship": 1
+          }
+        },
+        {
+          "text": "它让我联想到的另一种生活方式。",
+          "scores": {
+            "sn": 1,
+            "weirdness": 1
+          }
+        },
+        {
+          "text": "路线、预算、交通这些是否讲清楚了。",
+          "scores": {
+            "sn": -1,
+            "edge": 1
+          }
+        },
+        {
+          "text": "镜头里那些很具体的小细节和现场感。",
+          "scores": {
+            "sn": -2,
+            "softness": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "axis": "sn",
+      "title": "别人丢给你一个还很粗糙的新点子时，你第一步更像？",
+      "answers": [
+        {
+          "text": "先顺着它往外想，看看它还能长成什么样。",
+          "scores": {
+            "sn": 2,
+            "weirdness": 1
+          }
+        },
+        {
+          "text": "先想它如果做出来，呈现会不会很抓人。",
+          "scores": {
+            "sn": 1,
+            "showmanship": 1
+          }
+        },
+        {
+          "text": "先问现在手上有没有足够的信息支撑它。",
+          "scores": {
+            "sn": -1,
+            "edge": 1
+          }
+        },
+        {
+          "text": "先确认对方最在意的是哪部分，避免一下子把热情压没。",
+          "scores": {
+            "sn": -2,
+            "softness": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "axis": "tf",
+      "title": "朋友做了一个公开分享，效果不理想，你更自然会怎么反馈？",
+      "answers": [
+        {
+          "text": "先接住情绪，别让对方在众人面前更难堪。",
+          "scores": {
+            "tf": -2,
+            "softness": 1
+          }
+        },
+        {
+          "text": "先夸住亮点，再慢慢补建议。",
+          "scores": {
+            "tf": -1,
+            "showmanship": 1
+          }
+        },
+        {
+          "text": "会直接指出最影响效果的那一环。",
+          "scores": {
+            "tf": 1,
+            "edge": 1
+          }
+        },
+        {
+          "text": "先把结构拆开，告诉对方下次怎么更稳。",
+          "scores": {
+            "tf": 2,
+            "weirdness": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "axis": "tf",
+      "title": "团队里有人提出一个风险很高但也很吸睛的方案，你更在意什么？",
+      "answers": [
+        {
+          "text": "先看这会不会让参与的人背太大压力。",
+          "scores": {
+            "tf": -2,
+            "softness": 1
+          }
+        },
+        {
+          "text": "如果它能让大家更有感觉，我愿意先保住那个火花。",
+          "scores": {
+            "tf": -1,
+            "showmanship": 1
+          }
+        },
+        {
+          "text": "我会先看失败成本，别被表面效果带跑。",
+          "scores": {
+            "tf": 1,
+            "edge": 1
+          }
+        },
+        {
+          "text": "只要逻辑成立、执行路径清楚，冒险也可以。",
+          "scores": {
+            "tf": 2,
+            "weirdness": 1
           }
         }
       ]
