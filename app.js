@@ -444,6 +444,11 @@ function rank(scores) {
 function computeAndShow() {
   try {
     const ranked = rank(state.scores);
+    if (ranked.length < 2) {
+      console.warn("Not enough characters to compute result, falling back.");
+      fallbackResult();
+      return;
+    }
     const primary = ranked[0].character;
     const secondary = ranked[1].character;
     const matchRate = Math.max(68, Math.min(97, Math.round(ranked[0].score * 100)));
@@ -722,11 +727,21 @@ async function makePosterCanvas({ primary, secondary, matchRate, mbtiGuess }) {
   roundRect(ctx, 108, 172, 864, 420, 54);
   ctx.fill();
 
-  const img = await loadImage(primary.image);
+  /* character image with fallback: draw initials when image fails or is missing */
   ctx.fillStyle = "rgba(255,255,255,0.78)";
   roundRect(ctx, 208, 224, 300, 300, 64);
   ctx.fill();
-  ctx.drawImage(img, 232, 248, 252, 252);
+
+  if (primary.image) {
+    try {
+      const img = await loadImage(primary.image);
+      ctx.drawImage(img, 232, 248, 252, 252);
+    } catch {
+      drawInitialsFallback(ctx, primary.name, 232, 248, 252);
+    }
+  } else {
+    drawInitialsFallback(ctx, primary.name, 232, 248, 252);
+  }
 
   /* pills */
   drawPill(ctx, 548, 232, primary.typeCode, "#FFF4CE", "#4A3113");
@@ -788,12 +803,24 @@ async function makePosterCanvas({ primary, secondary, matchRate, mbtiGuess }) {
 
 /* ===== canvas helpers ===== */
 function loadImage(src) {
+  if (!src) return Promise.reject(new Error("empty image src"));
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.onload = () => resolve(img);
     img.onerror = reject;
     img.src = src;
   });
+}
+
+function drawInitialsFallback(ctx, name, x, y, size) {
+  const initials = name.slice(0, 2);
+  ctx.fillStyle = "#8B6D4E";
+  ctx.font = `700 ${size * 0.36}px -apple-system, 'PingFang SC', sans-serif`;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(initials, x + size / 2, y + size / 2);
+  ctx.textAlign = "start";
+  ctx.textBaseline = "alphabetic";
 }
 
 function drawPill(ctx, x, y, text, bg, color) {
@@ -895,9 +922,87 @@ function handleHash() {
 
   const code = hash.replace("#share/", "").replace(/\/+$/, "");
   const primary = characters.find(c => c.code === code);
-  if (!primary || !latestResult) return;
+  if (!primary) return;
+
+  /* User hasn't taken the quiz yet — show a share preview without scoring */
+  if (state.answers.length < totalQuestions) {
+    showSharePreview(primary);
+    return;
+  }
 
   computeAndShow();
+  showScreen(screenResult);
+}
+
+function showSharePreview(primary) {
+  /* Build a minimal result card from the shared character without full scoring.
+     All content comes from quiz-characters.json (trusted build-time data)
+     and is HTML-escaped via esc() before injection. */
+  const mbtiGuess = primary.mbti || "????";
+  const styleTags = [];
+  const shareUrl = `${location.origin}/share/${primary.code}/`;
+
+  latestResult = { primary, secondary: characters[1] || primary, matchRate: 0, mbtiGuess, styleTags, shareUrl };
+  document.title = `我是 ${primary.name} | CHTI`;
+  updateMetaTags(primary, shareUrl);
+  history.replaceState({}, "", `#share/${primary.code}`);
+
+  const cardBg = `linear-gradient(160deg, ${primary.color || "#FFD0A0"}, #FFF6E5 70%, #FFF)`;
+  resultCard.style.background = cardBg;
+  resultCard.innerHTML = `
+    <div class="result-badges">
+      <span class="badge">${esc(primary.typeCode)}</span>
+      <span class="badge">${esc(mbtiGuess)}</span>
+    </div>
+    <p class="result-eyebrow">好友分享的结果卡</p>
+    <h2 class="result-name">${esc(primary.name)}</h2>
+    <p class="result-title">${esc(primary.title)}</p>
+    <p class="result-oneliner">${esc(primary.oneLiner)}</p>
+    <div class="result-match">
+      <span>${esc(primary.groupRole || "")}</span>
+    </div>
+    <div class="result-image-wrap">
+      <div class="result-image">${imgEl(primary, 140)}</div>
+    </div>
+  `;
+
+  posterEl.style.background =
+    `radial-gradient(circle at top left, rgba(255,255,255,0.82), transparent 36%), ` +
+    `linear-gradient(160deg, ${primary.color || "#FFE6A0"}, #FFF2DB)`;
+  posterEl.innerHTML = `
+    <div class="poster-head">
+      <div class="poster-img">${imgEl(primary, 80)}</div>
+      <div>
+        <div class="poster-badges">
+          <span class="poster-badge">${esc(primary.typeCode)}</span>
+          <span class="poster-badge">${esc(mbtiGuess)}</span>
+        </div>
+        <p class="poster-title">${esc(primary.name)} · ${esc(primary.title)}</p>
+      </div>
+    </div>
+    <p class="poster-copy">"${esc(primary.oneLiner)}"</p>
+  `;
+
+  evidenceList.innerHTML = (primary.evidence || []).map(e => `<li>${e}</li>`).join("");
+  sbtIHeading.textContent = `${primary.sbtI} · ${primary.sbtIFull}`;
+  sbtIReasonEl.textContent = primary.sbtIReason || "";
+  groupRole.textContent = primary.groupRole || "";
+  todayRemark.textContent = primary.todayRemark || "";
+  bestMatch.textContent = primary.bestMatch || "";
+  worstMatch.textContent = primary.worstMatch || "";
+  bestMatchReason.textContent = "";
+  worstMatchReason.textContent = "";
+  const d = primary.detail || {};
+  traitSignature.textContent = d.signature || "";
+  traitEnergy.textContent = d.energyLevel || "";
+  traitStress.textContent = d.stressBehavior || "";
+  renderDeputy(characters[1] || primary);
+
+  shareCopy.value =
+    `好友分享来了一个 ${primary.name} 的结果卡。\n` +
+    `你也去测测，看你会抽到谁：${shareUrl}`;
+
+  restartTop.hidden = false;
   showScreen(screenResult);
 }
 
